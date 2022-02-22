@@ -14,6 +14,18 @@
 		6F5E391727C4CCDA005C5171 /* RecetteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E391627C4CCDA005C5171 /* RecetteTests.swift */; };
 		6F5E392127C4CCDA005C5171 /* RecetteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E392027C4CCDA005C5171 /* RecetteUITests.swift */; };
 		6F5E392327C4CCDA005C5171 /* RecetteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E392227C4CCDA005C5171 /* RecetteUITestsLaunchTests.swift */; };
+		6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393227C4CD6C005C5171 /* Ingredient.swift */; };
+		6F5E393527C4CD75005C5171 /* Fiche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393427C4CD75005C5171 /* Fiche.swift */; };
+		6F5E393727C4CD81005C5171 /* Allergene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393627C4CD81005C5171 /* Allergene.swift */; };
+		6F5E393927C4CD8C005C5171 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393827C4CD8C005C5171 /* Stock.swift */; };
+		6F5E393B27C4CD9C005C5171 /* CategorieRecette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393A27C4CD9C005C5171 /* CategorieRecette.swift */; };
+		6F5E393D27C4CDA9005C5171 /* CategorieIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393C27C4CDA9005C5171 /* CategorieIngredient.swift */; };
+		6F5E393F27C4CDBD005C5171 /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E393E27C4CDBD005C5171 /* StockView.swift */; };
+		6F5E394127C4CDCB005C5171 /* IngredientVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */; };
+		6F5E394327C4CDD8005C5171 /* FicheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394227C4CDD8005C5171 /* FicheView.swift */; };
+		6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */; };
+		6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */; };
+		6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394827C4CE06005C5171 /* StockViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +56,18 @@
 		6F5E391C27C4CCDA005C5171 /* RecetteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecetteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5E392027C4CCDA005C5171 /* RecetteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteUITests.swift; sourceTree = "<group>"; };
 		6F5E392227C4CCDA005C5171 /* RecetteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6F5E393227C4CD6C005C5171 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		6F5E393427C4CD75005C5171 /* Fiche.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fiche.swift; sourceTree = "<group>"; };
+		6F5E393627C4CD81005C5171 /* Allergene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergene.swift; sourceTree = "<group>"; };
+		6F5E393827C4CD8C005C5171 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		6F5E393A27C4CD9C005C5171 /* CategorieRecette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieRecette.swift; sourceTree = "<group>"; };
+		6F5E393C27C4CDA9005C5171 /* CategorieIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieIngredient.swift; sourceTree = "<group>"; };
+		6F5E393E27C4CDBD005C5171 /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
+		6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientVIew.swift; sourceTree = "<group>"; };
+		6F5E394227C4CDD8005C5171 /* FicheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheView.swift; sourceTree = "<group>"; };
+		6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheViewModel.swift; sourceTree = "<group>"; };
+		6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
+		6F5E394827C4CE06005C5171 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +118,9 @@
 		6F5E390427C4CCD9005C5171 /* Recette */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E393127C4CD45005C5171 /* Model */,
+				6F5E393027C4CD38005C5171 /* View */,
+				6F5E392F27C4CD2F005C5171 /* ViewModel */,
 				6F5E390527C4CCD9005C5171 /* RecetteApp.swift */,
 				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 				6F5E390927C4CCDA005C5171 /* Assets.xcassets */,
@@ -125,6 +152,39 @@
 				6F5E392227C4CCDA005C5171 /* RecetteUITestsLaunchTests.swift */,
 			);
 			path = RecetteUITests;
+			sourceTree = "<group>";
+		};
+		6F5E392F27C4CD2F005C5171 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */,
+				6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */,
+				6F5E394827C4CE06005C5171 /* StockViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6F5E393027C4CD38005C5171 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E393E27C4CDBD005C5171 /* StockView.swift */,
+				6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */,
+				6F5E394227C4CDD8005C5171 /* FicheView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F5E393127C4CD45005C5171 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E393227C4CD6C005C5171 /* Ingredient.swift */,
+				6F5E393427C4CD75005C5171 /* Fiche.swift */,
+				6F5E393627C4CD81005C5171 /* Allergene.swift */,
+				6F5E393827C4CD8C005C5171 /* Stock.swift */,
+				6F5E393A27C4CD9C005C5171 /* CategorieRecette.swift */,
+				6F5E393C27C4CDA9005C5171 /* CategorieIngredient.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +317,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5E393F27C4CDBD005C5171 /* StockView.swift in Sources */,
+				6F5E393D27C4CDA9005C5171 /* CategorieIngredient.swift in Sources */,
+				6F5E393727C4CD81005C5171 /* Allergene.swift in Sources */,
 				6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */,
+				6F5E393B27C4CD9C005C5171 /* CategorieRecette.swift in Sources */,
+				6F5E393927C4CD8C005C5171 /* Stock.swift in Sources */,
+				6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */,
+				6F5E393527C4CD75005C5171 /* Fiche.swift in Sources */,
+				6F5E394127C4CDCB005C5171 /* IngredientVIew.swift in Sources */,
 				6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */,
+				6F5E394327C4CDD8005C5171 /* FicheView.swift in Sources */,
+				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
+				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,
+				6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

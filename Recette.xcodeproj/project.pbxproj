@@ -26,6 +26,11 @@
 		6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */; };
 		6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */; };
 		6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394827C4CE06005C5171 /* StockViewModel.swift */; };
+		6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394A27C4E30C005C5171 /* ListFicheView.swift */; };
+		6F5E394D27C4E33D005C5171 /* ListeFiche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394C27C4E33D005C5171 /* ListeFiche.swift */; };
+		6F5E395027C4E3DC005C5171 /* ListeFicheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */; };
+		6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E395227C4E43D005C5171 /* FicheIntent.swift */; };
+		6F5E395727C51105005C5171 /* RecetteCarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E395627C51105005C5171 /* RecetteCarte.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +73,11 @@
 		6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheViewModel.swift; sourceTree = "<group>"; };
 		6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		6F5E394827C4CE06005C5171 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
+		6F5E394A27C4E30C005C5171 /* ListFicheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFicheView.swift; sourceTree = "<group>"; };
+		6F5E394C27C4E33D005C5171 /* ListeFiche.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeFiche.swift; sourceTree = "<group>"; };
+		6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeFicheViewModel.swift; sourceTree = "<group>"; };
+		6F5E395227C4E43D005C5171 /* FicheIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheIntent.swift; sourceTree = "<group>"; };
+		6F5E395627C51105005C5171 /* RecetteCarte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteCarte.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +128,11 @@
 		6F5E390427C4CCD9005C5171 /* Recette */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E395127C4E42B005C5171 /* Intent */,
 				6F5E393127C4CD45005C5171 /* Model */,
 				6F5E393027C4CD38005C5171 /* View */,
 				6F5E392F27C4CD2F005C5171 /* ViewModel */,
 				6F5E390527C4CCD9005C5171 /* RecetteApp.swift */,
-				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 				6F5E390927C4CCDA005C5171 /* Assets.xcassets */,
 				6F5E390B27C4CCDA005C5171 /* Preview Content */,
 			);
@@ -160,6 +170,7 @@
 				6F5E394427C4CDE9005C5171 /* FicheViewModel.swift */,
 				6F5E394627C4CDFA005C5171 /* IngredientViewModel.swift */,
 				6F5E394827C4CE06005C5171 /* StockViewModel.swift */,
+				6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -167,6 +178,8 @@
 		6F5E393027C4CD38005C5171 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E395527C510EB005C5171 /* Card */,
+				6F5E395427C510A0005C5171 /* Main */,
 				6F5E393E27C4CDBD005C5171 /* StockView.swift */,
 				6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */,
 				6F5E394227C4CDD8005C5171 /* FicheView.swift */,
@@ -183,8 +196,34 @@
 				6F5E393827C4CD8C005C5171 /* Stock.swift */,
 				6F5E393A27C4CD9C005C5171 /* CategorieRecette.swift */,
 				6F5E393C27C4CDA9005C5171 /* CategorieIngredient.swift */,
+				6F5E394C27C4E33D005C5171 /* ListeFiche.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6F5E395127C4E42B005C5171 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E395227C4E43D005C5171 /* FicheIntent.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		6F5E395427C510A0005C5171 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
+				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6F5E395527C510EB005C5171 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E395627C51105005C5171 /* RecetteCarte.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,14 +360,19 @@
 				6F5E393D27C4CDA9005C5171 /* CategorieIngredient.swift in Sources */,
 				6F5E393727C4CD81005C5171 /* Allergene.swift in Sources */,
 				6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */,
+				6F5E395027C4E3DC005C5171 /* ListeFicheViewModel.swift in Sources */,
 				6F5E393B27C4CD9C005C5171 /* CategorieRecette.swift in Sources */,
 				6F5E393927C4CD8C005C5171 /* Stock.swift in Sources */,
 				6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */,
+				6F5E395727C51105005C5171 /* RecetteCarte.swift in Sources */,
 				6F5E393527C4CD75005C5171 /* Fiche.swift in Sources */,
 				6F5E394127C4CDCB005C5171 /* IngredientVIew.swift in Sources */,
 				6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */,
 				6F5E394327C4CDD8005C5171 /* FicheView.swift in Sources */,
+				6F5E394D27C4E33D005C5171 /* ListeFiche.swift in Sources */,
+				6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */,
 				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
+				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
 				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,
 				6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */,
 			);

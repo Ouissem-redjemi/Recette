@@ -9,6 +9,7 @@ import Foundation
 
 class Ingredient{
     public var delegate : IngredientDelegate?
+    
     public var allergene : Allergene
     public var categorie : CategorieIngredient?
     public var code : Int

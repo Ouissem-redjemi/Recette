@@ -11,6 +11,7 @@
 		1023CE2327C52D9700520160 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1023CE2227C52D9700520160 /* FirebaseAuth */; };
 		1023CE2527C52D9700520160 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1023CE2427C52D9700520160 /* FirebaseFirestore */; };
 		1023CE2727C52D9700520160 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1023CE2627C52D9700520160 /* FirebaseFirestoreSwift-Beta */; };
+		1023CE2927C5389500520160 /* IngredientIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023CE2827C5389500520160 /* IngredientIntent.swift */; };
 		6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390527C4CCD9005C5171 /* RecetteApp.swift */; };
 		6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390727C4CCD9005C5171 /* ContentView.swift */; };
 		6F5E390A27C4CCDA005C5171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5E390927C4CCDA005C5171 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		1023CE1F27C52CEE00520160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1023CE2827C5389500520160 /* IngredientIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientIntent.swift; sourceTree = "<group>"; };
 		6F5E390227C4CCD9005C5171 /* Recette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5E390527C4CCD9005C5171 /* RecetteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteApp.swift; sourceTree = "<group>"; };
 		6F5E390727C4CCD9005C5171 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				6F5E395227C4E43D005C5171 /* FicheIntent.swift */,
+				1023CE2827C5389500520160 /* IngredientIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1023CE2927C5389500520160 /* IngredientIntent.swift in Sources */,
 				6F5E393F27C4CDBD005C5171 /* StockView.swift in Sources */,
 				6F5E393D27C4CDA9005C5171 /* CategorieIngredient.swift in Sources */,
 				6F5E393727C4CD81005C5171 /* Allergene.swift in Sources */,

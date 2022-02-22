@@ -43,14 +43,18 @@ class IngredientViewModel : IngredientDelegate{
     }
     
     var delegate : IngredientDelegate?
+    typealias Input = IngredientIntentState
+    
+    typealias Failure = Never
+    
     var ingredient : Ingredient
     
-    var allergene : Allergene
-    var categorie : CategorieIngredient?
-    var code : Int
-    var libelle : String
-    var prix_unitaire : Double
-    var unite : String
+    @Published var allergene : Allergene
+    @Published var categorie : CategorieIngredient?
+    @Published var code : Int
+    @Published var libelle : String
+    @Published var prix_unitaire : Double
+    @Published var unite : String
     
     init(from ingredient : Ingredient){
         self.ingredient = ingredient

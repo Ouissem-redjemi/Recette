@@ -19,7 +19,7 @@ struct ListFicheView : View {
         
     }
     var body: some View {
-        VStack (alignment: .leading){
+        VStack (){
             NavigationView{
                 List {
                     ForEach(listFiches.listeFiches.listFiche, id: \.idFiche){

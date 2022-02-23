@@ -10,6 +10,8 @@ import Combine
 import FirebaseFirestore
 
 class ListeFicheViewModel: ObservableObject, Subscriber {
+    
+    //Subscriber Functions
     func receive(subscription: Subscription) {
        subscription.request(.unlimited)
     }
@@ -45,12 +47,14 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
     
     typealias Failure = Never
     
+    
+    
     var listeFiches : ListeFiche
     init(from listeFiches : ListeFiche){
         self.listeFiches = listeFiches
     }
     
-    //Data
+    //Data Functions
     //Get Data from Firestore
     func getData (){
         //Get a reference to the database

@@ -66,7 +66,7 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                     self.listeFiches.listFiche = snapshot.documents.map { doc in
                         return Fiche(id: doc.documentID, categorie: doc["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: doc["title"] as? String ?? "", materielDressage: doc["materielDressage"]as? String ?? "", materielSpecifique: doc["materielSpecifique"]as? String ?? "", responsable: doc["responsable"] as? String ?? "" , nbCouverts: doc["nbCouverts"] as? Int ?? 0)
                     }
-                   
+                    print(self.listeFiches.listFiche)
                     
                 }
             }else{

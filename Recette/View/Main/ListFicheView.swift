@@ -24,13 +24,14 @@ struct ListFicheView : View {
                 List {
                     ForEach(listFiches.listeFiches.listFiche, id: \.idFiche){
                         fiche in
+                        NavigationLink(destination: FicheView(recette: FicheViewModel(from: fiche), listeRecette: listFiches)){
                             VStack(alignment: .leading){
                                 Group{
                                     Text(fiche.title).bold()
                                     Text(fiche.responsable)
                                 }
                             }
-                            
+                        }
                        
                     }
                     .onDelete{ indexSet in

@@ -19,7 +19,7 @@ struct RecetteCarte: View {
         self.intent.addObserver(viewModel: listRecette)
     }
     var body: some View {
-        AsyncImage(url: URL(string: ""))
+        AsyncImage(url: URL(string: "https://i.ytimg.com/vi/p906xsADfv0/maxresdefault.jpg"))
     }
 }
 

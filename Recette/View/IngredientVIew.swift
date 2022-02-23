@@ -9,8 +9,11 @@ import SwiftUI
 struct IngredientView: View {
     var body: some View {
         VStack{
-          
-        }
+            Text("Adnane le meilleur ingrédient")
+                .bold()
+
+            
+        }.navigationTitle("Adnane zzin")
         
     }
 }

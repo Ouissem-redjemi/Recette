@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum CategorieRecette : String{
+enum CategorieRecette : String {
     case entree = "Entrée"
     case plat = "Plat"
     case dessert = "Dessert"

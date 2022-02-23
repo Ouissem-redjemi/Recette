@@ -31,8 +31,8 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     @Published var materielSpecifique : String?
     @Published var responsable : String
     @Published var nbCouverts : Int
-    @Published var quantite : [Double : Ingredient  ]
-    @Published var etapes : [String   : [Double : Ingredient  ] ]
+   // @Published var quantite : [Double : Ingredient  ]
+   // @Published var etapes : [String   : [Double : Ingredient  ] ]
     
     func change(categorie: CategorieRecette) {
         self.categorie = categorie
@@ -58,13 +58,13 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.nbCouverts = nbCouverts
     }
     
-    func change(etapes : [String   : [Double : Ingredient  ] ]){
+   /* func change(etapes : [String   : [Double : Ingredient  ] ]){
         self.etapes = etapes
     }
     
     func change(quantite :[Double : Ingredient  ] ){
         self.quantite = quantite
-    }
+    }*/
     
     func receive(subscription: Subscription) {
        subscription.request(.unlimited) // unlimited : on veut recevoir toutes les valeurs
@@ -102,7 +102,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
    
 
-    public var coutSimple : Double{
+  /*  public var coutSimple : Double{
         var total : Double = 0
         for (_, _) in etapes{
             for (qte , ingredient) in quantite{
@@ -110,7 +110,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
             }
         }
         return total
-    }
+    }*/
 
     
     init(from fiche : Fiche){
@@ -121,8 +121,8 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.materielSpecifique = fiche.materielSpecifique
         self.responsable = fiche.responsable
         self.nbCouverts = fiche.nbCouverts
-        self.etapes = fiche.etapes
-        self.quantite = fiche.quantite
+        //self.etapes = fiche.etapes
+        //self.quantite = fiche.quantite
         self.fiche.delegate = self
     }
     

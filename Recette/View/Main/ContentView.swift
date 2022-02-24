@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack{
-            Text("Bonjour, veuillez vous connecter ")
-                .padding()
-        }
+        NavigationView{
+            NavigationLink ( destination: ListIngredientView(listIngredient: ListeIngredientViewModel(from: ListIngredient()))){
+                    VStack{
+                        Text("Liste des ingredients disponibles ")
+                            .padding()
+                    }
+                }
+            }
         
     }
 }

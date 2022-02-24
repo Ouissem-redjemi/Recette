@@ -7,9 +7,3 @@
 
 import SwiftUI
 
-struct ListFicheView : View {
-    var body: some View {
-        
-    }
-}
-

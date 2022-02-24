@@ -8,13 +8,18 @@
 import Foundation
 import Combine
 
-enum IngredientIntentState : CustomStringConvertible, Equatable{
+enum IngredientIntentState : CustomStringConvertible{
+ 
+    
+
+    
     case ready
     case libelleChanging(String)
     case allergeneChanging(Allergene)
-    case matSpeChanging(String)
-    case matDressChanging(String)
-    case couvertChanging(Int)
+    case categorieChanging(CategorieIngredient)
+    case codeChanging(Int)
+    case prixUnitaireChanging(Double)
+    case uniteChanging(String)
     case listUpdated
 
 
@@ -23,9 +28,10 @@ var description: String{
     case .ready: return "state: .ready"
     case .libelleChanging(let libelle): return "state: .libelleChanging(\(libelle))"
     case .allergeneChanging(let allergene): return "state: .allergeneChanging(\(allergene))"
-   case .matSpeChanging(let materiel): return "state: .matSpeChanging(\(materiel))"
-   case .couvertChanging(let couvert): return "state: .couvertChanging(\(couvert))"
-   case .matDressChanging(let matDress): return "state: .matDressChanging(\(matDress))"
+    case .categorieChanging(let categorie): return "state: .categorieChanging(\(categorie))"
+    case .codeChanging(let code): return "state: .codeChanging(\(code))"
+    case .prixUnitaireChanging(let prix_unitaire): return "state: .prixUnitaireChanging(\(prix_unitaire))"
+   case .uniteChanging(let unite): return "state: .prixUnitaireChanging(\(unite))"
     case .listUpdated: return  "state: .listUpdated"
    }
 }
@@ -37,21 +43,43 @@ struct IngredientIntent{
    
   
    
-   func addObserver(viewModel: FicheViewModel){
+   func addObserver(viewModel: IngredientViewModel){
       self.state.subscribe(viewModel)
    }
-    func addObserver(viewModel: ListeFicheViewModel){
+   func addObserver(viewModel: ListeIngredientViewModel){
        self.state.subscribe(viewModel)
     }
    
-   func intentToChange(title: String){
-      self.state.send(.titleChanging(title))
+   func intentToChange(libelle: String){
+      self.state.send(.libelleChanging(libelle))
        self.state.send(.listUpdated)
    }
-    func intentToChange(responsable: String){
-        self.state.send(.responsableChanging(responsable))
+    
+    func intentToChange(allergene: Allergene){
+        self.state.send(.allergeneChanging(allergene))
         self.state.send(.listUpdated)
     }
+   
+    func intentToChange(categorie: CategorieIngredient){
+        self.state.send(.categorieChanging(categorie))
+        self.state.send(.listUpdated)
+    }
+    
+    func intentToChange(code: Int){
+        self.state.send(.codeChanging(code))
+        self.state.send(.listUpdated)
+    }
+    
+    func intentToChange(prix_unitaire: Double){
+        self.state.send(.prixUnitaireChanging(prix_unitaire))
+        self.state.send(.listUpdated)
+    }
+  
+    func intentToChange(unite: String){
+        self.state.send(.uniteChanging(unite))
+        self.state.send(.listUpdated)
+    }
+    
     
     
   

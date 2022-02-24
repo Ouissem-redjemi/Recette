@@ -15,6 +15,11 @@
 		1023CE2B27C5480D00520160 /* ListeIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023CE2A27C5480D00520160 /* ListeIngredientViewModel.swift */; };
 		1023CE2D27C636DE00520160 /* ListIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023CE2C27C636DE00520160 /* ListIngredientsView.swift */; };
 		1023CE2F27C6994400520160 /* ListIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023CE2E27C6994400520160 /* ListIngredient.swift */; };
+		1069ED9127C834D700033A19 /* ListAllergeneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9027C834D700033A19 /* ListAllergeneView.swift */; };
+		1069ED9327C8350A00033A19 /* ListAllergeneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9227C8350A00033A19 /* ListAllergeneViewModel.swift */; };
+		1069ED9527C8351800033A19 /* ListAllergene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9427C8351800033A19 /* ListAllergene.swift */; };
+		1069ED9727C8356800033A19 /* ListStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9627C8356800033A19 /* ListStock.swift */; };
+		1069ED9927C835BB00033A19 /* ListStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9827C835BB00033A19 /* ListStockView.swift */; };
 		6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390527C4CCD9005C5171 /* RecetteApp.swift */; };
 		6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390727C4CCD9005C5171 /* ContentView.swift */; };
 		6F5E390A27C4CCDA005C5171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5E390927C4CCDA005C5171 /* Assets.xcassets */; };
@@ -64,6 +69,11 @@
 		1023CE2A27C5480D00520160 /* ListeIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIngredientViewModel.swift; sourceTree = "<group>"; };
 		1023CE2C27C636DE00520160 /* ListIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngredientsView.swift; sourceTree = "<group>"; };
 		1023CE2E27C6994400520160 /* ListIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngredient.swift; sourceTree = "<group>"; };
+		1069ED9027C834D700033A19 /* ListAllergeneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergeneView.swift; sourceTree = "<group>"; };
+		1069ED9227C8350A00033A19 /* ListAllergeneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergeneViewModel.swift; sourceTree = "<group>"; };
+		1069ED9427C8351800033A19 /* ListAllergene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergene.swift; sourceTree = "<group>"; };
+		1069ED9627C8356800033A19 /* ListStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStock.swift; sourceTree = "<group>"; };
+		1069ED9827C835BB00033A19 /* ListStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStockView.swift; sourceTree = "<group>"; };
 		6F5E390227C4CCD9005C5171 /* Recette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5E390527C4CCD9005C5171 /* RecetteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteApp.swift; sourceTree = "<group>"; };
 		6F5E390727C4CCD9005C5171 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,6 +199,7 @@
 				6F5E394827C4CE06005C5171 /* StockViewModel.swift */,
 				6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */,
 				1023CE2A27C5480D00520160 /* ListeIngredientViewModel.swift */,
+				1069ED9227C8350A00033A19 /* ListAllergeneViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -216,6 +227,8 @@
 				6F5E393C27C4CDA9005C5171 /* CategorieIngredient.swift */,
 				6F5E394C27C4E33D005C5171 /* ListeFiche.swift */,
 				1023CE2E27C6994400520160 /* ListIngredient.swift */,
+				1069ED9427C8351800033A19 /* ListAllergene.swift */,
+				1069ED9627C8356800033A19 /* ListStock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +248,8 @@
 				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
 				1023CE2C27C636DE00520160 /* ListIngredientsView.swift */,
+				1069ED9027C834D700033A19 /* ListAllergeneView.swift */,
+				1069ED9827C835BB00033A19 /* ListStockView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -386,15 +401,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1069ED9127C834D700033A19 /* ListAllergeneView.swift in Sources */,
 				1023CE2927C5389500520160 /* IngredientIntent.swift in Sources */,
 				6F5E393F27C4CDBD005C5171 /* StockView.swift in Sources */,
 				6F5E393D27C4CDA9005C5171 /* CategorieIngredient.swift in Sources */,
 				6F5E393727C4CD81005C5171 /* Allergene.swift in Sources */,
+				1069ED9327C8350A00033A19 /* ListAllergeneViewModel.swift in Sources */,
 				6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */,
 				6F5E395027C4E3DC005C5171 /* ListeFicheViewModel.swift in Sources */,
 				6F5E393B27C4CD9C005C5171 /* CategorieRecette.swift in Sources */,
 				6F5E393927C4CD8C005C5171 /* Stock.swift in Sources */,
 				1023CE2D27C636DE00520160 /* ListIngredientsView.swift in Sources */,
+				1069ED9527C8351800033A19 /* ListAllergene.swift in Sources */,
 				6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */,
 				6F5E395727C51105005C5171 /* RecetteCarte.swift in Sources */,
 				1023CE2B27C5480D00520160 /* ListeIngredientViewModel.swift in Sources */,
@@ -407,7 +425,9 @@
 				6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */,
 				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
 				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
+				1069ED9727C8356800033A19 /* ListStock.swift in Sources */,
 				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,
+				1069ED9927C835BB00033A19 /* ListStockView.swift in Sources */,
 				6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

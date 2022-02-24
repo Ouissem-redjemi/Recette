@@ -22,18 +22,23 @@ struct IngredientView: View {
     }
     
     var body: some View{
+        let cols=[GridItem(.fixed(140), alignment: .leading),GridItem(.flexible(),alignment: .leading)]
         VStack(alignment: .leading){
-            Text("Intitulé: \(ingredient.libelle)")
-            //TODO DANS UN MODAL POUR MODIFICATION
-           /* TextField("title", text: $recette.title).onSubmit {
-                intent.intentToChange(title: recette.title )
-            }*/
-            Text("allergene: \(ingredient.allergene.libelle)")
-            Text("Catégorie: \(ingredient.categorie!.rawValue)")
-            Text("Code: \(ingredient.code)")
+            LazyVGrid(columns: cols, spacing: 5){
+                Text("Intitulé: "); Text("\(ingredient.libelle)")
+                //TODO DANS UN MODAL POUR MODIFICATION
+               /* TextField("title", text: $recette.title).onSubmit {
+                    intent.intentToChange(title: recette.title )
+                }*/
+                Text("allergene: \(ingredient.allergene.libelle)")
+                Text("Catégorie: \(ingredient.categorie!.rawValue)")
+                Text("Code: \(ingredient.code)")
+            
+            }
+        
             Text("Prix Unitaire: \(ingredient.prix_unitaire)")
             Text("Unite: \(ingredient.unite)")
-            
+
         }.navigationTitle(ingredient.libelle).fixedSize()
     }
 }

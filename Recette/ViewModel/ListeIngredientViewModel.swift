@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import FirebaseFirestore
 
 class ListeIngredientViewModel: ObservableObject, Subscriber {
     typealias Input = IngredientIntentState
@@ -51,4 +51,28 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
         return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
     
+    func getData (){
+            //Get a reference to the database
+            let db = Firestore.firestore()
+            
+            //Get the document of the table fiche
+            db.collection("ingredients").getDocuments { snapshot, error in
+                //Verify errors
+                if error == nil {
+                    //NO errors
+                    if let snapshot = snapshot{
+                        //Get all documents and create list of Recipes
+                        self.listeIngredient.listIngredient = snapshot.documents.map { doc in
+                            return Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.init(libelle: "") , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"]as? Int ?? 0, libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
+                        }
+                        print(self.listeIngredient.listIngredient)
+                        
+                    }
+                }else{
+                //Handle errors
+                    
+            }
+        }
+    
+    }
 }

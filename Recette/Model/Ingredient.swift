@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Ingredient{
+class Ingredient : Identifiable{
     public var delegate : IngredientDelegate?
     
     public var idIngredient : String{

@@ -13,6 +13,7 @@ struct ListIngredientView : View {
     
     init(listIngredient : ListeIngredientViewModel){
         self.listIngredients = listIngredient
+        listIngredient.getData()
         self.intent = IngredientIntent()
         self.intent.addObserver(viewModel: listIngredient)
         
@@ -40,5 +41,12 @@ struct ListIngredientView : View {
             }
         EditButton()
         }
+    }
+}
+
+struct ListIngredientView_Previews: PreviewProvider {
+    static var previews: some View {
+        var ing = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        ListIngredientView(listIngredient : ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing] )))
     }
 }

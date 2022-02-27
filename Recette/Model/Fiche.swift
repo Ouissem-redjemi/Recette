@@ -40,7 +40,7 @@ class Fiche : Identifiable {
     //public var etapes : [String   : [Double : Ingredient  ] ]
     // Ici on pourrait faire un dictionnaire des etapes vue que on doit pas stocker les etapes en tant que que element de la base de donnée du coup on pourrait apres juste recupere les recettes avec leurs etapes en tant que dico et pouvoir les reutiliser
     
-    init(id: String, categorie : CategorieRecette , title : String ,materielDressage : String? , materielSpecifique : String? , responsable : String , nbCouverts : Int ){
+    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0 ){
         self.idFiche = id
         self.categorie = categorie
         self.title = title

@@ -1,52 +1,63 @@
-//
-//  ListFicheView.swift
-//  Recette
-//
-//  Created by m1 on 22/02/2022.
-//
+    //
+    //  ListFicheView.swift
+    //  Recette
+    //
+    //  Created by m1 on 22/02/2022.
+    //
 
-import SwiftUI
+    import SwiftUI
 
-struct ListFicheView : View {
-    @ObservedObject var listFiches : ListeFicheViewModel
-    var intent : FicheIntent
-    
-    init(listFiche : ListeFicheViewModel){
-        self.listFiches = listFiche
-        listFiche.getData()
-        self.intent = FicheIntent()
-        self.intent.addObserver(viewModel: listFiche)
-        
-    }
-    var body: some View {
-        VStack (){
-            NavigationView{
-                List {
-                    ForEach(listFiches.listeFiches.listFiche, id: \.idFiche){
-                        fiche in
-                        NavigationLink(destination: FicheView(recette: FicheViewModel(from: fiche), listeRecette: listFiches)){
-                            VStack(alignment: .leading){
-                                Group{
-                                    Text(fiche.title).bold()
-                                    Text(fiche.responsable)
-                                }
-                            }
-                        }
-                       
-                    }
-                    .onDelete{ indexSet in
-                        listFiches.listeFiches.listFiche.remove(atOffsets: indexSet)
-                    }.onMove{ indexSet, index in
-                        listFiches.listeFiches.listFiche.move(fromOffsets: indexSet, toOffset: index)
-                        
-                    }.navigationTitle("Mes recettes")
-                  
-                    
-            }
+    struct ListFicheView : View {
+        @ObservedObject var listFiches = ListeFicheViewModel ()
+        var intent : FicheIntent = FicheIntent()
+        init(){
+            self.listFiches.getData()
+            self.intent.addObserver(viewModel: listFiches)
             
         }
-        EditButton()
-        }
+    
+        var body: some View {
+           VStack{
+               HStack{
+                   Text("\(listFiches.listeFiches.count) recettes")
+                       .font(.headline)
+                       .fontWeight(.medium)
+                       .opacity(0.7)
+                   Spacer()
+                }
+               LazyVGrid(columns: [GridItem (.adaptive(minimum: 160), spacing: 15)], spacing: 15){
+                   ForEach(listFiches.listeFiches){
+                       fiche in RecetteCarte(recette: FicheViewModel(from: fiche), listRecette: listFiches)
+                   }
+               }
+               .padding(.top)
+            }
+            .padding(.horizontal)
+           }
+ 
+    }
+               
+                /*NavigationView{S
+                    List {
+                        ForEach(listFiches.listeFiches.listFiche, id: \.idFiche){
+                            fiche in
+                          
+                           
+                        }
+                        .onDelete{ indexSet in
+                            listFiches.listeFiches.listFicheS.remove(atOffsets: indexSet)
+                        }.onMove{ indexSet, index in
+                            listFiches.listeFiches.listFiche.move(fromOffsets: indexSet, toOffset: index)
+                            
+                        }.navigationTitle("Mes recettes")
+                      
+                        
+                }*/
+                
+struct ListFicheView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListFicheView()
     }
 }
+
 

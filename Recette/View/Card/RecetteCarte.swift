@@ -19,12 +19,43 @@ struct RecetteCarte: View {
         self.intent.addObserver(viewModel: listRecette)
     }
     var body: some View {
-        AsyncImage(url: URL(string: "https://i.ytimg.com/vi/p906xsADfv0/maxresdefault.jpg"))
+        VStack{
+        AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
+            image in image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .overlay(alignment: .bottom){
+                    Text(recette.title)
+                        .font(.headline)
+                        .foregroundColor(.purple)
+                        .shadow(color: .purple, radius: 3, x: 0, y: 0)
+                        .frame(maxWidth: 136)
+                        .padding()
+                }
+        } placeholder: {
+            Image(systemName: "Photo par défaut")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40, alignment: .center)
+                .foregroundColor(.white.opacity(0.7))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .overlay(alignment: .bottom){
+                    Text(recette.title)
+                        .font(.headline)
+                        .foregroundColor(.purple)
+                        .shadow(color: .purple, radius: 3, x: 0, y: 0)
+                        .frame(maxWidth: 136)
+                    .padding()}
+        }
+        }.frame(width: 160, height: 155, alignment: .top)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(.white).opacity(0.3), Color(.white)]) , startPoint: .top , endPoint: .bottom))
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .shadow(color: Color.black.opacity(0.3), radius: 15, x: 0, y: 10)
     }
 }
 
-/*struct RecetteCarte_Previews: PreviewProvider {
+struct RecetteCarte_Previews: PreviewProvider {
     static var previews: some View {
-        RecetteCarte(recette: , listRecette: <#ListeFicheViewModel#>)
+        RecetteCarte(recette: FicheViewModel(from: Fiche(id: "FObL0vgRlp2NDdKzmVsp" )) , listRecette: ListeFicheViewModel())
     }
-}*/
+}

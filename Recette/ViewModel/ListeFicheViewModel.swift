@@ -49,14 +49,12 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
     
     
     
-    var listeFiches : ListeFiche
-    init(from listeFiches : ListeFiche){
-        self.listeFiches = listeFiches
-    }
+    @Published var listeFiches = [Fiche] ()
+  
     
     //Data Functions
     //Get Data from Firestore
-    func getData (){
+   func getData (){
         //Get a reference to the database
         let db = Firestore.firestore()
         
@@ -67,10 +65,10 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                 //NO errors
                 if let snapshot = snapshot{
                     //Get all documents and create list of Recipes
-                    self.listeFiches.listFiche = snapshot.documents.map { doc in
+                    self.listeFiches = snapshot.documents.map { doc in
                         return Fiche(id: doc.documentID, categorie: doc["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: doc["title"] as? String ?? "", materielDressage: doc["materielDressage"]as? String ?? "", materielSpecifique: doc["materielSpecifique"]as? String ?? "", responsable: doc["responsable"] as? String ?? "" , nbCouverts: doc["nbCouverts"] as? Int ?? 0)
                     }
-                    print(self.listeFiches.listFiche)
+                    print(self.listeFiches.description)
                     
                 }
             }else{
@@ -82,6 +80,10 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
         //Add Data to FireStore
         func addData(){
             //Reference database
+            let db = Firestore.firestore()
+            
+            //Add Recipe to Database
+            
             
         }
     

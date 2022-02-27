@@ -20,6 +20,8 @@
 		1069ED9527C8351800033A19 /* ListAllergene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9427C8351800033A19 /* ListAllergene.swift */; };
 		1069ED9727C8356800033A19 /* ListStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9627C8356800033A19 /* ListStock.swift */; };
 		1069ED9927C835BB00033A19 /* ListStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9827C835BB00033A19 /* ListStockView.swift */; };
+		1069ED9B27CBBC4B00033A19 /* ListStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9A27CBBC4A00033A19 /* ListStockViewModel.swift */; };
+		1069ED9D27CBC0A800033A19 /* StockIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069ED9C27CBC0A700033A19 /* StockIntent.swift */; };
 		6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390527C4CCD9005C5171 /* RecetteApp.swift */; };
 		6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390727C4CCD9005C5171 /* ContentView.swift */; };
 		6F5E390A27C4CCDA005C5171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5E390927C4CCDA005C5171 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		1069ED9427C8351800033A19 /* ListAllergene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergene.swift; sourceTree = "<group>"; };
 		1069ED9627C8356800033A19 /* ListStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStock.swift; sourceTree = "<group>"; };
 		1069ED9827C835BB00033A19 /* ListStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStockView.swift; sourceTree = "<group>"; };
+		1069ED9A27CBBC4A00033A19 /* ListStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStockViewModel.swift; sourceTree = "<group>"; };
+		1069ED9C27CBC0A700033A19 /* StockIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIntent.swift; sourceTree = "<group>"; };
 		6F5E390227C4CCD9005C5171 /* Recette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5E390527C4CCD9005C5171 /* RecetteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteApp.swift; sourceTree = "<group>"; };
 		6F5E390727C4CCD9005C5171 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */,
 				1023CE2A27C5480D00520160 /* ListeIngredientViewModel.swift */,
 				1069ED9227C8350A00033A19 /* ListAllergeneViewModel.swift */,
+				1069ED9A27CBBC4A00033A19 /* ListStockViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			children = (
 				6F5E395227C4E43D005C5171 /* FicheIntent.swift */,
 				1023CE2827C5389500520160 /* IngredientIntent.swift */,
+				1069ED9C27CBC0A700033A19 /* StockIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				1023CE2B27C5480D00520160 /* ListeIngredientViewModel.swift in Sources */,
 				1023CE2F27C6994400520160 /* ListIngredient.swift in Sources */,
 				6F5E393527C4CD75005C5171 /* Fiche.swift in Sources */,
+				1069ED9B27CBBC4B00033A19 /* ListStockViewModel.swift in Sources */,
 				6F5E394127C4CDCB005C5171 /* IngredientView.swift in Sources */,
 				6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */,
 				6F5E394327C4CDD8005C5171 /* FicheView.swift in Sources */,
@@ -425,6 +432,7 @@
 				6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */,
 				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
 				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
+				1069ED9D27CBC0A800033A19 /* StockIntent.swift in Sources */,
 				1069ED9727C8356800033A19 /* ListStock.swift in Sources */,
 				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,
 				1069ED9927C835BB00033A19 /* ListStockView.swift in Sources */,

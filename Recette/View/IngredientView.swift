@@ -27,13 +27,12 @@ struct IngredientView: View {
             LazyVGrid(columns: cols, spacing: 5){
                 Text("Intitulé: "); Text("\(ingredient.libelle)")
                 //TODO DANS UN MODAL POUR MODIFICATION
-               /* TextField("title", text: $recette.title).onSubmit {
+                /* TextField("title", text: $recette.title).onSubmit {
                     intent.intentToChange(title: recette.title )
-                }*/
+                }                       */
                 Text("allergene: \(ingredient.allergene.libelle)")
                 Text("Catégorie: \(ingredient.categorie!.rawValue)")
                 Text("Code: \(ingredient.code)")
-            
             }
         
             Text("Prix Unitaire: \(ingredient.prix_unitaire)")

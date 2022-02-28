@@ -27,7 +27,7 @@ struct RecetteCarte: View {
                 .overlay(alignment: .bottom){
                     Text(recette.title)
                         .font(.headline)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.black)
                         .shadow(color: .purple, radius: 3, x: 0, y: 0)
                         .frame(maxWidth: 136)
                         .padding()
@@ -42,7 +42,7 @@ struct RecetteCarte: View {
                 .overlay(alignment: .bottom){
                     Text(recette.title)
                         .font(.headline)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.black)
                         .shadow(color: .purple, radius: 3, x: 0, y: 0)
                         .frame(maxWidth: 136)
                     .padding()}
@@ -50,7 +50,7 @@ struct RecetteCarte: View {
         }.frame(width: 160, height: 155, alignment: .top)
             .background(LinearGradient(gradient: Gradient(colors: [Color(.white).opacity(0.3), Color(.white)]) , startPoint: .top , endPoint: .bottom))
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .shadow(color: Color.black.opacity(0.3), radius: 15, x: 0, y: 10)
+            .shadow(color: Color.gray.opacity(0.3), radius: 15, x: 0, y: 10)
     }
 }
 

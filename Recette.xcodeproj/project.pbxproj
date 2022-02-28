@@ -37,6 +37,7 @@
 		6F5E395727C51105005C5171 /* RecetteCarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E395627C51105005C5171 /* RecetteCarte.swift */; };
 		6FABFA7F27C625E600DE6F3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FABFA7E27C625E600DE6F3B /* LoginView.swift */; };
 		6FABFA8127C6570200DE6F3B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FABFA8027C6570200DE6F3B /* HomeView.swift */; };
+		6FB47F0927CCD3570000CB42 /* BarrePlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB47F0827CCD3570000CB42 /* BarrePlus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		6F5E395627C51105005C5171 /* RecetteCarte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteCarte.swift; sourceTree = "<group>"; };
 		6FABFA7E27C625E600DE6F3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6FABFA8027C6570200DE6F3B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6FB47F0827CCD3570000CB42 /* BarrePlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrePlus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				6F5E393E27C4CDBD005C5171 /* StockView.swift */,
 				6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */,
 				6F5E394227C4CDD8005C5171 /* DetailFicheView.swift */,
+				6FB47F0827CCD3570000CB42 /* BarrePlus.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
 				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,
 				6FABFA7F27C625E600DE6F3B /* LoginView.swift in Sources */,
+				6FB47F0927CCD3570000CB42 /* BarrePlus.swift in Sources */,
 				6F5E394927C4CE06005C5171 /* StockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

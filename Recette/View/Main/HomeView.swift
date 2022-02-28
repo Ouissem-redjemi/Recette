@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-
-    
+    @State var search : String = ""
     var body: some View {
+       // NavigationView{
         VStack{
             HStack{
                 Button(action:{}){
@@ -20,26 +20,48 @@ struct HomeView: View {
                     
                 }
                 Spacer()
-                Button(action :{}){
-                    Image("")
+                Button(action :{
+                    
+                }){
+                    Image("profil")
                         .renderingMode(.original)
                 }
-            }.padding([.horizontal,.bottom])
+            }.padding([.vertical,.bottom])
                 .padding(.top,10)
             ScrollView (.vertical, showsIndicators: false){
-                VStack (spacing : 15){
-                    HStack (spacing : 10){
-                        Image()
-                    }
+                VStack{
+                    HStack(spacing: 15){
+                HStack (spacing : 10){
+                    Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                    TextField("Rechercher une recette", text: $search)
+                    }.padding()
+                        .background(.black.opacity(0.06))
+                        .cornerRadius(15)
+                    Button(action:{}){
+                        Image(systemName: "line.horizontal.3.circle")
+                            .font(.title)
+                            .foregroundColor(.black)}
+                    }.padding(.horizontal)
+                    HStack{
+                        Text("Mes recettes")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                    }.padding()
+                    ScrollView(.vertical, showsIndicators: false){
+                            ListFicheView()
+                    }.padding(.vertical)
+              
                 }
+               
+
+               
             }
-            NavigationView{
-                ScrollView{
-                    ListFicheView()
-                }
-            }.navigationViewStyle(.stack).navigationTitle("Mes Recettes")
+            BarrePlus()
+           
     }.background(Color.black.opacity(0.05).ignoresSafeArea(.all, edges: .all))
-    
+       // }.navigationViewStyle(.stack)
 }
 }
 

@@ -19,7 +19,7 @@
         var body: some View {
            VStack{
                HStack{
-                   Text("\(listFiches.listeFiches.count) recettes")
+                   Text("\(listFiches.listeFiches.count) recettes disponibles")
                        .font(.headline)
                        .fontWeight(.medium)
                        .opacity(0.7)
@@ -37,22 +37,7 @@
  
     }
                
-                /*NavigationView{S
-                    List {
-                        ForEach(listFiches.listeFiches.listFiche, id: \.idFiche){
-                            fiche in
-                          
-                           
-                        }
-                        .onDelete{ indexSet in
-                            listFiches.listeFiches.listFicheS.remove(atOffsets: indexSet)
-                        }.onMove{ indexSet, index in
-                            listFiches.listeFiches.listFiche.move(fromOffsets: indexSet, toOffset: index)
-                            
-                        }.navigationTitle("Mes recettes")
-                      
-                        
-                }*/
+               
                 
 struct ListFicheView_Previews: PreviewProvider {
     static var previews: some View {

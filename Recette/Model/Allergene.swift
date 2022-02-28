@@ -6,11 +6,8 @@
 //
 
 import Foundation
-class Allergene : Identifiable{
-    public var libelle : String
-    public var idAllergene : String 
-    init(idAllergene : String , libelle : String ){
-        self.libelle = libelle
-        self.idAllergene = idAllergene
-    }
+struct Allergene : Hashable{
+    var libelle : String
+    var idAllergene : String
+   
 }

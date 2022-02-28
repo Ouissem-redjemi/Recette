@@ -26,7 +26,7 @@ class ListAllergeneViewModel : ObservableObject {
                     if let snapshot = snapshot{
                         //Get all documents and create list of Recipes
                         self.listAllergene.listAllergene = snapshot.documents.map { doc in
-                            return Allergene(idAllergene: doc.documentID,libelle: doc["libelle"]as? String ?? "")
+                            return Allergene(libelle: doc["libelle"]as? String ?? "", idAllergene: doc.documentID)
                         }
                         print(self.listAllergene.listAllergene)
                         

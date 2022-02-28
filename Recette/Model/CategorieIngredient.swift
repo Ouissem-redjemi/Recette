@@ -6,7 +6,12 @@
 //
 
 import Foundation
-enum CategorieIngredient : String {
-    case fruit = "Fruit"
+enum CategorieIngredient : String , CaseIterable, Identifiable {
+
     
+    case fruit = "Fruit"
+    case legume = "Legume"
+    case epice = "Epice"
+
+    var id: String { self.rawValue }
 }

@@ -63,7 +63,7 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
                     if let snapshot = snapshot{
                         //Get all documents and create list of Recipes
                         self.listeIngredient.listIngredient = snapshot.documents.map { doc in
-                            return Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.init(idAllergene: "", libelle: "") , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"]as? Int ?? 0, libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
+                            return Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.init(libelle: "", idAllergene: "") , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"]as? Int ?? 0, libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
                         }
                         print(self.listeIngredient.listIngredient)
                         

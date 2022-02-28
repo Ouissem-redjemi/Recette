@@ -57,8 +57,8 @@ struct ListAllergeneView: View {
 
 struct ListAllergeneView_Previews: PreviewProvider {
     static var previews: some View {
-        let all = Allergene(idAllergene: "1 ", libelle: "First Allergene")
-        let all2 = Allergene(idAllergene: "2 ", libelle: "Second Allergene")
+        let all = Allergene(libelle: "First Allergene", idAllergene: "1 ")
+        let all2 = Allergene(libelle: "Second Allergene", idAllergene: "2 ")
         ListAllergeneView(listAllergene: ListAllergeneViewModel(from : ListAllergene(listAllergene: [all, all2]) ))
     }
 }

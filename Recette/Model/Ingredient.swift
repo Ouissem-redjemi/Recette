@@ -7,7 +7,14 @@
 
 import Foundation
 
-class Ingredient : Identifiable{
+class Ingredient : Identifiable, Hashable, Equatable{
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(idIngredient)
+    }
+    static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool {
+        return lhs.idIngredient == rhs.idIngredient
+    }
+    
     public var delegate : IngredientDelegate?
     
     public var idIngredient : String{
@@ -50,13 +57,14 @@ class Ingredient : Identifiable{
     
     
     init(idIngredient : String , allergene : Allergene, categorie : CategorieIngredient, code : Int , libelle : String , prix_unitaire : Double , unite : String ){
+        self.idIngredient = idIngredient
         self.allergene = allergene
         self.categorie = categorie
         self.code  = code
         self.libelle = libelle
         self.prix_unitaire = prix_unitaire
         self.unite = unite
-        self.idIngredient = idIngredient
+
     }
 }
 

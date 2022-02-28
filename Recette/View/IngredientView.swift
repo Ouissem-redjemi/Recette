@@ -116,7 +116,7 @@ struct IngredientView: View {
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        var ing = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        var ing = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         
         IngredientView(ingredient: IngredientViewModel(from: ing), listeingredient: ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing] )))
     }

@@ -64,11 +64,11 @@ struct ListStockView: View {
 
 struct ListStockView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        let ing = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         
         let stock = Stock(idStock: "First", ingredient_stock: ing, quantite: 2)
         
-        let ing2 = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        let ing2 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         let  stock2 = Stock(idStock: "First", ingredient_stock: ing2, quantite: 2)
         
             

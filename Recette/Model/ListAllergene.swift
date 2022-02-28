@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ListAllergene{
+struct ListAllergene {
     
     var listAllergene = [Allergene] ()
     

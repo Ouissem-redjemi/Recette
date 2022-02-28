@@ -16,6 +16,18 @@ struct ListAllergeneView: View {
         listAllergene.getData()
     }
     
+    @State var searchingFor = ""
+    var results : [Allergene]{
+        if searchingFor.isEmpty{
+            return listAllergene.listAllergene.listAllergene
+        }
+        else{
+            return listAllergene.listAllergene.listAllergene.filter{
+                $0.libelle.contains(searchingFor)
+            }
+        }
+    }
+    
     var body: some View {
         VStack (){
             Text("Mes Allergènes").bold()
@@ -36,16 +48,17 @@ struct ListAllergeneView: View {
                         listAllergene.listAllergene.listAllergene.move(fromOffsets: indexSet, toOffset: index)
                     }
                 }
-            }
             EditButton()
+            }
+
         }
     }
 
 
 struct ListAllergeneView_Previews: PreviewProvider {
     static var previews: some View {
-        var all = Allergene(idAllergene: "1 ", libelle: "First Allergene")
-        var all2 = Allergene(idAllergene: "2 ", libelle: "Second Allergene")
+        let all = Allergene(idAllergene: "1 ", libelle: "First Allergene")
+        let all2 = Allergene(idAllergene: "2 ", libelle: "Second Allergene")
         ListAllergeneView(listAllergene: ListAllergeneViewModel(from : ListAllergene(listAllergene: [all, all2]) ))
     }
 }

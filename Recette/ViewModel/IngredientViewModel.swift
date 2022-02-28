@@ -27,7 +27,6 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     
     
     
-
     func change(allergene: Allergene) {
         self.allergene = allergene
     }

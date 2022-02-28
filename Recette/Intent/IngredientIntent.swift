@@ -10,9 +10,6 @@ import Combine
 
 enum IngredientIntentState : CustomStringConvertible{
  
-    
-
-    
     case ready
     case libelleChanging(String)
     case allergeneChanging(Allergene)
@@ -23,18 +20,18 @@ enum IngredientIntentState : CustomStringConvertible{
     case listUpdated
 
 
-var description: String{
-   switch self{
-    case .ready: return "state: .ready"
-    case .libelleChanging(let libelle): return "state: .libelleChanging(\(libelle))"
-    case .allergeneChanging(let allergene): return "state: .allergeneChanging(\(allergene))"
-    case .categorieChanging(let categorie): return "state: .categorieChanging(\(categorie))"
-    case .codeChanging(let code): return "state: .codeChanging(\(code))"
-    case .prixUnitaireChanging(let prix_unitaire): return "state: .prixUnitaireChanging(\(prix_unitaire))"
-   case .uniteChanging(let unite): return "state: .prixUnitaireChanging(\(unite))"
-    case .listUpdated: return  "state: .listUpdated"
-   }
-}
+    var description: String{
+       switch self{
+        case .ready: return "state: .ready"
+        case .libelleChanging(let libelle): return "state: .libelleChanging(\(libelle))"
+        case .allergeneChanging(let allergene): return "state: .allergeneChanging(\(allergene))"
+        case .categorieChanging(let categorie): return "state: .categorieChanging(\(categorie))"
+        case .codeChanging(let code): return "state: .codeChanging(\(code))"
+        case .prixUnitaireChanging(let prix_unitaire): return "state: .prixUnitaireChanging(\(prix_unitaire))"
+       case .uniteChanging(let unite): return "state: .prixUnitaireChanging(\(unite))"
+        case .listUpdated: return  "state: .listUpdated"
+       }
+    }
 }
 
 struct IngredientIntent{

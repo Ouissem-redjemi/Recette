@@ -7,13 +7,44 @@
 
 import Foundation
 import FirebaseFirestore
+import Combine
 
-
-class ListStockViewModel : ObservableObject {
+class ListStockViewModel : ObservableObject, Subscriber {
+    
+    typealias Input = StockIntentState
+    
+    typealias Failure = Never
+    
     var listStock : ListStock
+    
     init(from listStock : ListStock){
         self.listStock = listStock
     }
+    
+    
+    func receive(subscription: Subscription) {
+       subscription.request(.unlimited)
+    }
+    
+    func receive(completion: Subscribers.Completion<Never>) {
+       return
+    }
+    
+    func receive(_ input: StockIntentState) -> Subscribers.Demand {
+       print("vm -> intent \(input)")
+        switch input{
+           case .ready:
+            break
+           case .ingredient_stockChanging(_):
+            break
+           case .quantite_stockChanging(_):
+            break
+           case .listUpdated:
+            self.objectWillChange.send()
+        }
+        return .none // on arrête de traiter cette demande et on attend un nouveau send
+    }
+    
     
     func getData (){
             //Get a reference to the database

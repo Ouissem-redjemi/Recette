@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class Stock{
+class Stock: Identifiable{
     public var idStock : String
     public var ingredient_stock : Ingredient
     public var quantite : Double

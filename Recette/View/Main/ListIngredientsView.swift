@@ -10,16 +10,49 @@ import SwiftUI
 struct ListIngredientView : View {
     @ObservedObject var listIngredients : ListeIngredientViewModel
     var intent : IngredientIntent
+  
     
     init(listIngredient : ListeIngredientViewModel){
         self.listIngredients = listIngredient
         listIngredient.getData()
         self.intent = IngredientIntent()
         self.intent.addObserver(viewModel: listIngredient)
-        
+    }
+    
+    @State var searchingFor = ""
+    var results : [Ingredient]{
+        if searchingFor.isEmpty{
+            return listIngredients.listeIngredient.listIngredient
+        }
+        else{
+            return listIngredients.listeIngredient.listIngredient.filter{
+                $0.libelle.contains(searchingFor) || $0.allergene.libelle.contains(searchingFor)
+            }
+        }
     }
     var body: some View {
-        VStack (){
+        NavigationView{
+            VStack{
+               Text("Mes Ingredients").bold().font(.title).foregroundColor(Color.blue)
+                
+                    TabView{
+                
+                            ForEach(listIngredients.listeIngredient.listIngredient , id: \.idIngredient){
+                                ingredient in
+                                NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
+                                    
+                                    IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients)
+                                }
+                            }
+                    }
+                    .tabViewStyle((PageTabViewStyle()))
+                    
+            }    .navigationBarHidden(true)
+           
+        }
+       
+        
+        /* VStack (){
             NavigationView{
                 List {
                     ForEach(listIngredients.listeIngredient.listIngredient , id: \.idIngredient){
@@ -37,16 +70,24 @@ struct ListIngredientView : View {
                     }.onMove{ indexSet, index in
                         listIngredients.listeIngredient.listIngredient.move(fromOffsets: indexSet, toOffset: index)
                     }.navigationTitle("Mes Ingredients")
+                        .searchable(
+                            text: $searchingFor,
+                            placement: .navigationBarDrawer(displayMode : .always),
+                            prompt : "Chercher un ingredient"
+                        
+                        )
                 }
             }
         EditButton()
-        }
+        }*/
     }
 }
 
 struct ListIngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        var ing = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        ListIngredientView(listIngredient : ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing] )))
+        var ing = Ingredient(idIngredient: "12", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        var ing2 = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "second Ingredient", prix_unitaire: 1, unite: "")
+        var ing3 = Ingredient(idIngredient: "", allergene: Allergene(idAllergene: "", libelle: "Premier"), categorie: CategorieIngredient.fruit, code: 2, libelle: "third Ingredient", prix_unitaire: 1, unite: "")
+        ListIngredientView(listIngredient : ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing, ing2, ing3] )))
     }
 }

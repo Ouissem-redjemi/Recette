@@ -18,17 +18,17 @@ enum FicheIntentState : CustomStringConvertible, Equatable{
     case listUpdated
 
 
-var description: String{
-   switch self{
-    case .ready: return "state: .ready"
-    case .titleChanging(let title): return "state: .titleChanging(\(title))"
-    case .responsableChanging(let name): return "state: .nameChanging(\(name))"
-   case .matSpeChanging(let materiel): return "state: .matSpeChanging(\(materiel))"
-   case .couvertChanging(let couvert): return "state: .couvertChanging(\(couvert))"
-   case .matDressChanging(let matDress): return "state: .matDressChanging(\(matDress))"
-    case .listUpdated: return  "state: .listUpdated"
-   }
-}
+    var description: String{
+       switch self{
+        case .ready: return "state: .ready"
+        case .titleChanging(let title): return "state: .titleChanging(\(title))"
+        case .responsableChanging(let name): return "state: .nameChanging(\(name))"
+       case .matSpeChanging(let materiel): return "state: .matSpeChanging(\(materiel))"
+       case .couvertChanging(let couvert): return "state: .couvertChanging(\(couvert))"
+       case .matDressChanging(let matDress): return "state: .matDressChanging(\(matDress))"
+        case .listUpdated: return  "state: .listUpdated"
+       }
+    }
 }
 
 struct FicheIntent{

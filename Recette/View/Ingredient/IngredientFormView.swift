@@ -85,7 +85,7 @@ struct IngredientFormView: View {
 
 struct IngredientFormView_Previews: PreviewProvider {
     static var previews: some View {
-        let allergene1 : Allergene = Allergene(libelle: "crutaces", idAllergene: "lol")
+        let allergene1 : Allergene = Allergene(libelle: "crutace", idAllergene: "lol")
         let allergene2 : Allergene = Allergene(libelle: "crutaces", idAllergene: "lol")
         IngredientFormView(listeAllergene: ListAllergene(listAllergene: [allergene1,allergene2]))
     }

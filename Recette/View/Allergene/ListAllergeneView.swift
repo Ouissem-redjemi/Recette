@@ -14,7 +14,7 @@ struct ListAllergeneView: View {
         self.listAllergene = listAllergene
         listAllergene.getData()
     }
-    
+    @State var newAllergene = Allergene(libelle: "", idAllergene: "")
     @State var searchingFor = ""
     var results : [Allergene]{
         if searchingFor.isEmpty{
@@ -27,9 +27,24 @@ struct ListAllergeneView: View {
         }
     }
     
+    @State private var showingSheet = false
+    
     var body: some View {
-        VStack (){
-            Text("Mes Allergènes").bold()
+        NavigationView{
+            
+        
+            VStack (spacing : 40){
+                HStack{
+                    VStack(alignment : .leading){
+                        Text("Mes Allergènes").bold().font(.title2)
+                    }
+                    Button("Ajouter") { showingSheet.toggle() }.foregroundColor(Color.white).cornerRadius(100).background(Color.green).frame(width: 100,alignment: .center )
+                        .sheet(isPresented: $showingSheet) { AllergeneFormView()
+                        }
+                
+                        
+                }
+            
                 List {
             
                     ForEach(listAllergene.listAllergene.listAllergene , id: \.idAllergene){
@@ -47,9 +62,9 @@ struct ListAllergeneView: View {
                         listAllergene.listAllergene.listAllergene.move(fromOffsets: indexSet, toOffset: index)
                     }
                 }
-            EditButton()
+                EditButton()
+            }.navigationBarHidden(true)
             }
-
         }
     }
 

@@ -66,7 +66,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     @Published var libelle : String
     @Published var prix_unitaire : Double
     @Published var unite : String
-    @Published var idIngredient : String
+    @Published var idIngredient : String?
     
     
     
@@ -115,7 +115,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.prix_unitaire = ingredient.prix_unitaire
         self.code = ingredient.code
         self.allergene = ingredient.allergene
-        self.idIngredient = ingredient.idIngredient
+        self.idIngredient = ingredient.idIngredient!
         self.ingredient.delegate = self
     }
 }

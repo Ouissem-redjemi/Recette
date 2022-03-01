@@ -5,7 +5,7 @@
 //  Created by m1 on 22/02/2022.
 //
 import Foundation
-
+import FirebaseFirestoreSwift
 class Ingredient : Identifiable, Hashable, Equatable{
     func hash(into hasher: inout Hasher) {
         hasher.combine(idIngredient)
@@ -16,11 +16,7 @@ class Ingredient : Identifiable, Hashable, Equatable{
     
     public var delegate : IngredientDelegate?
     
-    public var idIngredient : String{
-        didSet{
-            self.delegate?.change(idIngredient: self.idIngredient)
-        }
-    }
+    @DocumentID var idIngredient : String?
     public var allergene : Allergene{
         didSet{
             self.delegate?.change(allergene: self.allergene)

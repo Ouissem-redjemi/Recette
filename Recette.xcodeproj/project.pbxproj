@@ -141,13 +141,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10FE0A8627CE60C400E8CC3A /* Card */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
 		10FE0A8727CE60DE00E8CC3A /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +256,8 @@
 		6F5E393027C4CD38005C5171 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
+				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 				1023CE2C27C636DE00520160 /* ListIngredientsView.swift */,
 				10554BBD27CD7F7700FEAFA6 /* StockFormView.swift */,
 				10FE0A8427CE601100E8CC3A /* IngredientView.swift */,
@@ -270,9 +265,6 @@
 				1069ED9827C835BB00033A19 /* ListStockView.swift */,
 				1069ED9027C834D700033A19 /* ListAllergeneView.swift */,
 				10FE0A8B27CE615D00E8CC3A /* Recette */,
-				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
-				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
-				10FE0A8627CE60C400E8CC3A /* Card */,
 				10FE0A8727CE60DE00E8CC3A /* Home */,
 				10FE0A8827CE60E600E8CC3A /* Composants */,
 				6F5E393E27C4CDBD005C5171 /* StockView.swift */,

@@ -27,7 +27,11 @@
                 }
                LazyVGrid(columns: [GridItem (.adaptive(minimum: 160), spacing: 15)], spacing: 15){
                    ForEach(listFiches.listeFiches){
-                       fiche in RecetteCarte(recette: FicheViewModel(from: fiche), listRecette: listFiches)
+                       fiche in
+                       NavigationLink(destination: DetailFicheView(recette: FicheViewModel(from: fiche), listeRecette: listFiches)){
+                           RecetteCarte(recette: FicheViewModel(from: fiche), listRecette: listFiches)
+                       }
+                       
                    }
                }
                .padding(.top)

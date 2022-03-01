@@ -38,6 +38,7 @@
 		6FABFA7F27C625E600DE6F3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FABFA7E27C625E600DE6F3B /* LoginView.swift */; };
 		6FABFA8127C6570200DE6F3B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FABFA8027C6570200DE6F3B /* HomeView.swift */; };
 		6FB47F0927CCD3570000CB42 /* BarrePlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB47F0827CCD3570000CB42 /* BarrePlus.swift */; };
+		8D13F78527CD1305000276F1 /* AjoutFicheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D13F78427CD1305000276F1 /* AjoutFicheView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		6FABFA7E27C625E600DE6F3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6FABFA8027C6570200DE6F3B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6FB47F0827CCD3570000CB42 /* BarrePlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrePlus.swift; sourceTree = "<group>"; };
+		8D13F78427CD1305000276F1 /* AjoutFicheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjoutFicheView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,12 +195,11 @@
 		6F5E393027C4CD38005C5171 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6F5E395527C510EB005C5171 /* Card */,
-				6F5E395427C510A0005C5171 /* Main */,
+				8D13F78327CD12DF000276F1 /* Recette */,
+				8D13F78227CD10EF000276F1 /* Composants */,
+				6F5E395427C510A0005C5171 /* Home */,
 				6F5E393E27C4CDBD005C5171 /* StockView.swift */,
 				6F5E394027C4CDCB005C5171 /* IngredientVIew.swift */,
-				6F5E394227C4CDD8005C5171 /* DetailFicheView.swift */,
-				6FB47F0827CCD3570000CB42 /* BarrePlus.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,15 +226,14 @@
 			path = Intent;
 			sourceTree = "<group>";
 		};
-		6F5E395427C510A0005C5171 /* Main */ = {
+		6F5E395427C510A0005C5171 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
-				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
 				6FABFA7E27C625E600DE6F3B /* LoginView.swift */,
 				6FABFA8027C6570200DE6F3B /* HomeView.swift */,
 			);
-			path = Main;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		6F5E395527C510EB005C5171 /* Card */ = {
@@ -242,6 +242,25 @@
 				6F5E395627C51105005C5171 /* RecetteCarte.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		8D13F78227CD10EF000276F1 /* Composants */ = {
+			isa = PBXGroup;
+			children = (
+				6FB47F0827CCD3570000CB42 /* BarrePlus.swift */,
+				6F5E395527C510EB005C5171 /* Card */,
+			);
+			path = Composants;
+			sourceTree = "<group>";
+		};
+		8D13F78327CD12DF000276F1 /* Recette */ = {
+			isa = PBXGroup;
+			children = (
+				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
+				6F5E394227C4CDD8005C5171 /* DetailFicheView.swift */,
+				8D13F78427CD1305000276F1 /* AjoutFicheView.swift */,
+			);
+			path = Recette;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +418,7 @@
 				6F5E394D27C4E33D005C5171 /* ListeFiche.swift in Sources */,
 				6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */,
 				6FABFA8127C6570200DE6F3B /* HomeView.swift in Sources */,
+				8D13F78527CD1305000276F1 /* AjoutFicheView.swift in Sources */,
 				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
 				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
 				6F5E393327C4CD6C005C5171 /* Ingredient.swift in Sources */,

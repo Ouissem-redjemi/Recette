@@ -26,33 +26,18 @@ struct DetailFicheView: View {
     }
     
     var body: some View{
-        ScrollView{
+        ScrollView(.vertical, showsIndicators: true){
             AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
                 image in image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .overlay(alignment: .bottom){
-                        Text(recette.title)
-                            .font(.headline)
-                            .foregroundColor(.purple)
-                            .shadow(color: .purple, radius: 3, x: 0, y: 0)
-                            .frame(maxWidth: 136)
-                            .padding()
-                    }
             } placeholder: {
-                Image(systemName: "Photo par défaut")
+                Image(systemName: "questionmark")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40, height: 40, alignment: .center)
                     .foregroundColor(.white.opacity(0.7))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .overlay(alignment: .bottom){
-                        Text(recette.title)
-                            .font(.headline)
-                            .foregroundColor(.purple)
-                            .shadow(color: .purple, radius: 3, x: 0, y: 0)
-                            .frame(maxWidth: 136)
-                        .padding()}
             }
             .frame(width: 300)
             
@@ -66,12 +51,12 @@ struct DetailFicheView: View {
                 //Description de la recette dans le Vstack (optionnel)
                 VStack(alignment: .leading, spacing: 30){
                     Text("Description : ")
-                    VStack(alignment: .leading, spacing: 30){
+                    VStack(alignment: .leading, spacing: 20){
                         Text("Ingrédients :")
                             .font(.headline)
                         Text("La liste des ingrédients ici")
                     }
-                    VStack(alignment: .leading, spacing: 30){
+                    VStack(alignment: .leading, spacing: 20){
                         Text("Étapes :")
                             .font(.headline)
                         Text("La liste des étapes ici")

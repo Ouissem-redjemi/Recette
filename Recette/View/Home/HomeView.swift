@@ -23,12 +23,13 @@ struct HomeView: View {
                 Button(action :{
                     
                 }){
-                    Image("profil")
-                        .renderingMode(.original)
+                    Image(systemName: "person.circle.fill")
+                        .foregroundColor(.gray)
+                        .font(.title)
                 }
             }.padding([.vertical,.bottom])
                 .padding(.top,10)
-            ScrollView (.vertical, showsIndicators: false){
+            ScrollView (.vertical, showsIndicators: true){
                 VStack{
                     HStack(spacing: 15){
                 HStack (spacing : 10){
@@ -49,7 +50,7 @@ struct HomeView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                     }.padding()
-                    ScrollView(.vertical, showsIndicators: false){
+                    ScrollView(.vertical, showsIndicators: true){
                             ListFicheView()
                     }.padding(.vertical)
               

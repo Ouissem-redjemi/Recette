@@ -7,6 +7,7 @@
 
 
 import Foundation
+import Combine
 
 protocol IngredientDelegate {
     func change(allergene : Allergene)
@@ -15,9 +16,17 @@ protocol IngredientDelegate {
     func change(libelle : String)
     func change(prix_unitaire : Double)
     func change(unite : String)
+    func change(idIngredient : String)
 }
 
-class IngredientViewModel : IngredientDelegate{
+class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
+    
+    typealias Input = IngredientIntentState
+    
+    typealias Failure = Never
+    
+    
+    
     func change(allergene: Allergene) {
         self.allergene = allergene
     }
@@ -42,15 +51,61 @@ class IngredientViewModel : IngredientDelegate{
         self.unite = unite
     }
     
+    func change(idIngredient : String) {
+        self.idIngredient = idIngredient
+    }
+    
     var delegate : IngredientDelegate?
+
+    
     var ingredient : Ingredient
     
-    var allergene : Allergene
-    var categorie : CategorieIngredient?
-    var code : Int
-    var libelle : String
-    var prix_unitaire : Double
-    var unite : String
+    @Published var allergene : Allergene
+    @Published var categorie : CategorieIngredient?
+    @Published var code : Int
+    @Published var libelle : String
+    @Published var prix_unitaire : Double
+    @Published var unite : String
+    @Published var idIngredient : String
+    
+    
+    
+    func receive(subscription: Subscription) {
+       subscription.request(.unlimited) // unlimited : on veut recevoir toutes les valeurs
+    }
+    
+    // au cas où le publisher déclare qu'il finit d'émetter : nous concerne pas
+    func receive(completion: Subscribers.Completion<Never>) {
+       return
+    }
+
+     // Activée à chaque send() du publisher :
+    func receive(_ input: IngredientIntentState) -> Subscribers.Demand {
+       print("vm -> intent \(input)")
+       switch input{
+          case .ready:
+             break
+          case .libelleChanging(let libelle):
+           self.ingredient.libelle = libelle
+       case .allergeneChanging(let allergene):
+           self.ingredient.allergene = allergene
+       case .categorieChanging(let categorie):
+           self.ingredient.categorie = categorie
+       case .codeChanging(let code):
+           self.ingredient.code = code
+       case .prixUnitaireChanging(let prix_unitaire):
+           self.ingredient.prix_unitaire = prix_unitaire
+       case .uniteChanging(let unite):
+           self.ingredient.unite = unite
+           
+        case .listUpdated:
+           break
+           
+          
+       }
+       return .none // on arrête de traiter cette demande et on attend un nouveau send
+    }
+    
     
     init(from ingredient : Ingredient){
         self.ingredient = ingredient
@@ -60,7 +115,7 @@ class IngredientViewModel : IngredientDelegate{
         self.prix_unitaire = ingredient.prix_unitaire
         self.code = ingredient.code
         self.allergene = ingredient.allergene
+        self.idIngredient = ingredient.idIngredient
         self.ingredient.delegate = self
     }
 }
-

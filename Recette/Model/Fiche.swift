@@ -6,10 +6,11 @@
 //
 
 import Foundation
-class Fiche : Identifiable {
+import FirebaseFirestoreSwift
+class Fiche : Identifiable{
     
     var delegate : FicheDelegate?
-    var idFiche : String
+    @DocumentID var idFiche : String?
     public var categorie : CategorieRecette
     public var title : String {
         didSet{

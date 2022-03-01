@@ -35,6 +35,10 @@
                    }
                }
                .padding(.top)
+               .onAppear(){
+                   print("fetchData ici ------- liste des recettes ici aussi")
+                   self.listFiches.fetchData()
+               }
             }
             .padding(.horizontal)
            }

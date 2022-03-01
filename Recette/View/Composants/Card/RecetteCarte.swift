@@ -33,7 +33,7 @@ struct RecetteCarte: View {
                         .padding()
                 }
         } placeholder: {
-            Image(systemName: "Photo par défaut")
+            Image(systemName: "questionmark")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40, height: 40, alignment: .center)

@@ -141,6 +141,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10FE0A8627CE60C400E8CC3A /* Card */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		10FE0A8727CE60DE00E8CC3A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		10FE0A8827CE60E600E8CC3A /* Composants */ = {
+			isa = PBXGroup;
+			children = (
+				10FE0A8927CE612100E8CC3A /* Card */,
+			);
+			path = Composants;
+			sourceTree = "<group>";
+		};
+		10FE0A8927CE612100E8CC3A /* Card */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		10FE0A8B27CE615D00E8CC3A /* Recette */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Recette;
+			sourceTree = "<group>";
+		};
+		10FE0A8C27CE616A00E8CC3A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		6F5E38F927C4CCD9005C5171 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +207,7 @@
 		6F5E390427C4CCD9005C5171 /* Recette */ = {
 			isa = PBXGroup;
 			children = (
+				10FE0A8C27CE616A00E8CC3A /* DTO */,
 				1023CE1F27C52CEE00520160 /* GoogleService-Info.plist */,
 				6F5E395127C4E42B005C5171 /* Intent */,
 				6F5E393127C4CD45005C5171 /* Model */,
@@ -219,7 +263,18 @@
 		6F5E393027C4CD38005C5171 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6F5E395427C510A0005C5171 /* Main */,
+				1023CE2C27C636DE00520160 /* ListIngredientsView.swift */,
+				10554BBD27CD7F7700FEAFA6 /* StockFormView.swift */,
+				10FE0A8427CE601100E8CC3A /* IngredientView.swift */,
+				10554BBF27CD8EE400FEAFA6 /* AllergeneFormView.swift */,
+				1069ED9827C835BB00033A19 /* ListStockView.swift */,
+				1069ED9027C834D700033A19 /* ListAllergeneView.swift */,
+				10FE0A8B27CE615D00E8CC3A /* Recette */,
+				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
+				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
+				10FE0A8627CE60C400E8CC3A /* Card */,
+				10FE0A8727CE60DE00E8CC3A /* Home */,
+				10FE0A8827CE60E600E8CC3A /* Composants */,
 				6F5E393E27C4CDBD005C5171 /* StockView.swift */,
 				6F5E394227C4CDD8005C5171 /* FicheView.swift */,
 				10A8F26C27CD3CE70042BA30 /* IngredientFormView.swift */,
@@ -252,21 +307,6 @@
 				1069ED9C27CBC0A700033A19 /* StockIntent.swift */,
 			);
 			path = Intent;
-			sourceTree = "<group>";
-		};
-		6F5E395427C510A0005C5171 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
-				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
-				1023CE2C27C636DE00520160 /* ListIngredientsView.swift */,
-				1069ED9027C834D700033A19 /* ListAllergeneView.swift */,
-				1069ED9827C835BB00033A19 /* ListStockView.swift */,
-				10554BBD27CD7F7700FEAFA6 /* StockFormView.swift */,
-				10554BBF27CD8EE400FEAFA6 /* AllergeneFormView.swift */,
-				10FE0A8427CE601100E8CC3A /* IngredientView.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

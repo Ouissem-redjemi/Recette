@@ -144,6 +144,7 @@
 		10FE0A8727CE60DE00E8CC3A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -166,6 +167,7 @@
 		10FE0A8B27CE615D00E8CC3A /* Recette */ = {
 			isa = PBXGroup;
 			children = (
+				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
 			);
 			path = Recette;
 			sourceTree = "<group>";
@@ -256,8 +258,6 @@
 		6F5E393027C4CD38005C5171 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6F5E394A27C4E30C005C5171 /* ListFicheView.swift */,
-				6F5E390727C4CCD9005C5171 /* ContentView.swift */,
 				1023CE2C27C636DE00520160 /* ListIngredientsView.swift */,
 				10554BBD27CD7F7700FEAFA6 /* StockFormView.swift */,
 				10FE0A8427CE601100E8CC3A /* IngredientView.swift */,

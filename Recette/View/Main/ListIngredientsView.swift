@@ -86,8 +86,8 @@ struct ListIngredientView : View {
 struct ListIngredientView_Previews: PreviewProvider {
     static var previews: some View {
         let ing = Ingredient(idIngredient: "12", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        var ing2 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: "String"), categorie: CategorieIngredient.fruit, code: 2, libelle: "second Ingredient", prix_unitaire: 1, unite: "")
-        var ing3 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "third Ingredient", prix_unitaire: 1, unite: "")
+        let ing2 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: "String"), categorie: CategorieIngredient.fruit, code: 2, libelle: "second Ingredient", prix_unitaire: 1, unite: "")
+        let ing3 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "third Ingredient", prix_unitaire: 1, unite: "")
         ListIngredientView(listIngredient : ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing, ing2, ing3] )))
     }
 }

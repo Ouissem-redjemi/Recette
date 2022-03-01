@@ -38,11 +38,11 @@ struct ListStockView: View {
                         NavigationLink(destination: StockView(stock: StockViewModel(from: stock), listeStock: listStock )){
                             VStack(alignment: .leading){
                                 Group{
-                                    Text(stock.ingredient_stock.libelle).bold()
-                                    Text("Quantité : \(stock.quantite))").italic()
+                                    Text(stock.ingredient_stock.libelle).fontWeight(.bold)
+                                    Text("Quantité : \(stock.quantite)").italic().font(.caption).foregroundColor(Color.secondary)
                                 }
                             }
-                        }
+                        }.padding(.vertical,4)
                     }
                     .onDelete{ indexSet in
                         listStock.listStock.listStock.remove(atOffsets: indexSet)

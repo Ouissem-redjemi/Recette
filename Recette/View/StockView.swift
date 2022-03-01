@@ -20,7 +20,7 @@ struct StockView : View {
     }
     
     var body: some View{
-        let cols=[GridItem(.fixed(140), alignment: .leading),GridItem(.flexible(),alignment: .leading)]
+
         VStack(alignment: .leading){
             Text("Ingredient  ").font(.largeTitle)
     

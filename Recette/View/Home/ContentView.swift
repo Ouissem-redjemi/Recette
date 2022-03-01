@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
         NavigationView{
-            NavigationLink ( destination: ListFicheView(listFiche: ListeFicheViewModel(from: ListeFiche()))){
+            NavigationLink ( destination: HomeView()){
             VStack{
                 Text("Liste des recettes disponibles ")
                     .padding()

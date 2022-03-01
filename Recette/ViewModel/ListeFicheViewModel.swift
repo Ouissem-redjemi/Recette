@@ -10,6 +10,8 @@ import Combine
 import FirebaseFirestore
 
 class ListeFicheViewModel: ObservableObject, Subscriber {
+    
+    //Subscriber Functions
     func receive(subscription: Subscription) {
        subscription.request(.unlimited)
     }
@@ -45,17 +47,16 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
     
     typealias Failure = Never
     
-    var listeFiches : ListeFiche
-    init(from listeFiches : ListeFiche){
-        self.listeFiches = listeFiches
-    }
     
-    //Data
+    
+    @Published var listeFiches = [Fiche] ()
+    //Get a reference to the database
+    private var db = Firestore.firestore()
+    private var listener : ListenerRegistration?
+    
+    //Data Functions
     //Get Data from Firestore
-    func getData (){
-        //Get a reference to the database
-        let db = Firestore.firestore()
-        
+   func getData (){
         //Get the document of the table fiche
         db.collection("fiche").getDocuments { snapshot, error in
             //Verify errors
@@ -63,10 +64,10 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                 //NO errors
                 if let snapshot = snapshot{
                     //Get all documents and create list of Recipes
-                    self.listeFiches.listFiche = snapshot.documents.map { doc in
+                    self.listeFiches = snapshot.documents.map { doc in
                         return Fiche(id: doc.documentID, categorie: doc["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: doc["title"] as? String ?? "", materielDressage: doc["materielDressage"]as? String ?? "", materielSpecifique: doc["materielSpecifique"]as? String ?? "", responsable: doc["responsable"] as? String ?? "" , nbCouverts: doc["nbCouverts"] as? Int ?? 0)
                     }
-                   
+                    print("On a récupérer toutes les recettes de Firestore")
                     
                 }
             }else{
@@ -74,16 +75,42 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                 
         }
     }
-        
-        //Add Data to FireStore
-        func addData(){
-            //Reference database
-            
-        }
+   }
+        //Synchronize Data
+    func fetchData(){
+           if listener == nil {
+               listener = db.collection("fiche").addSnapshotListener({ (querySnapshot, error) in
+                   guard let doc = querySnapshot?.documents else {
+                       print("Il n'y a pas de documents")
+                       return
+                   }
+                   self.listeFiches = doc.map{ (document) -> Fiche in
+                       return Fiche(id: document.documentID, categorie: document["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: document["title"] as? String ?? "", materielDressage: document["materielDressage"]as? String ?? "", materielSpecifique: document["materielSpecifique"]as? String ?? "", responsable: document["responsable"] as? String ?? "" , nbCouverts: document["nbCouverts"] as? Int ?? 0)
+                       
+                   }
+                   print("Synchronisation des données réussie")
+               })
+           }
+       }
     
+       //Remove a recipe from the list of recipes
+       func removeData(atOffsets index : IndexSet){
+           let list = index.lazy.map{self.listeFiches[$0]}
+           list.forEach{ recipe in
+               if let docId = recipe.idFiche {
+                   db.collection("fiche").document(docId).delete{
+                       error in
+                       if let error = error{
+                           print("Une erreur \(error.localizedDescription) est survenue dans la suppression de la recette")
+                       }
+                   }
+               }
+               
+           }
+       }
    
     
  
     
 }
-}
+

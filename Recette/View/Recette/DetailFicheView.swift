@@ -11,7 +11,7 @@ import SwiftUI
 //View pour afficher les détails de la recette <-- Mise à jour automatique après modification.
 //Utiliser des modal pour la modification
 struct DetailFicheView: View {
-    
+    @State var isModifyViewPresented = false
     @ObservedObject var recette : FicheViewModel
     @ObservedObject var listeRecette: ListeFicheViewModel
     var intent : FicheIntent
@@ -26,51 +26,68 @@ struct DetailFicheView: View {
     }
     
     var body: some View{
-        ScrollView(.vertical, showsIndicators: true){
-            AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
-                image in image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
-                Image(systemName: "questionmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40, alignment: .center)
-                    .foregroundColor(.white.opacity(0.7))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-            .frame(width: 300)
-            
-            VStack(spacing: 30){
-                
-                //Intitulé de la recette
-                Text(recette.title)
-                    .font(.largeTitle)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                //Description de la recette dans le Vstack (optionnel)
-                VStack(alignment: .leading, spacing: 30){
-                    Text("Description : ")
-                    VStack(alignment: .leading, spacing: 20){
-                        Text("Ingrédients :")
-                            .font(.headline)
-                        Text("La liste des ingrédients ici")
-                    }
-                    VStack(alignment: .leading, spacing: 20){
-                        Text("Étapes :")
-                            .font(.headline)
-                        Text("La liste des étapes ici")
-                    }
-                    
-                    
+        NavigationView{
+            ScrollView(.vertical, showsIndicators: true){
+                AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
+                    image in image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } placeholder: {
+                    Image(systemName: "questionmark")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40, alignment: .center)
+                        .foregroundColor(.white.opacity(0.7))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .frame(maxWidth: .infinity,  alignment: .leading)
-                //Dans une grid, le Responsable, le nombre de couvert et la durée totale de la recette
-            }
-            .padding(.horizontal)
+                .frame(width: 300)
+                
+                VStack(spacing: 30){
+                    
+                    //Intitulé de la recette
+                    Text(recette.title)
+                        .font(.largeTitle)
+                        .bold()
+                        .multilineTextAlignment(.center)
+                    //Description de la recette dans le Vstack (optionnel)
+                    VStack(alignment: .leading, spacing: 30){
+                        Text("Description : ")
+                        VStack(alignment: .leading, spacing: 20){
+                            Text("Ingrédients :")
+                                .font(.headline)
+                            Text("La liste des ingrédients ici")
+                        }
+                        VStack(alignment: .leading, spacing: 20){
+                            Text("Étapes :")
+                                .font(.headline)
+                            Text("La liste des étapes ici")
+                        }
+                        
+                        
+                    }
+                    .frame(maxWidth: .infinity,  alignment: .leading)
+                    //Dans une grid, le Responsable, le nombre de couvert et la durée totale de la recette
+                }
+                .padding(.horizontal)}
+                .ignoresSafeArea(.container, edges: .top)
+                .toolbar(content: {
+                    ToolbarItem(){
+                        Button(action :{
+                            self.isModifyViewPresented = true
+                            print("Modification réussie")
+                        }){
+                            Image(systemName: "pencil.circle")
+                                .foregroundColor(.purple)
+                                .font(.title)
+                        }.sheet(isPresented: $isModifyViewPresented, content: {
+                            ModificationFicheView(recette: self.recette, listRecette: self.listeRecette)})
+                    }
+                }).navigationBarTitleDisplayMode(.inline)
+                
+        }.navigationViewStyle(.stack)
+            
         }
-        .ignoresSafeArea(.container, edges: .top)
-    }
+  
 }
 
 

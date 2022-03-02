@@ -1,14 +1,13 @@
 //
-//  AjoutFiche.swift
+//  MoficationFicheView.swift
 //  Recette
 //
-//  Created by Dalia Rdjm on 28/2/2022.
+//  Created by Dalia Rdjm on 2/3/2022.
 //
 
 import SwiftUI
 
-struct AjoutFicheView: View {
-    
+struct ModificationFicheView: View {
     @Environment(\.presentationMode) private var mode
     @ObservedObject var recette : FicheViewModel
     @ObservedObject var listRecette : ListeFicheViewModel
@@ -62,36 +61,22 @@ struct AjoutFicheView: View {
                 }
                 ToolbarItem{
                     Button(action :{
-                        //Add data to firestore
-                        recette.addData(title: self.recette.title, categorie: self.recette.categorie.rawValue, responsable: self.recette.responsable, materielDressage: self.recette.materielDressage, materielSpecifique: self.recette.materielSpecifique, nbCouverts: self.recette.nbCouverts)
-                        //Close the view after adding data
+                        //Modify data of firestore
+                        
+                        //Close the view after
                         self.mode.wrappedValue.dismiss()
-                        print("Ajout dans la base de données --- Réussie !")
+                        print("Modification des données --- Réussie !")
                         
                     }){
                         Image(systemName: "checkmark")
                             .foregroundColor(.purple)
-                    }.disabled(recette.title.isEmpty)
-                        .disabled(recette.responsable.isEmpty)
-                        .disabled(recette.nbCouverts.description.isEmpty)
-                        .disabled(recette.categorie.rawValue.isEmpty)
+                    }
                 }
             })
-            .navigationTitle("Nouvelle recette")
+            .navigationTitle("Modification")
                 .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
     }
 }
 
-struct AjoutFicheView_Previews: PreviewProvider {
-    static var previews: some View {
-        AjoutFicheView(recette: FicheViewModel(from: Fiche (id: "")), listRecette: ListeFicheViewModel())
-    }
-}
 
-func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
-    Binding(
-        get: { lhs.wrappedValue ?? rhs },
-        set: { lhs.wrappedValue = $0 }
-    )
-}

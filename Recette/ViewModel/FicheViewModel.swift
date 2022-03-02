@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
+
 protocol FicheDelegate{
     func change(categorie : CategorieRecette)
     func change(title : String)
@@ -24,7 +26,8 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
     
     private var fiche : Fiche
-    
+    //Get a reference to the database
+    private var db = Firestore.firestore()
     @Published var categorie : CategorieRecette
     @Published var title : String
     @Published var materielDressage : String?
@@ -126,5 +129,19 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.fiche.delegate = self
     }
     
+
+   //Ajouter une recette dans la base de données 
+    func addData(title : String, categorie : CategorieRecette.RawValue, responsable : String, materielDressage : String? , materielSpecifique : String? , nbCouverts : Int){
+        db.collection("fiche").addDocument(data: ["title" : title, "categorie" : categorie, "responsable" : responsable, "nbCouverts" : nbCouverts, "materielDressage": materielDressage ?? "Pas de matériels de dressage", "materielSpecifique" : materielSpecifique ?? "Pas de matériels spécifiques"])
+        
+    }
+    
+    //Modification des détails de la recette dans la base de données
+    func UpdateData(){
+        
+    }
+    
+    
 }
+
 

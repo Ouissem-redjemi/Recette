@@ -12,7 +12,7 @@ import Combine
 protocol IngredientDelegate {
     func change(allergene : Allergene)
     func change(categorie : CategorieIngredient)
-    func change(code : Int)
+    func change(code : String)
     func change(libelle : String)
     func change(prix_unitaire : Double)
     func change(unite : String)
@@ -35,7 +35,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.categorie = categorie
     }
     
-    func change(code: Int) {
+    func change(code: String) {
         self.code = code
     }
     
@@ -62,7 +62,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     
     @Published var allergene : Allergene
     @Published var categorie : CategorieIngredient?
-    @Published var code : Int
+    @Published var code : String
     @Published var libelle : String
     @Published var prix_unitaire : Double
     @Published var unite : String
@@ -91,18 +91,19 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
            self.ingredient.allergene = allergene
        case .categorieChanging(let categorie):
            self.ingredient.categorie = categorie
-       case .codeChanging(let code):
-           self.ingredient.code = code
        case .prixUnitaireChanging(let prix_unitaire):
            self.ingredient.prix_unitaire = prix_unitaire
        case .uniteChanging(let unite):
            self.ingredient.unite = unite
-           
-        case .listUpdated:
-           break
+       case .codeChanging(let code):
+           self.ingredient.code = code
+       case .listUpdated:
+          break
+       }
+        
            
           
-       }
+      
        return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
     

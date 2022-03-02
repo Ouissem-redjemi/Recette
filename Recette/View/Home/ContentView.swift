@@ -10,10 +10,17 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        NavigationView{
+        NavigationView{/*
             NavigationLink ( destination: HomeView()){
             VStack{
                 Text("Liste des recettes disponibles ")
+                    .padding()
+            }
+            }
+            */
+            NavigationLink ( destination: ListIngredientView()){
+            VStack{
+                Text("Liste des ingredient disponibles ")
                     .padding()
             }
             }

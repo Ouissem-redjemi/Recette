@@ -14,11 +14,9 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
     
     typealias Failure = Never
     
-    var listeIngredient : ListIngredient
+    @Published var listeIngredient = [Ingredient] ()
     
-    init(from listeIngredient : ListIngredient){
-        self.listeIngredient = listeIngredient
-    }
+
     
     func receive(subscription: Subscription) {
        subscription.request(.unlimited)
@@ -62,10 +60,10 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
                     //NO errors
                     if let snapshot = snapshot{
                         //Get all documents and create list of Recipes
-                        self.listeIngredient.listIngredient = snapshot.documents.map { doc in
-                            return Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.init(libelle: "", idAllergene: "") , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"]as? Int ?? 0, libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
+                        self.listeIngredient = snapshot.documents.map { doc in
+                            return Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.arachide , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: doc["code"]as? String ?? "", libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
                         }
-                        print(self.listeIngredient.listIngredient)
+                        print("Recuperation des ingredient de la bd ")
                         
                     }
                 }else{

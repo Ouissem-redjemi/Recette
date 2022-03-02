@@ -11,11 +11,11 @@ struct IngredientFormView: View {
     @State private var libelle : String = ""
     // @State private var allergene : Allergene
     @State private var selectedCategorie : CategorieIngredient = CategorieIngredient.fruit
-    var listeAllergene : ListAllergene = ListAllergene(listAllergene: [])
+    var listeAllergene : [Allergene] =  Allergene.allValues
     @State private var code : String  = ""
     @State private var prix_unitaire : Double=0
     @State private var unite : String = ""
-    @State private var allergeneSelected  = Allergene(libelle: "crutaces", idAllergene: "lol")
+    @State private var allergeneSelected  : Allergene = Allergene.arachide
 
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
@@ -24,9 +24,8 @@ struct IngredientFormView: View {
     }()
 
 
-    init(listeAllergene :ListAllergene ){
+    init(listeAllergene :[Allergene] ){
         self.listeAllergene = listeAllergene
-        self.listeAllergene.addAllergene(allergene:allergeneSelected)
     }
   
     var body: some View {
@@ -43,8 +42,8 @@ struct IngredientFormView: View {
                       }
                     }.pickerStyle(.menu)
                     Picker("Allergene", selection: $allergeneSelected) {
-                        ForEach(self.listeAllergene.listAllergene, id: \.self) { allergene in
-                            Text(allergene.libelle)
+                        ForEach(Allergene.allValues, id: \.self) { allergene in
+                            Text(allergene.rawValue)
                       }
                     }.pickerStyle(.menu)
                 }
@@ -85,8 +84,7 @@ struct IngredientFormView: View {
 
 struct IngredientFormView_Previews: PreviewProvider {
     static var previews: some View {
-        let allergene1 : Allergene = Allergene(libelle: "crutace", idAllergene: "lol")
-        let allergene2 : Allergene = Allergene(libelle: "crutaces", idAllergene: "lol")
-        IngredientFormView(listeAllergene: ListAllergene(listAllergene: [allergene1,allergene2]))
+     
+        IngredientFormView(listeAllergene:Allergene.allValues)
     }
 }

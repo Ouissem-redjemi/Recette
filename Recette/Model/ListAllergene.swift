@@ -7,7 +7,7 @@
 import Foundation
 struct ListAllergene {
     
-    var listAllergene = [Allergene] ()
+    var listAllergene = Allergene.allValues
     
     mutating func addAllergene(allergene : Allergene){
         self.listAllergene.append(allergene)

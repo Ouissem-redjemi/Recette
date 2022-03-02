@@ -14,7 +14,7 @@ enum IngredientIntentState : CustomStringConvertible{
     case libelleChanging(String)
     case allergeneChanging(Allergene)
     case categorieChanging(CategorieIngredient)
-    case codeChanging(Int)
+    case codeChanging(String)
     case prixUnitaireChanging(Double)
     case uniteChanging(String)
     case listUpdated
@@ -62,7 +62,7 @@ struct IngredientIntent{
         self.state.send(.listUpdated)
     }
     
-    func intentToChange(code: Int){
+    func intentToChange(code: String){
         self.state.send(.codeChanging(code))
         self.state.send(.listUpdated)
     }

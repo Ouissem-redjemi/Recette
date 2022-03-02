@@ -58,7 +58,7 @@ class ListStockViewModel : ObservableObject, Subscriber {
                     if let snapshot = snapshot{
                         //Get all documents and create list of Recipes
                         self.listStock.listStock = snapshot.documents.map { doc in
-                            return Stock(idStock: doc.documentID,ingredient_stock: doc["ingredients_stock"] as? Ingredient ?? Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.init( libelle: "", idAllergene: "") , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"] as? Int ?? 0, libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? ""), quantite :  doc["quantite_stock"] as? Double ?? 0 )
+                            return Stock(idStock: doc.documentID,ingredient_stock: doc["ingredients_stock"] as? Ingredient ?? Ingredient(idIngredient: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.arachide , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.fruit, code: doc["code"] as? String ?? "", libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? ""), quantite :  doc["quantite_stock"] as? Double ?? 0 )
                         }
                         print(self.listStock.listStock)
                         

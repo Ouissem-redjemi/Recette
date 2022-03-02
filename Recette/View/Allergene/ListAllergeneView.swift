@@ -8,21 +8,18 @@ import SwiftUI
 
 struct ListAllergeneView: View {
     
-    @ObservedObject var listAllergene : ListAllergeneViewModel
+    var listAllergene : [Allergene] = Allergene.allValues
     
-    init(listAllergene : ListAllergeneViewModel){
-        self.listAllergene = listAllergene
-        listAllergene.getData()
-    }
-    @State var newAllergene = Allergene(libelle: "", idAllergene: "")
+ 
+    @State var newAllergene = Allergene.arachide
     @State var searchingFor = ""
     var results : [Allergene]{
         if searchingFor.isEmpty{
-            return listAllergene.listAllergene.listAllergene
+            return listAllergene
         }
         else{
-            return listAllergene.listAllergene.listAllergene.filter{
-                $0.libelle.contains(searchingFor)
+            return listAllergene.filter{
+                $0.rawValue.contains(searchingFor)
             }
         }
     }
@@ -38,29 +35,21 @@ struct ListAllergeneView: View {
                     VStack(alignment : .leading){
                         Text("Mes Allergènes").bold().font(.title2)
                     }
-                    Button("Ajouter") { showingSheet.toggle() }.foregroundColor(Color.white).cornerRadius(100).background(Color.green).frame(width: 100,alignment: .center )
-                        .sheet(isPresented: $showingSheet) { AllergeneFormView()
-                        }
+                    
                 
                         
                 }
             
                 List {
             
-                    ForEach(listAllergene.listAllergene.listAllergene , id: \.idAllergene){
+                    ForEach(listAllergene , id: \.id){
                         allergene  in
                             VStack(alignment: .leading){
                                 Group{
-                                    Text(allergene.libelle).bold()
+                                    Text(allergene.rawValue).bold()
                                 }
                             }
                         }
-                    .onDelete{ indexSet in
-                        listAllergene.listAllergene.listAllergene.remove(atOffsets: indexSet)
-                        
-                    }.onMove{ indexSet, index in
-                        listAllergene.listAllergene.listAllergene.move(fromOffsets: indexSet, toOffset: index)
-                    }
                 }
                 EditButton()
             }.navigationBarHidden(true)
@@ -71,8 +60,7 @@ struct ListAllergeneView: View {
 
 struct ListAllergeneView_Previews: PreviewProvider {
     static var previews: some View {
-        let all = Allergene(libelle: "First Allergene", idAllergene: "1 ")
-        let all2 = Allergene(libelle: "Second Allergene", idAllergene: "2 ")
-        ListAllergeneView(listAllergene: ListAllergeneViewModel(from : ListAllergene(listAllergene: [all, all2]) ))
+ 
+        ListAllergeneView(listAllergene: Allergene.allValues)
     }
 }

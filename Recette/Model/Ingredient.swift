@@ -27,7 +27,7 @@ class Ingredient : Identifiable, Hashable, Equatable{
             self.delegate?.change(categorie: self.categorie)
         }
     }
-    public var code : Int{
+    public var code : String{
         didSet{
             self.delegate?.change(code: self.code)
         }
@@ -51,7 +51,7 @@ class Ingredient : Identifiable, Hashable, Equatable{
     }
     
     
-    init(idIngredient : String , allergene : Allergene, categorie : CategorieIngredient, code : Int , libelle : String , prix_unitaire : Double , unite : String ){
+    init(idIngredient : String, allergene : Allergene = Allergene.soja, categorie : CategorieIngredient = CategorieIngredient.autre, code : String = "" , libelle : String = "" , prix_unitaire : Double = 0 , unite : String = "kg"){
         self.idIngredient = idIngredient
         self.allergene = allergene
         self.categorie = categorie

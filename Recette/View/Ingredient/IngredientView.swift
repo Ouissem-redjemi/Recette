@@ -38,7 +38,7 @@ struct IngredientView: View {
                 /* TextField("title", text: $recette.title).onSubmit {
                     intent.intentToChange(title: recette.title )
                 }                       */
-                Text("Allergene  : \(ingredient.allergene.libelle)")
+                Text("Allergene  : \(ingredient.allergene.rawValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
@@ -116,8 +116,8 @@ struct IngredientView: View {
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
+        let ing = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         
-        IngredientView(ingredient: IngredientViewModel(from: ing), listeingredient: ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing] )))
+        IngredientView(ingredient: IngredientViewModel(from: ing), listeingredient: ListeIngredientViewModel())
     }
 }

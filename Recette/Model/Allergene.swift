@@ -14,7 +14,7 @@ enum Allergene : String , CaseIterable, Identifiable {
     case arachide = "Arachide"
     case celeri = "Celeri"
     case crustace = "Crustacés"
-    case soja = "Soja"
+    case soja = "Soja "
    
     
 

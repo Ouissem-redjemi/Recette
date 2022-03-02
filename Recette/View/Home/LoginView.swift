@@ -12,8 +12,10 @@ struct LoginView: View {
     @State var email = ""
     @State var pwd = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            //Image()
     }
+}
 }
 
 struct LoginView_Previews: PreviewProvider {

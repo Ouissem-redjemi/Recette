@@ -11,7 +11,9 @@ import SwiftUI
 //View pour afficher les détails de la recette <-- Mise à jour automatique après modification.
 //Utiliser des modal pour la modification
 struct DetailFicheView: View {
+    @Environment(\.presentationMode) private var mode
     @State var isModifyViewPresented = false
+    @State var isRemovePresented = false
     @ObservedObject var recette : FicheViewModel
     @ObservedObject var listeRecette: ListeFicheViewModel
     var intent : FicheIntent
@@ -28,7 +30,7 @@ struct DetailFicheView: View {
     var body: some View{
         NavigationView{
             ScrollView(.vertical, showsIndicators: true){
-                AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
+                AsyncImage(url: URL(string: "https://images.vexels.com/media/users/3/231368/isolated/preview/03f100290e37d6f7f5de39d9af357afc-plano-de-utensilios-de-cozinha.png")){
                     image in image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -52,6 +54,7 @@ struct DetailFicheView: View {
                     //Description de la recette dans le Vstack (optionnel)
                     VStack(alignment: .leading, spacing: 30){
                         Text("Description : ")
+                        //Dans une grid, le Responsable, le nombre de couvert et la durée totale de la recette
                         VStack(alignment: .leading, spacing: 20){
                             Text("Ingrédients :")
                                 .font(.headline)
@@ -66,11 +69,30 @@ struct DetailFicheView: View {
                         
                     }
                     .frame(maxWidth: .infinity,  alignment: .leading)
-                    //Dans une grid, le Responsable, le nombre de couvert et la durée totale de la recette
+                
                 }
                 .padding(.horizontal)}
                 .ignoresSafeArea(.container, edges: .top)
                 .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading){
+                        Button(action :{
+                            self.isRemovePresented.toggle()
+                        }){
+                            Image(systemName: "clear")
+                                .foregroundColor(.purple)
+                                .font(.title)
+                        }.actionSheet(isPresented: $isRemovePresented){
+                            ActionSheet(title: Text("Are you sure ?"),
+                                        buttons: [
+                                            .destructive(Text("Supprimer la recette"), action: {
+                                                self.recette.removeData()
+                                                self.mode.wrappedValue.dismiss()
+                                                print("Suppression réussie")
+                                            }),
+                                                .cancel()
+                                        ])
+                        }
+                    }
                     ToolbarItem(){
                         Button(action :{
                             self.isModifyViewPresented = true

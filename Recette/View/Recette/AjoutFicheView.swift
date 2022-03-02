@@ -53,7 +53,7 @@ struct AjoutFicheView: View {
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action :{
-                        
+                        self.mode.wrappedValue.dismiss()
                         print("Annulation réussie")
                     }){
                         Image(systemName: "xmark")

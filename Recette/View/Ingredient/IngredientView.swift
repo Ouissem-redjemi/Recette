@@ -28,7 +28,7 @@ struct IngredientView: View {
         ZStack{
             VStack(spacing: 10){
                 Spacer()
-                Text("\(ingredient.libelle)")
+                Text(ingredient.libelle)
                     .foregroundColor(Color.white)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -43,7 +43,7 @@ struct IngredientView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-                Text("Catégorie: \(ingredient.categorie!.rawValue)")
+                Text("Catégorie: \(ingredient.categorie.rawValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
@@ -116,8 +116,6 @@ struct IngredientView: View {
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        IngredientView(ingredient: IngredientViewModel(from: ing), listeingredient: ListeIngredientViewModel())
+        IngredientView(ingredient: IngredientViewModel(from: Ingredient(id: "id")), listeingredient: ListeIngredientViewModel())
     }
 }

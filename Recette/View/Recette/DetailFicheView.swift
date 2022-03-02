@@ -12,6 +12,7 @@ import SwiftUI
 //Utiliser des modal pour la modification
 struct DetailFicheView: View {
     @State var isModifyViewPresented = false
+    
     @ObservedObject var recette : FicheViewModel
     @ObservedObject var listeRecette: ListeFicheViewModel
     var intent : FicheIntent

@@ -40,8 +40,6 @@ struct StockView : View {
 }
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        let stock = Stock(idStock: "First", ingredient_stock: ing, quantite: 2)
-        StockView(stock: StockViewModel(from: Stock(idStock: "First", ingredient_stock: ing, quantite: 2)), listeStock: ListStockViewModel(from: ListStock(listStock: [stock])))
+        StockView(stock:  StockViewModel(from: Stock(id: "")), listeStock: ListStockViewModel())
     }
 }

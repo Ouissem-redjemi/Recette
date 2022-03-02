@@ -28,9 +28,9 @@ struct CategorieView: View {
 
 struct CategorieView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing : Ingredient = Ingredient(idIngredient: "String", allergene: Allergene.soja, categorie: CategorieIngredient.legume, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
-        let ing2 : Ingredient = Ingredient(idIngredient: "String", allergene: Allergene.celeri, categorie: CategorieIngredient.legume, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
-        let ing3 : Ingredient = Ingredient(idIngredient: "String", allergene: Allergene.arachide, categorie: CategorieIngredient.epice, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
+        let ing : Ingredient = Ingredient(id: "String", allergene: Allergene.soja, categorie: CategorieIngredient.legume, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
+        let ing2 : Ingredient = Ingredient(id: "String", allergene: Allergene.celeri, categorie: CategorieIngredient.legume, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
+        let ing3 : Ingredient = Ingredient(id: "String", allergene: Allergene.arachide, categorie: CategorieIngredient.epice, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
         CategorieView(listIngredient: [ing, ing2, ing3])
     }
 }

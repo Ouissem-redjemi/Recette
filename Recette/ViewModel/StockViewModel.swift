@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
 
 protocol StockDelegate{
     func change(ingredient_stock : Ingredient)
@@ -18,7 +19,7 @@ class StockViewModel: StockDelegate, ObservableObject, Subscriber{
     typealias Input = StockIntentState
     
     typealias Failure = Never
-    
+    private var db = Firestore.firestore()
     
     func change(ingredient_stock: Ingredient) {
         self.ingredient_stock = ingredient_stock
@@ -28,7 +29,7 @@ class StockViewModel: StockDelegate, ObservableObject, Subscriber{
         self.quantite = quantite
     }
     
-    @Published var idStock : String
+
     @Published var ingredient_stock : Ingredient
     @Published var quantite : Double
     
@@ -42,7 +43,6 @@ class StockViewModel: StockDelegate, ObservableObject, Subscriber{
         self.stock = stock
         self.quantite = stock.quantite
         self.ingredient_stock = stock.ingredient_stock
-        self.idStock = stock.idStock
         self.stock.delegate = self
     }
     
@@ -71,7 +71,7 @@ class StockViewModel: StockDelegate, ObservableObject, Subscriber{
            self.stock.ingredient_stock = ingredient_stock
         
        case .quantite_stockChanging(let quantite):
-           self.stock.quantite = quantite
+           self.stock.quantite = Double(quantite)
       
         case .listUpdated:
            break
@@ -80,6 +80,13 @@ class StockViewModel: StockDelegate, ObservableObject, Subscriber{
        }
        return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
+    
+    //Ajouter un stock
+    func addData(ingredient_stock : Ingredient, quantite : Double){
+        db.collection("stock").addDocument(data: ["ingredient_stock" : ingredient_stock, "quantite" : quantite])
+         
+     }
+    
     
     
 }

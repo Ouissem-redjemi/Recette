@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-enum IngredientIntentState : CustomStringConvertible{
+enum IngredientIntentState : CustomStringConvertible,Equatable{
  
     case ready
     case libelleChanging(String)

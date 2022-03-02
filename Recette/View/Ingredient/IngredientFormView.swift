@@ -8,14 +8,16 @@ import SwiftUI
 
 struct IngredientFormView: View {
     
-    @State private var libelle : String = ""
-    // @State private var allergene : Allergene
-    @State private var selectedCategorie : CategorieIngredient = CategorieIngredient.fruit
-    var listeAllergene : [Allergene] =  Allergene.allValues
-    @State private var code : String  = ""
-    @State private var prix_unitaire : Double=0
-    @State private var unite : String = ""
-    @State private var allergeneSelected  : Allergene = Allergene.arachide
+    @Environment(\.presentationMode) private var mode
+    @ObservedObject var ingredient : IngredientViewModel
+    @ObservedObject var listIngredient : ListeIngredientViewModel
+
+
+    let listeAllergene  =  Allergene.allValues
+
+    let categories = CategorieIngredient.allValues
+    var intent : IngredientIntent
+    
 
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
@@ -24,24 +26,29 @@ struct IngredientFormView: View {
     }()
 
 
-    init(listeAllergene :[Allergene] ){
-        self.listeAllergene = listeAllergene
+    init(ingredient : IngredientViewModel , listIngredient: ListeIngredientViewModel ){
+ 
+        self.ingredient = ingredient
+        self.listIngredient = listIngredient
+        self.intent = IngredientIntent()
+        self.intent.addObserver(viewModel: ingredient)
+        self.intent.addObserver(viewModel: listIngredient)
     }
   
     var body: some View {
         NavigationView{
             Form{
                 Section(header: Text("Appelation de l'ingredient")){
-                    TextField("Libelle de l'ingrédient ", text : $libelle)
-                    TextField("Code de l'ingrédient ", text : $code)
+                    TextField("Libelle de l'ingrédient ", text : $ingredient.libelle)
+                    TextField("Code de l'ingrédient ", text : $ingredient.code)
                 }
                 Section(header: Text("Categorie et Allergene")){
-                    Picker("Catégorie", selection: $selectedCategorie) {
+                    Picker("Catégorie", selection: $ingredient.categorie) {
                       ForEach(CategorieIngredient.allCases) { categorie in
                         Text(categorie.rawValue)
                       }
                     }.pickerStyle(.menu)
-                    Picker("Allergene", selection: $allergeneSelected) {
+                    Picker("Allergene", selection: $ingredient.allergene) {
                         ForEach(Allergene.allValues, id: \.self) { allergene in
                             Text(allergene.rawValue)
                       }
@@ -49,35 +56,44 @@ struct IngredientFormView: View {
                 }
                 
                 Section(header : Text("Unité")){
-                    TextField("Unité", text: $unite)
+                    TextField("Unité", text: $ingredient.unite)
                 }
                 Section(header : Text("Prix Unitaire")){
-                    TextField("Prix Unitaire", value: $prix_unitaire, formatter : formatter)
+                    TextField("Prix Unitaire", value: $ingredient.prix_unitaire, formatter : formatter)
                 }
                
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading){
-                    Button{
-                        
-                    }label : {
-                        Label("Cancel", systemImage: "xmark")
-                            .labelStyle(.iconOnly)
+                    Button(action: {
+                        print("Annuler l'ajout de l'ingredient")
+                    }){
+                        Image(systemName: "xmark").foregroundColor(.purple)
                     }
                 }
                 
                 ToolbarItem{
-                    Button{
+                    Button(action:{
+                        ingredient.addData(libelle: self.ingredient.libelle, categorie: self.ingredient.categorie.rawValue, allergene: self.ingredient.allergene.rawValue, code: self.ingredient.code, prix_unitaire: self.ingredient.prix_unitaire, unite: self.ingredient.unite)
                         
-                    }label : {
-                        Label("Don", systemImage: "checkmark")
-                            .labelStyle(.iconOnly)
-                    }
+                        self.mode.wrappedValue.dismiss()
+                        print("Ajout de l'ingredient dans la base de données ")
+                    } ){
+                        Image(systemName: "checkmark").foregroundColor(.purple)
+                    }.disabled(ingredient.libelle.isEmpty)
+                        .disabled(ingredient.unite.isEmpty)
+                        .disabled(ingredient.code.isEmpty)
+                        .disabled(ingredient.categorie.rawValue.isEmpty)
+                        .disabled(ingredient.allergene.rawValue.isEmpty)
+                        .disabled(ingredient.prix_unitaire.description.isEmpty)
+                       
+                    
                 }
             })
             
             .navigationTitle("Nouvel Ingrédient")
             .navigationBarTitleDisplayMode(.inline).font(.body)
+            .navigationViewStyle(.stack)
         }
     }
 }
@@ -85,6 +101,7 @@ struct IngredientFormView: View {
 struct IngredientFormView_Previews: PreviewProvider {
     static var previews: some View {
      
-        IngredientFormView(listeAllergene:Allergene.allValues)
+        IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
     }
 }
+

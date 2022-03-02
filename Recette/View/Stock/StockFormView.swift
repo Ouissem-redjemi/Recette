@@ -10,15 +10,12 @@ import SwiftUI
 
 struct StockFormView: View {
     
-    @State private var libelle : String = ""
-    // @State private var allergene : Allergene
+    @Environment(\.presentationMode) private var mode
+    @ObservedObject var stock : StockViewModel
+    @ObservedObject var listStock : ListStockViewModel
 
-     var listIngredient : ListIngredient = ListIngredient(listIngredient: [])
-
-    @State private var quantite : Double = 2
-
-    @State var ingredient  : Ingredient? = nil
-
+    let  listIngredient = ListeIngredientViewModel()
+    var intent : StockIntent
  
     
     let formatter: NumberFormatter = {
@@ -29,9 +26,12 @@ struct StockFormView: View {
 
 
 
-    init(listIngredient :ListIngredient ){
-        self.listIngredient = listIngredient
-       
+    init(listStock :ListStockViewModel, stock : StockViewModel){
+        self.listStock = listStock
+        self.stock = stock
+        self.intent = StockIntent()
+        self.intent.addObserver(viewModel: stock)
+        self.intent.addObserver(viewModel: listStock)
     }
     
 
@@ -41,8 +41,9 @@ struct StockFormView: View {
             Form{
                
                 Section(header: Text("Ingredient")){
-                    Picker("Ingredient", selection: $ingredient) {
-                        ForEach(self.listIngredient.listIngredient ){ ingredient in
+                    Picker("Ingredient", selection: $stock.ingredient_stock) {
+                        ForEach(listIngredient.listeIngredient){
+                            ingredient in
                             Text(ingredient.libelle)
                       }
                     }.pickerStyle(.menu)
@@ -50,7 +51,7 @@ struct StockFormView: View {
                 }
                 
                 Section(header : Text("Quantité")){
-                    TextField("Quantité", value: $quantite, formatter : formatter)
+                    TextField("Quantité", value: $stock.quantite, formatter : formatter)
                 }
                 
                 Section(header : Text("Prix Total")){
@@ -87,12 +88,8 @@ struct StockFormView: View {
 
 struct StockFormView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene.soja, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        let ing2 = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        let ing3 = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        StockFormView(listIngredient: ListIngredient(listIngredient: [ing, ing2,ing3]))
+ 
+        StockFormView(listStock : ListStockViewModel(), stock : StockViewModel(from: Stock(id: "")))
         
     }
 }

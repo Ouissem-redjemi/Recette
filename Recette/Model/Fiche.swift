@@ -11,6 +11,7 @@ class Fiche : Identifiable{
     
     var delegate : FicheDelegate?
     @DocumentID var idFiche : String?
+    
     public var categorie : CategorieRecette
     public var title : String {
         didSet{

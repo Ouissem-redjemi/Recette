@@ -8,8 +8,62 @@
 import SwiftUI
 
 struct CategorieView: View {
-    var listIngredient : [Ingredient]
+
+    //let categorie : CategorieIngredient
+    var listeIngredient : ListeIngredientViewModel
+    @State private var selectedCategorie : CategorieIngredient = CategorieIngredient.cremerie
     var body: some View {
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(spacing : 30 ){
+                ForEach(CategorieIngredient.allCases, id: \.self){ categorie in
+                    VStack{
+                        Text(categorie.rawValue)
+                            .foregroundColor(categorie == selectedCategorie ? .black : .gray)
+           
+                            Capsule()
+                                .fill(.black)
+                                .frame(height: 3)
+                                .padding(.horizontal, -10)
+
+                            TabView{
+                                    ForEach(listeIngredient.listeIngredient , id: \.id){
+                                        ingredient in
+                                        if ingredient.categorie.rawValue == categorie{
+                                            NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listeIngredient )){
+                                                
+                                                IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listeIngredient)
+                                            }
+                                        }
+                                        
+                                    }
+                                
+                            }
+                            
+                        
+                        
+                    }
+                    .onTapGesture{
+                        self.selectedCategorie = categorie
+                    }
+                }
+            }
+        }.padding([.top,.horizontal])
+        /*
+        VStack{
+           // CategoriesListView(selectedCategorie: selectedCategorie)
+            
+            ScrollView(.vertical, showsIndicators: false){
+                ForEach(CategorieIngredient.allCases, id:\.self){
+                    categorie in
+                    
+                }.padding(.horizontal)
+            }
+        }
+        
+        
+        */
+        
+        /*
         NavigationView{
             List{
                 ForEach(CategorieIngredient.allCases){ categorie in
@@ -22,10 +76,10 @@ struct CategorieView: View {
                  
                 }
             }.navigationTitle("Catégories")
-        }.navigationViewStyle(.stack)
+        }.navigationViewStyle(.stack)*/
     }
 }
-
+/*
 struct CategorieView_Previews: PreviewProvider {
     static var previews: some View {
         let ing : Ingredient = Ingredient(id: "String", allergene: Allergene.soja, categorie: CategorieIngredient.legume, code: "1", libelle: "mon ingr", prix_unitaire: 2, unite: "kg")
@@ -34,3 +88,4 @@ struct CategorieView_Previews: PreviewProvider {
         CategorieView(listIngredient: [ing, ing2, ing3])
     }
 }
+*/

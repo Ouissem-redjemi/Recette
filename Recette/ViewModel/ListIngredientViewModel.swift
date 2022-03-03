@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import FirebaseFirestore
 
-class ListeIngredientViewModel: ObservableObject, Subscriber {
+class ListeIngredientViewModel: ObservableObject, Subscriber{
     typealias Input = IngredientIntentState
     
     typealias Failure = Never

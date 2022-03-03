@@ -38,8 +38,6 @@ struct ListIngredientView : View {
                     .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
                   
                 TabView{
-                    
-        
                         ForEach(listIngredients.listeIngredient , id: \.id){
                             ingredient in
                             NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
@@ -59,9 +57,17 @@ struct ListIngredientView : View {
                             }.sheet(isPresented: $showingSheet) { IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
                             }
                     }
-                }).padding(.horizontal)
+                 
+                    ToolbarItem(placement:.navigationBarLeading){
+                        NavigationLink ( destination: (CategorieView(listeIngredient: listIngredients))){
+                           
+                            Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
+                            
+                        }
+                    }
            
-              
+                })
+                
             }
             .onAppear{
                 self.listIngredients.fetchData()

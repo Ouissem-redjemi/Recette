@@ -32,6 +32,15 @@ struct ListStockView: View {
     @State private var showingSheet = false
     var body: some View {
         VStack(){
+            HStack{
+                
+                Button("Ajouter") { showingSheet.toggle() }.foregroundColor(Color.white).cornerRadius(100).background(Color.green).frame(width: 100,alignment: .center )
+
+                    .sheet(isPresented: $showingSheet) { StockFormView(listStock: ListStockViewModel(), stock: StockViewModel(from: Stock(id: "")),ingredient : IngredientViewModel(from: Ingredient(id: "9aUzoaXP3yZxIQfjmuCx")))
+                    }
+        
+                
+        }
             NavigationView{
                 List {
                     ForEach(listStock.listStock , id: \.id){

@@ -16,8 +16,8 @@ struct ContentView: View {
                 Text("Liste des recettes disponibles ")
                     .padding()
             }
-            }
-            */
+            }*/
+            
             NavigationLink ( destination: ListIngredientView()){
             VStack{
                 Text("Liste des ingredient disponibles ")
@@ -28,8 +28,8 @@ struct ContentView: View {
        
         
     }
-}
 
+} 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

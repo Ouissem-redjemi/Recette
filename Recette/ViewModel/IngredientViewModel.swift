@@ -56,7 +56,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     var delegate : IngredientDelegate?
 
     
-    private var ingredient : Ingredient
+    public var ingredient : Ingredient
     
     @Published var allergene : Allergene
     @Published var categorie : CategorieIngredient
@@ -118,6 +118,31 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         db.collection("ingredients").addDocument(data: ["libelle" : libelle, "categorie" : categorie, "allergene" : allergene, "code" : code, "prix_unitaire": prix_unitaire, "unite" : unite ])
          
      }
+    
+    func UpdateData(ingredient : IngredientViewModel){
+        if let docId = ingredient.ingredient.idIngredient {
+               db.collection("ingredients").document(docId).updateData([
+                       "libelle": ingredient.libelle,
+                       "categorie": ingredient.categorie.rawValue  ,
+                       "allergene": ingredient.allergene.rawValue,
+                       "code": ingredient.code,
+                       "prix_unitaire": ingredient.prix_unitaire,
+                       "unite": ingredient.unite
+                    ])
+                }
+            }
+        
+        //Remove a recipe from the list of recipes
+        func removeData(){
+            if let docId = ingredient.idIngredient{
+                db.collection("ingredients").document(docId).delete{
+                    error in
+                    if let error = error {
+                        print("L'erreur est : \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
     
     
 }

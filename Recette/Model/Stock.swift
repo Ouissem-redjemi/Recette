@@ -14,7 +14,7 @@ class Stock: Identifiable{
     public var delegate : StockDelegate?
     
     
-    public var ingredient_stock : Ingredient{
+    public var ingredient_stock : Ingredient {
         didSet{
             self.delegate?.change(ingredient_stock: self.ingredient_stock)
         }
@@ -25,7 +25,7 @@ class Stock: Identifiable{
         }
     }
 
-    init(id: String , ingredient_stock : Ingredient = Ingredient(id: ""), quantite : Double = 0 ){
+    init(id: String , ingredient_stock : Ingredient = Ingredient(id: "String", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 2, unite: "String"), quantite : Double = 0 ){
         self.ingredient_stock = ingredient_stock
         self.quantite = quantite
         self.idStock = id

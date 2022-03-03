@@ -1,13 +1,16 @@
 //
-//  IngredientFormView.swift
+//  ModificationIngredientView.swift
 //  Recette
 //
-//  Created by Souhaila kesbi on 28/02/2022.
+//  Created by Souhaila kesbi on 03/03/2022.
 //
+
 import SwiftUI
 
-struct IngredientFormView: View {
-    
+
+import SwiftUI
+
+struct ModificationIngredientView: View {
     @Environment(\.presentationMode) private var mode
     @ObservedObject var ingredient : IngredientViewModel
     @ObservedObject var listIngredient : ListeIngredientViewModel
@@ -42,22 +45,19 @@ struct IngredientFormView: View {
                     TextField("Libelle de l'ingrédient ", text : $ingredient.libelle)
                     TextField("Code de l'ingrédient ", text : $ingredient.code)
                 }
-                Section(header: Text("Categorie")){
+                Section(header: Text("Categorie et Allergene")){
                     Picker("Catégorie", selection: $ingredient.categorie) {
-                        ForEach(categories,id :\.self) {
+                        ForEach(categories,id:\.self) {
                         Text($0.rawValue)
                       }
                     }.pickerStyle(.menu)
-                    
-                }
-                Section(header: Text("Allergene")){
                     Picker("Allergene", selection: $ingredient.allergene) {
                         ForEach(listeAllergene, id: \.self) {
                             Text($0.rawValue)
                       }
                     }.pickerStyle(.menu)
+                }
                 
-            }
                 Section(header : Text("Unité")){
                     TextField("Unité", text: $ingredient.unite)
                 }
@@ -65,8 +65,7 @@ struct IngredientFormView: View {
                     TextField("Prix Unitaire", value: $ingredient.prix_unitaire, formatter : formatter)
                 }
                
-            }
-            .toolbar(content: {
+            }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading){
                     Button(action: {
                         self.mode.wrappedValue.dismiss()
@@ -74,38 +73,26 @@ struct IngredientFormView: View {
                     }){
                         Image(systemName: "xmark").foregroundColor(.purple)
                     }
+
                 }
                 
                 ToolbarItem{
                     Button(action:{
-                        ingredient.addData(libelle: self.ingredient.libelle, categorie: self.ingredient.categorie.rawValue, allergene: self.ingredient.allergene.rawValue, code: self.ingredient.code, prix_unitaire: self.ingredient.prix_unitaire, unite: self.ingredient.unite)
-                        
+                        self.ingredient.UpdateData(ingredient: ingredient)
+      
                         self.mode.wrappedValue.dismiss()
-                        print("Ajout de l'ingredient dans la base de données ")
+                        print("Modification de l'ingredient dans la base de données ")
                     } ){
                         Image(systemName: "checkmark").foregroundColor(.purple)
-                    }.disabled(ingredient.libelle.isEmpty)
-                        .disabled(ingredient.unite.isEmpty)
-                        .disabled(ingredient.code.isEmpty)
-                        .disabled(ingredient.categorie.rawValue.isEmpty)
-                        .disabled(ingredient.allergene.rawValue.isEmpty)
-                        .disabled(ingredient.prix_unitaire.description.isEmpty)
-                       
                     
+                    }
                 }
             })
             
-            .navigationTitle("Nouvel Ingrédient")
-            .navigationBarTitleDisplayMode(.inline).font(.body)
-            .navigationViewStyle(.stack)
-        }
-    }
-}
-
-struct IngredientFormView_Previews: PreviewProvider {
-    static var previews: some View {
-     
-        IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
+            .navigationTitle("Modification")
+            .navigationBarTitleDisplayMode(.inline)
+   
+        }.navigationViewStyle(.stack)
     }
 }
 

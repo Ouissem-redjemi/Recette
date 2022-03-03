@@ -49,6 +49,14 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
         return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
     
+    
+    public  func getList() -> [Ingredient]{
+        var tab : [Ingredient] = []
+        for ingredient in listeIngredient {
+            tab.append(ingredient)
+        }
+        return tab
+    }
     func getData (){
             //Get a reference to the database
            
@@ -75,6 +83,8 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
     }
     
     func fetchData(){
+        print("entree dans la fonction")
+
            if listener == nil {
                listener = db.collection("ingredients").addSnapshotListener({ (querySnapshot, error) in
                    guard let doc = querySnapshot?.documents else {
@@ -82,7 +92,7 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
                        return
                    }
                    self.listeIngredient = doc.map{ (document) -> Ingredient in
-                       return Ingredient(id: document.documentID, allergene: document["allergene"] as? Allergene ?? Allergene.arachide , categorie: CategorieIngredient(rawValue: document["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: document["code"]as? String ?? "", libelle: document["libelle"]as? String ?? "", prix_unitaire: document["prix_unitaire"] as? Double ?? 0 , unite: document["unite"] as? String ?? "")
+                       return Ingredient(id: document.documentID, allergene: Allergene(rawValue: document["allergene"] as? String ?? "") ?? Allergene.aucun , categorie: CategorieIngredient(rawValue: document["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: document["code"]as? String ?? "", libelle: document["libelle"]as? String ?? "", prix_unitaire: document["prix_unitaire"] as? Double ?? 0 , unite: document["unite"] as? String ?? "")
                        
                    }
                    print("Synchronisation des données réussie")
@@ -90,21 +100,8 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
            }
        }
     
-       //Remove a recipe from the list of recipes
-       func removeData(atOffsets index : IndexSet){
-           let list = index.lazy.map{self.listeIngredient[$0]}
-           list.forEach{ ingredient in
-               if let docId = ingredient.idIngredient {
-                   db.collection("ingredients").document(docId).delete{
-                       error in
-                       if let error = error{
-                           print("Une erreur \(error.localizedDescription) est survenue dans la suppression de l'ingredient")
-                       }
-                   }
-               }
-               
-           }
-       }
+      
+
     
     
     
@@ -116,5 +113,5 @@ class ListeIngredientViewModel: ObservableObject, Subscriber {
     
     
     
-    
+
 }

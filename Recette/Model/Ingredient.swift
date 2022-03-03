@@ -16,7 +16,7 @@ class Ingredient : Identifiable, Hashable, Equatable{
     
     public var delegate : IngredientDelegate?
     
-    @DocumentID var idIngredient : String?
+    @DocumentID var idIngredient : String!
     public var allergene : Allergene{
         didSet{
             self.delegate?.change(allergene: self.allergene)

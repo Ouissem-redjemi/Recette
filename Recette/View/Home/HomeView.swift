@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var loginVM : LoginViewModel
     @State var search : String = ""
     var body: some View {
        // NavigationView{
-        VStack{
+        VStack (){
             HStack{
                 Button(action:{}){
                     Image(systemName: "line.horizontal.3")
@@ -21,6 +22,7 @@ struct HomeView: View {
                 }
                 Spacer()
                 Button(action :{
+                    self.loginVM.logOut()
                     
                 }){
                     Image(systemName: "person.circle.fill")

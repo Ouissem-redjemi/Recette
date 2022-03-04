@@ -130,18 +130,37 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     }
     
 
-   //Ajouter une recette dans la base de données 
+   //Ajouter une recette dans la base de données
     func addData(title : String, categorie : CategorieRecette.RawValue, responsable : String, materielDressage : String? , materielSpecifique : String? , nbCouverts : Int){
         db.collection("fiche").addDocument(data: ["title" : title, "categorie" : categorie, "responsable" : responsable, "nbCouverts" : nbCouverts, "materielDressage": materielDressage ?? "Pas de matériels de dressage", "materielSpecifique" : materielSpecifique ?? "Pas de matériels spécifiques"])
         
     }
     
     //Modification des détails de la recette dans la base de données
-    func UpdateData(){
-        
+    func UpdateData(recette : FicheViewModel){
+        if let docId = recette.fiche.idFiche {
+           db.collection("fiche").document(docId).updateData([
+                   "title": recette.title,
+                   "materielDressage": recette.materielDressage ?? "Pas de matériels de dressage",
+                   "materielSpecifique": recette.materielSpecifique ?? "Pas de matériels spécifiques",
+                   "nbCouverts": recette.nbCouverts,
+                   "responsable": recette.responsable,
+                   "categorie": recette.categorie.rawValue
+                ])
+            }
+        }
+    
+    //Remove a recipe from the list of recipes
+    func removeData(){
+        if let docId = fiche.idFiche{
+            db.collection("fiche").document(docId).delete{
+                error in
+                if let error = error {
+                    print("L'erreur est : \(error.localizedDescription)")
+                }
+            }
+        }
     }
-    
-    
 }
 
 

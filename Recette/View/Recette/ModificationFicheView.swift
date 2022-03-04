@@ -52,7 +52,7 @@ struct ModificationFicheView: View {
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action :{
-                        
+                        self.mode.wrappedValue.dismiss()
                         print("Annulation réussie")
                     }){
                         Image(systemName: "xmark")
@@ -61,8 +61,8 @@ struct ModificationFicheView: View {
                 }
                 ToolbarItem{
                     Button(action :{
-                        //Modify data of firestore
-                        
+                        //Update data of firestore
+                        self.recette.UpdateData(recette: recette)
                         //Close the view after
                         self.mode.wrappedValue.dismiss()
                         print("Modification des données --- Réussie !")

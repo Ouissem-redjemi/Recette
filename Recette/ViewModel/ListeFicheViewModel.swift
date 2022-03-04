@@ -93,21 +93,7 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
            }
        }
     
-       //Remove a recipe from the list of recipes
-       func removeData(atOffsets index : IndexSet){
-           let list = index.lazy.map{self.listeFiches[$0]}
-           list.forEach{ recipe in
-               if let docId = recipe.idFiche {
-                   db.collection("fiche").document(docId).delete{
-                       error in
-                       if let error = error{
-                           print("Une erreur \(error.localizedDescription) est survenue dans la suppression de la recette")
-                       }
-                   }
-               }
-               
-           }
-       }
+    
    
     
  

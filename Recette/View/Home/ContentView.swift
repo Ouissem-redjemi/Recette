@@ -8,22 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    @EnvironmentObject var loginVM : LoginViewModel
     var body: some View {
-        NavigationView{/*
-            NavigationLink ( destination: HomeView()){
+        NavigationView{
+            if loginVM.logIn{
+                HomeView()
+            }else{
+                LoginView()
+            }
+        
+            
+            /*NavigationLink ( destination: HomeView()){
             VStack{
                 Text("Liste des recettes disponibles ")
                     .padding()
             }
-            }*/
+            }
             
             NavigationLink ( destination: ListIngredientView()){
             VStack{
                 Text("Liste des ingredient disponibles ")
                     .padding()
             }
-            }
+            }*/
+        }.onAppear {
+            self.loginVM.logIn = self.loginVM.isLoggedIn
         }
        
         

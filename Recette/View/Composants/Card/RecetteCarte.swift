@@ -20,15 +20,15 @@ struct RecetteCarte: View {
     }
     var body: some View {
         VStack{
-        AsyncImage(url: URL(string: "https://cdn3.coloritou.com/dessins/coloriage/marmite_2.png")){
+        AsyncImage(url: URL(string: "https://images.vexels.com/media/users/3/231368/isolated/preview/03f100290e37d6f7f5de39d9af357afc-plano-de-utensilios-de-cozinha.png")){
             image in image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .overlay(alignment: .bottom){
+                .overlay(alignment: .top){
                     Text(recette.title)
                         .font(.headline)
                         .foregroundColor(.black)
-                        .shadow(color: .purple, radius: 3, x: 0, y: 0)
+                        .shadow(color: .gray, radius: 3, x: 0, y: 0)
                         .frame(maxWidth: 136)
                         .padding()
                 }

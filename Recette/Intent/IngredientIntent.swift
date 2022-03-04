@@ -17,6 +17,7 @@ enum IngredientIntentState : CustomStringConvertible,Equatable{
     case codeChanging(String)
     case prixUnitaireChanging(Double)
     case uniteChanging(String)
+    case quantiteChanging(Double)
     case listUpdated
 
 
@@ -28,7 +29,8 @@ enum IngredientIntentState : CustomStringConvertible,Equatable{
         case .categorieChanging(let categorie): return "state: .categorieChanging(\(categorie))"
         case .codeChanging(let code): return "state: .codeChanging(\(code))"
         case .prixUnitaireChanging(let prix_unitaire): return "state: .prixUnitaireChanging(\(prix_unitaire))"
-       case .uniteChanging(let unite): return "state: .prixUnitaireChanging(\(unite))"
+       case .uniteChanging(let unite): return "state: .uniteChanging(\(unite))"
+       case .quantiteChanging(let quantite): return "state: .quantiteChanging(\(quantite))"
         case .listUpdated: return  "state: .listUpdated"
        }
     }
@@ -77,7 +79,10 @@ struct IngredientIntent{
         self.state.send(.listUpdated)
     }
     
-    
+    func intentToChange(quantite: Double){
+        self.state.send(.quantiteChanging(quantite))
+        self.state.send(.listUpdated)
+    }
     
   
 }

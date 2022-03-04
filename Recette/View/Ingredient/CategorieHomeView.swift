@@ -23,7 +23,8 @@ struct CategorieHomeView: View {
     var body: some View {
         
         NavigationView{
-            
+            ZStack{
+
             List{
                 
                 ForEach(CategorieIngredient.allValues,id :\.self) { categorie in
@@ -54,10 +55,12 @@ struct CategorieHomeView: View {
             }
             }
             .listStyle(InsetGroupedListStyle())
+         
+            }
             .navigationTitle("Categories")
-                //.navigationBarHidden(true)
+                .navigationBarHidden(true)
                 .navigationViewStyle(.stack)
-               // .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(true)
         }
     }
 }

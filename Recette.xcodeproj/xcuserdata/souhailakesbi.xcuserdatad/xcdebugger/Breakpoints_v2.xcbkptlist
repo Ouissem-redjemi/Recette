@@ -62,19 +62,19 @@
             symbolName = "*0x1054821b4">
             <Locations>
                <Location
-                  uuid = "4BABE9D6-C1D0-41C3-8CB2-EABC15C9D7C4 - 8ad610f7500198f6"
+                  uuid = "4BABE9D6-C1D0-41C3-8CB2-EABC15C9D7C4 - af0c65168d873ce5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "absl::time_internal::cctz::time_zone::absolute_lookup::absolute_lookup()"
+                  symbolName = "firebase::firestore::api::Query::Wrap(firebase::firestore::core::Query) const"
                   moduleName = "Recette"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/souhailakesbi/Library/Developer/Xcode/DerivedData/Recette-dpgjmvdvigpwdxglybemfpcqaioz/SourcePackages/checkouts/abseil-cpp-SwiftPM/absl/time/internal/cctz/include/cctz/time_zone.h"
+                  urlString = "file:///Users/souhailakesbi/Library/Developer/Xcode/DerivedData/Recette-dpgjmvdvigpwdxglybemfpcqaioz/SourcePackages/checkouts/firebase-ios-sdk/Firestore/core/src/api/query_core.h"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "100">
                </Location>
             </Locations>
          </BreakpointContent>

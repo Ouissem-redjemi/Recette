@@ -64,6 +64,10 @@ struct IngredientFormView: View {
                 Section(header : Text("Prix Unitaire")){
                     TextField("Prix Unitaire", value: $ingredient.prix_unitaire, formatter : formatter)
                 }
+                
+                Section(header : Text("Quantité en stock")){
+                    TextField("Quantité", value: $ingredient.quantite, formatter : formatter)
+                }
                
             }
             .toolbar(content: {
@@ -78,7 +82,7 @@ struct IngredientFormView: View {
                 
                 ToolbarItem{
                     Button(action:{
-                        ingredient.addData(libelle: self.ingredient.libelle, categorie: self.ingredient.categorie.rawValue, allergene: self.ingredient.allergene.rawValue, code: self.ingredient.code, prix_unitaire: self.ingredient.prix_unitaire, unite: self.ingredient.unite)
+                        ingredient.addData(libelle: self.ingredient.libelle, categorie: self.ingredient.categorie.rawValue, allergene: self.ingredient.allergene.rawValue, code: self.ingredient.code, prix_unitaire: self.ingredient.prix_unitaire, unite: self.ingredient.unite, quantite : self.ingredient.quantite)
                         
                         self.mode.wrappedValue.dismiss()
                         print("Ajout de l'ingredient dans la base de données ")

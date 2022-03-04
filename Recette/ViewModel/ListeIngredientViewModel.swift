@@ -54,7 +54,10 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
             break
         case .uniteChanging(_):
             break
-         case .listUpdated:
+        case .quantiteChanging(_):
+            break
+    
+        case .listUpdated:
             self.objectWillChange.send()
         }
         return .none // on arrête de traiter cette demande et on attend un nouveau send
@@ -80,7 +83,7 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
                     if let snapshot = snapshot{
                         //Get all documents and create list of Recipes
                         self.listeIngredient = snapshot.documents.map { doc in
-                            return Ingredient(id: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.arachide , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: doc["code"]as? String ?? "", libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "")
+                            return Ingredient(id: doc.documentID, allergene: doc["allergene"] as? Allergene ?? Allergene.arachide , categorie: CategorieIngredient(rawValue: doc["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: doc["code"]as? String ?? "", libelle: doc["libelle"]as? String ?? "", prix_unitaire: doc["prix_unitaire"] as? Double ?? 0 , unite: doc["unite"] as? String ?? "", quantite:  doc["quantite"] as? Double ?? 0)
                         }
                         print("Recuperation des ingredient de la bd ")
                         
@@ -103,7 +106,7 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
                        return
                    }
                    self.listeIngredient = doc.map{ (document) -> Ingredient in
-                       return Ingredient(id: document.documentID, allergene: Allergene(rawValue: document["allergene"] as? String ?? "") ?? Allergene.aucun , categorie: CategorieIngredient(rawValue: document["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: document["code"]as? String ?? "", libelle: document["libelle"]as? String ?? "", prix_unitaire: document["prix_unitaire"] as? Double ?? 0 , unite: document["unite"] as? String ?? "")
+                       return Ingredient(id: document.documentID, allergene: Allergene(rawValue: document["allergene"] as? String ?? "") ?? Allergene.aucun , categorie: CategorieIngredient(rawValue: document["categorie"] as? String ?? "") ?? CategorieIngredient.cremerie, code: document["code"]as? String ?? "", libelle: document["libelle"]as? String ?? "", prix_unitaire: document["prix_unitaire"] as? Double ?? 0 , unite: document["unite"] as? String ?? "", quantite: document["quantite"]as? Double ?? 0)
                        
                    }
                    print("Synchronisation des données réussie")
@@ -111,18 +114,6 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
            }
        }
     
-      
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
 
 }

@@ -32,53 +32,59 @@ struct ListIngredientView : View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                Text("Mes Ingredients").padding(.horizontal).foregroundColor(Color.purple)
-                    .font(.largeTitle.bold())
-                    .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
-                  
-                TabView{
-                        ForEach(listIngredients.listeIngredient , id: \.id){
-                            ingredient in
-                            NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
-                                
-                                IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients)
+            ZStack{
+                VStack{
+                    HStack{
+                        Text("Mes Ingredients").padding(.horizontal).foregroundColor(Color.purple)
+                            .font(.largeTitle.bold())
+                            .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
+                    }
+                      
+                    TabView{
+                            ForEach(listIngredients.listeIngredient , id: \.id){
+                                ingredient in
+                                NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
+                                    
+                                    IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients)
+                                }
+                            }
+                        
+                    }
+                    .tabViewStyle((PageTabViewStyle()))
+                    .toolbar(content: {
+                        ToolbarItem(){
+                            Button(action: {
+                                    showingSheet.toggle()
+                                }){
+                                    Image(systemName: "plus.app").font(.title) .foregroundColor(.purple)
+                                }.sheet(isPresented: $showingSheet) { IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
+                                }
+                        }
+                     
+                        ToolbarItem(placement:.navigationBarLeading){
+                            NavigationLink (destination: CategorieHomeView().navigationViewStyle(.stack)
+                                                .navigationBarTitle("")
+                                                .navigationBarBackButtonHidden(true)){
+                                Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
+
                             }
                         }
-                    
+               
+                    })
                 }
-                .tabViewStyle((PageTabViewStyle()))
-                .toolbar(content: {
-                    ToolbarItem(){
-                        Button(action: {
-                                showingSheet.toggle()
-                            }){
-                                Image(systemName: "plus.app").font(.title) .foregroundColor(.purple)
-                            }.sheet(isPresented: $showingSheet) { IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
-                            }
-                    }
-                 
-                    ToolbarItem(placement:.navigationBarLeading){
-                        NavigationLink ( destination: (CategorieHomeView())){
-                           
-                            Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
-                            
-                        }
-                    }
+                .onAppear{
+                    self.listIngredients.fetchData()
+                    print("Liste ingredient mis a jour ")
+                }
            
-                })
-                
             }
-            .onAppear{
-                self.listIngredients.fetchData()
-                print("Liste ingredient mis a jour ")
-                
-            }
+        
+            // .navigationBarHidden(true)
+                .navigationViewStyle(.stack)
+                .navigationBarTitle("")
+                .navigationBarBackButtonHidden(true)
             
-        }.navigationBarHidden(true)
-            .navigationViewStyle(.stack)
-            .navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
+        }
        
         
     }
@@ -92,3 +98,5 @@ struct ListIngredientView_Previews: PreviewProvider {
         ListIngredientView()
     }
 }
+
+

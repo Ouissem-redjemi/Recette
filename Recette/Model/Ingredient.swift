@@ -44,14 +44,20 @@ class Ingredient : Identifiable, Hashable, Equatable{
             self.delegate?.change(prix_unitaire: self.prix_unitaire)
         }
     }
+    
     public var unite : String{
         didSet{
             self.delegate?.change(unite: self.unite)
         }
     }
     
+    public var quantite : Double{
+        didSet{
+            self.delegate?.change(quantite: self.quantite)
+        }
+    }
     
-    init(id : String, allergene : Allergene = Allergene.soja, categorie : CategorieIngredient = CategorieIngredient.autre, code : String = "" , libelle : String = "" , prix_unitaire : Double = 0 , unite : String = "kg"){
+    init(id : String, allergene : Allergene = Allergene.soja, categorie : CategorieIngredient = CategorieIngredient.autre, code : String = "" , libelle : String = "" , prix_unitaire : Double = 0 , unite : String = "kg", quantite: Double = 0){
         self.idIngredient = id
         self.allergene = allergene
         self.categorie = categorie
@@ -59,6 +65,8 @@ class Ingredient : Identifiable, Hashable, Equatable{
         self.libelle = libelle
         self.prix_unitaire = prix_unitaire
         self.unite = unite
+        self.quantite = quantite
+        
 
     }
 }

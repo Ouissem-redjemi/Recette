@@ -17,6 +17,7 @@ protocol IngredientDelegate {
     func change(libelle : String)
     func change(prix_unitaire : Double)
     func change(unite : String)
+    func change(quantite : Double)
 }
 
 class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
@@ -51,6 +52,11 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.unite = unite
     }
     
+    func change(quantite : Double) {
+        self.quantite = quantite
+    }
+    
+    
 
     
     var delegate : IngredientDelegate?
@@ -64,7 +70,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     @Published var libelle : String
     @Published var prix_unitaire : Double
     @Published var unite : String
-
+    @Published var quantite : Double
     
     
     
@@ -95,6 +101,8 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
            self.ingredient.unite = unite
        case .codeChanging(let code):
            self.ingredient.code = code
+       case .quantiteChanging(let quantite):
+           self.ingredient.quantite = Double(quantite)
        case .listUpdated:
           break
        }
@@ -110,12 +118,13 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.prix_unitaire = ingredient.prix_unitaire
         self.code = ingredient.code
         self.allergene = ingredient.allergene
+        self.quantite = ingredient.quantite
         self.ingredient.delegate = self
     }
     
     //Ajouter un ingredient
-    func addData(libelle : String, categorie : CategorieIngredient.RawValue, allergene : Allergene.RawValue, code : String , prix_unitaire : Double , unite : String){
-        db.collection("ingredients").addDocument(data: ["libelle" : libelle, "categorie" : categorie, "allergene" : allergene, "code" : code, "prix_unitaire": prix_unitaire, "unite" : unite ])
+    func addData(libelle : String, categorie : CategorieIngredient.RawValue, allergene : Allergene.RawValue, code : String , prix_unitaire : Double , unite : String, quantite : Double){
+        db.collection("ingredients").addDocument(data: ["libelle" : libelle, "categorie" : categorie, "allergene" : allergene, "code" : code, "prix_unitaire": prix_unitaire, "unite" : unite, "quantite" : quantite ])
          
      }
     
@@ -127,7 +136,8 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
                        "allergene": ingredient.allergene.rawValue,
                        "code": ingredient.code,
                        "prix_unitaire": ingredient.prix_unitaire,
-                       "unite": ingredient.unite
+                       "unite": ingredient.unite,
+                       "quantite" : ingredient.quantite
                     ])
                 }
             }

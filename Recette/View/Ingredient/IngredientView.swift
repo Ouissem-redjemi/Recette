@@ -27,9 +27,8 @@ struct IngredientView: View {
     @State private var isAminating : Bool = false
     
     var body: some View{
-  
         ZStack{
-            VStack(spacing: 10){
+            VStack{
                 Spacer()
                 Text("\(ingredient.libelle)")
                     .foregroundColor(Color.white)
@@ -46,31 +45,39 @@ struct IngredientView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
+                    .font(.system(size: 10))
                 Text("Catégorie: \(ingredient.categorie.rawValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
+                    .font(.system(size: 10))
                 Text("Code: \(ingredient.code)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-                Text("Prix Unitaire: \(ingredient.prix_unitaire)")
+                    .font(.system(size: 10))
+                Text("Prix Unitaire: \(ingredient.prix_unitaire.cleanValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
+                    .font(.system(size: 10))
                     .frame(maxWidth : 480)
+
                 Text("Unite: \(ingredient.unite)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-
+                    .font(.system(size: 10))
+                Text("Quantite: \(ingredient.quantite.cleanValue)")
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal,50)
+                    .frame(maxWidth : 480)
+                    .font(.system(size: 10))
                 Group {
-                    
-                    
-                    
                         Button(action: {
                             self.isModifyViewPresented = true
                         print("modif demandé")
@@ -79,7 +86,7 @@ struct IngredientView: View {
                                 title: {
                                     Text("Modifier")
                                         .fontWeight(.bold)
-                                        .font(.title3)
+                                        .font(.system(size: 15))
                                         .foregroundColor(.white)
                                         .padding()
                                         
@@ -106,7 +113,7 @@ struct IngredientView: View {
                             Image(systemName: "trash").font(.title).foregroundColor(.white)
                             Text("Supprimer")
                                 .fontWeight(.bold)
-                                .font(.title3)
+                                .font(.system(size: 15))
                                 .foregroundColor(.white)
                                 .padding()
                                 
@@ -127,6 +134,7 @@ struct IngredientView: View {
                                             .cancel()
                                     ])
                         }
+                    Spacer().frame(height: 13)
                     }
                 Spacer()
                 }

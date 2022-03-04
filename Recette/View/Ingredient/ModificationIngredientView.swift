@@ -64,6 +64,9 @@ struct ModificationIngredientView: View {
                 Section(header : Text("Prix Unitaire")){
                     TextField("Prix Unitaire", value: $ingredient.prix_unitaire, formatter : formatter)
                 }
+                Section(header : Text("Quantite")){
+                    TextField("Quantite", value: $ingredient.quantite, formatter : formatter)
+                }
                
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading){

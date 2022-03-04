@@ -21,28 +21,22 @@ struct CategorieRow: View {
     }
     
     var body: some View {
-   
-            VStack(alignment: .leading){
-            
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack{
-
-                        ForEach(listIngredients.listeIngredient , id: \.id){
-                            ingredient in
-                            if(ingredient.categorie.rawValue == categorieName){
-                                NavigationView{
-                                NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
-                                IngredientCategorieView(ingredient: IngredientViewModel(from: ingredient), listeingredient: ListeIngredientViewModel())
-                                }
-                            }
-                            
-                            
+      
+        VStack(alignment: .leading){
+        
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack{
+                    ForEach(listIngredients.listeIngredient , id: \.id){
+                        ingredient in
+                        if(ingredient.categorie.rawValue == categorieName){
+                            IngredientCategorieView(ingredient: IngredientViewModel(from: ingredient), listeingredient: ListeIngredientViewModel())
                         }
+                        
+                        
                     }
                 }
             }
         }
-  
     }
 }
 

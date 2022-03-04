@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 class Fiche : Identifiable{
     
     var delegate : FicheDelegate?
-    @DocumentID var idFiche : String?
+    @DocumentID var idFiche : String? 
     public var categorie : CategorieRecette
     public var title : String {
         didSet{
@@ -37,11 +37,15 @@ class Fiche : Identifiable{
             self.delegate?.change(nbCouverts: self.nbCouverts)
         }
     }
-   // public var quantite : [Double : Ingredient ]
-    //public var etapes : [String   : [Double : Ingredient  ] ]
-    // Ici on pourrait faire un dictionnaire des etapes vue que on doit pas stocker les etapes en tant que que element de la base de donnée du coup on pourrait apres juste recupere les recettes avec leurs etapes en tant que dico et pouvoir les reutiliser
     
-    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0 ){
+   //public var quantite : [Double : Ingredient ]
+    public var etapes : [String]
+    public var description : String? = ""
+    public var duree : Int? = 5
+    public var titleStep : String? = ""
+ 
+    
+    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "" ){
         self.idFiche = id
         self.categorie = categorie
         self.title = title
@@ -49,8 +53,7 @@ class Fiche : Identifiable{
         self.materielSpecifique = materielSpecifique
         self.responsable = responsable
         self.nbCouverts = nbCouverts
-        //self.etapes = etapes
-        //self.quantite = quantite
+        self.etapes = etapes
     }
 }
 

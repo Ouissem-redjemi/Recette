@@ -82,9 +82,9 @@ struct IngredientFormView: View {
     }
 }
 
-struct IngredientFormView_Previews: PreviewProvider {
+/*struct IngredientFormView_Previews: PreviewProvider {
     static var previews: some View {
      
         IngredientFormView(listeAllergene:Allergene.allValues)
     }
-}
+}*/

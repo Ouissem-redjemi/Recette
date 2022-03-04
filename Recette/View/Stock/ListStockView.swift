@@ -62,7 +62,7 @@ struct ListStockView: View {
     }
 }
 
-struct ListStockView_Previews: PreviewProvider {
+/*struct ListStockView_Previews: PreviewProvider {
     static var previews: some View {
         let ing = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         
@@ -74,4 +74,4 @@ struct ListStockView_Previews: PreviewProvider {
             
         ListStockView(listStock: ListStockViewModel(from: ListStock(listStock: [stock,stock2])))
     }
-}
+}*/

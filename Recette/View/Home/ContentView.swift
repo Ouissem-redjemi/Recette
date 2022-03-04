@@ -13,6 +13,9 @@ struct ContentView: View {
         NavigationView{
             if loginVM.logIn{
                 HomeView()
+                    .navigationViewStyle(.stack)
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
             }else{
                 LoginView()
             }
@@ -34,13 +37,14 @@ struct ContentView: View {
         }.onAppear {
             self.loginVM.logIn = self.loginVM.isLoggedIn
         }
+
        
         
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+/*struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
+}*/

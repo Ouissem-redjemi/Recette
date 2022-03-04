@@ -58,9 +58,9 @@ struct ListAllergeneView: View {
     }
 
 
-struct ListAllergeneView_Previews: PreviewProvider {
+/*struct ListAllergeneView_Previews: PreviewProvider {
     static var previews: some View {
  
         ListAllergeneView(listAllergene: Allergene.allValues)
     }
-}
+}*/

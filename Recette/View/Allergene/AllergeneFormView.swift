@@ -44,8 +44,8 @@ struct AllergeneFormView: View {
     }
 
 
-struct AllergeneFormView_Previews: PreviewProvider {
+/*struct AllergeneFormView_Previews: PreviewProvider {
     static var previews: some View {
         AllergeneFormView()
     }
-}
+}*/

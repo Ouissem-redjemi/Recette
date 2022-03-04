@@ -28,6 +28,8 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     private var fiche : Fiche
     //Get a reference to the database
     private var db = Firestore.firestore()
+    
+    
     @Published var categorie : CategorieRecette
     @Published var title : String
     @Published var materielDressage : String?
@@ -35,8 +37,10 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     @Published var responsable : String
     @Published var nbCouverts : Int
    // @Published var quantite : [Double : Ingredient  ]
-   // @Published var etapes : [String   : [Double : Ingredient  ] ]
-    
+   @Published var etapes : [String]
+    @Published var description : String?
+    @Published var duree : Int?
+    @Published var titleStep : String?
     func change(categorie: CategorieRecette) {
         self.categorie = categorie
     }
@@ -61,11 +65,11 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.nbCouverts = nbCouverts
     }
     
-   /* func change(etapes : [String   : [Double : Ingredient  ] ]){
+    func change(etapes : [String]){
         self.etapes = etapes
     }
     
-    func change(quantite :[Double : Ingredient  ] ){
+    /*func change(quantite :[Double : Ingredient  ] ){
         self.quantite = quantite
     }*/
     
@@ -124,16 +128,33 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.materielSpecifique = fiche.materielSpecifique
         self.responsable = fiche.responsable
         self.nbCouverts = fiche.nbCouverts
-        //self.etapes = fiche.etapes
+        self.etapes = fiche.etapes
+        self.duree = fiche.duree
+        self.description = fiche.description
+        self.titleStep = fiche.titleStep
         //self.quantite = fiche.quantite
         self.fiche.delegate = self
     }
     
 
    //Ajouter une recette dans la base de données
-    func addData(title : String, categorie : CategorieRecette.RawValue, responsable : String, materielDressage : String? , materielSpecifique : String? , nbCouverts : Int){
-        db.collection("fiche").addDocument(data: ["title" : title, "categorie" : categorie, "responsable" : responsable, "nbCouverts" : nbCouverts, "materielDressage": materielDressage ?? "Pas de matériels de dressage", "materielSpecifique" : materielSpecifique ?? "Pas de matériels spécifiques"])
-        
+    func addData(title : String, categorie : CategorieRecette.RawValue, responsable : String, materielDressage : String? , materielSpecifique : String? , nbCouverts : Int, etapes : Array<String>){
+         db.collection("fiche").addDocument(data: ["title" : title, "categorie" : categorie, "responsable" : responsable, "nbCouverts" : nbCouverts, "materielDressage": materielDressage ?? "Pas de matériels de dressage", "materielSpecifique" : materielSpecifique ?? "Pas de matériels spécifiques", "etapes": etapes])
+    }
+    
+    //Ajouter une étape dans la base de données
+    func addDataStep(title : String?, description : String?, duree : Int?){
+        db.collection("fiche").addDocument(data: ["titleStep" : title ?? "", "description": description ?? "", "duree" : duree ?? ""])
+    }
+    
+    //Ajouter une étape dans la liste des étapes
+    func addStep(){
+        print("AVANT")
+        self.etapes.append(fiche.idFiche!)
+        for id in etapes{
+            print("\(id)")
+        }
+        print("APRES")
     }
     
     //Modification des détails de la recette dans la base de données
@@ -145,10 +166,32 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
                    "materielSpecifique": recette.materielSpecifique ?? "Pas de matériels spécifiques",
                    "nbCouverts": recette.nbCouverts,
                    "responsable": recette.responsable,
-                   "categorie": recette.categorie.rawValue
+                   "categorie": recette.categorie.rawValue,
+                   "description": recette.description ?? ""
                 ])
             }
         }
+    
+    
+    //Get data by ID
+    /*func getStep(id : String?) -> Fiche{
+        let step = db.collection("fiche").document(id!).getDocument { document, error in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map{
+                    doc in
+                    return Fiche(id: id!, description: doc["description"] as? String ?? "", duree: doc["duree"] as? Int ?? 0, titleStep: doc["titleStep"] as? String ?? "")
+                        
+                }
+                
+                print("Document data: \(String(describing: dataDescription))")
+                print("On a récupéré l'étape")
+             
+                } else {
+                    print("Document does not exist")
+                }
+        }
+        return step
+    }*/
     
     //Remove a recipe from the list of recipes
     func removeData(){

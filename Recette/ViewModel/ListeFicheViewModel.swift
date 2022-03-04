@@ -76,7 +76,11 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
         }
     }
    }
-        //Synchronize Data
+    
+    //Get Step from dataBase
+    
+   
+        //Synchronize Recipe
     func fetchData(){
            if listener == nil {
                listener = db.collection("fiche").addSnapshotListener({ (querySnapshot, error) in
@@ -85,7 +89,7 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                        return
                    }
                    self.listeFiches = doc.map{ (document) -> Fiche in
-                       return Fiche(id: document.documentID, categorie: document["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: document["title"] as? String ?? "", materielDressage: document["materielDressage"]as? String ?? "", materielSpecifique: document["materielSpecifique"]as? String ?? "", responsable: document["responsable"] as? String ?? "" , nbCouverts: document["nbCouverts"] as? Int ?? 0)
+                       return Fiche(id: document.documentID, categorie: document["categorie"] as? CategorieRecette ?? CategorieRecette.dessert, title: document["title"] as? String ?? "", materielDressage: document["materielDressage"]as? String ?? "", materielSpecifique: document["materielSpecifique"]as? String ?? "", responsable: document["responsable"] as? String ?? "" , nbCouverts: document["nbCouverts"] as? Int ?? 0, etapes: document["etapes"] as? [String] ?? [])
                        
                    }
                    print("Synchronisation des données réussie")

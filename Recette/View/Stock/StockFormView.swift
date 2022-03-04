@@ -85,7 +85,7 @@ struct StockFormView: View {
     }
 }
 
-struct StockFormView_Previews: PreviewProvider {
+/*struct StockFormView_Previews: PreviewProvider {
     static var previews: some View {
         let ing = Ingredient(idIngredient: "", allergene: Allergene.soja, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
         let ing2 = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
@@ -95,4 +95,4 @@ struct StockFormView_Previews: PreviewProvider {
         StockFormView(listIngredient: ListIngredient(listIngredient: [ing, ing2,ing3]))
         
     }
-}
+}*/

@@ -54,8 +54,8 @@ struct RecetteCarte: View {
     }
 }
 
-struct RecetteCarte_Previews: PreviewProvider {
+/*truct RecetteCarte_Previews: PreviewProvider {
     static var previews: some View {
         RecetteCarte(recette: FicheViewModel(from: Fiche(id: "FObL0vgRlp2NDdKzmVsp" )) , listRecette: ListeFicheViewModel())
     }
-}
+}*/

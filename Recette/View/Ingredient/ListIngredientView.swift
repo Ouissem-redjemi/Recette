@@ -93,10 +93,7 @@ struct ListIngredientView : View {
     
 }
 
-struct ListIngredientView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListIngredientView()
-    }
-}
+
+
 
 

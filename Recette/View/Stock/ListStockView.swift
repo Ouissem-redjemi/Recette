@@ -71,9 +71,9 @@ struct ListStockView: View {
     }
 }
 
-struct ListStockView_Previews: PreviewProvider {
+/*struct ListStockView_Previews: PreviewProvider {
     static var previews: some View {
    
         ListStockView()
     }
-}
+}*/

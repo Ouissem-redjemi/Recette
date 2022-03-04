@@ -14,6 +14,7 @@ struct ModificationFicheView: View {
     
     let catégories = [CategorieRecette.accompagnement, CategorieRecette.dessert, CategorieRecette.entree, CategorieRecette.plat]
     var intent : FicheIntent
+    
     init(recette : FicheViewModel, listRecette : ListeFicheViewModel){
         self.recette = recette
         self.listRecette = listRecette
@@ -47,7 +48,7 @@ struct ModificationFicheView: View {
                 Section(header: Text("Matériel spécifique")){
                     TextEditor(text: $recette.materielSpecifique ?? "Pas de matériels spécifique ")
                 }
-                Section(header: Text("étapes")){BarrePlus()}
+                Section(header: Text("étapes")){}
                 
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {

@@ -14,6 +14,12 @@ struct ContentView: View {
             
             
             if loginVM.logIn{
+
+                HomeView()
+                    .navigationViewStyle(.stack)
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
+
                
      
                 TabView {
@@ -33,46 +39,16 @@ struct ContentView: View {
                         }
                 }.accentColor(.purple)
                 
+
             }else{
                 LoginView()
             }
                 
-            
-         
-            /*
-           
-        */
-            
-            
-            
-            
-            
-            
-            /*NavigationLink ( destination: HomeView()){
-            VStack{
-                Text("Liste des recettes disponibles ")
-                    .padding()
-            }
-            }
-           
-            NavigationLink ( destination: ListIngredientView()){
-            VStack{
-                Text("Liste des ingredient disponibles ")
-                    .padding()
-            }
-            }  */
+
             
         }
-        /*.onAppear {
-            self.loginVM.logIn = self.loginVM.isLoggedIn
-        }*/
+    }
+
        
         
     }
-
-} 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

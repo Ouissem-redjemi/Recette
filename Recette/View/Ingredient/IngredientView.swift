@@ -157,8 +157,8 @@ struct IngredientView: View {
     }
 
 
-struct IngredientView_Previews: PreviewProvider {
+/*struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientView(ingredient: IngredientViewModel(from: Ingredient(id: "id")), listeingredient: ListeIngredientViewModel())
     }
-}
+}*/

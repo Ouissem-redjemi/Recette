@@ -110,10 +110,10 @@ struct StockFormView: View {
     }
 }
 
-struct StockFormView_Previews: PreviewProvider {
+/*struct StockFormView_Previews: PreviewProvider {
     static var previews: some View {
  
         StockFormView(listStock : ListStockViewModel(), stock : StockViewModel(from: Stock(id: "")),  ingredient: IngredientViewModel(from: Ingredient(id: "9aUzoaXP3yZxIQfjmuCx")))
         
     }
-}
+}*/

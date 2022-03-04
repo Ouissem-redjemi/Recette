@@ -12,8 +12,8 @@ struct HomeView: View {
     @State var search : String = ""
     var body: some View {
        // NavigationView{
-        VStack (){
-            HStack{
+        VStack{
+            HStack(){
                 Button(action:{}){
                     Image(systemName: "line.horizontal.3")
                         .font(.title)
@@ -30,7 +30,7 @@ struct HomeView: View {
                         .font(.title)
                 }
             }.padding([.vertical,.bottom])
-                .padding(.top,10)
+                .padding(.top,5)
             ScrollView (.vertical, showsIndicators: true){
                 VStack{
                     HStack(spacing: 15){
@@ -68,8 +68,8 @@ struct HomeView: View {
 }
 }
 
-struct HomeView_Previews: PreviewProvider {
+/*struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
-}
+}*/

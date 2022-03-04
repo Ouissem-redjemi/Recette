@@ -53,8 +53,22 @@ struct DetailFicheView: View {
                         .multilineTextAlignment(.center)
                     //Description de la recette dans le Vstack (optionnel)
                     VStack(alignment: .leading, spacing: 30){
-                        Text("Description : ")
-                        //Dans une grid, le Responsable, le nombre de couvert et la durée totale de la recette
+                        //Text("Description : ")
+                        LazyVGrid(columns: [GridItem (.adaptive(minimum: 160), spacing: 15)], spacing: 15){
+                            Image(systemName: "person.circle.fill")
+                                .foregroundColor(.purple)
+                                .font(.title)
+                            Text("\(recette.responsable)")
+                            Image(systemName: "fork.knife.circle.fill")
+                                .foregroundColor(.purple)
+                                .font(.title)
+                            Text("\(recette.nbCouverts)")
+                            Image(systemName: "timer")
+                                .foregroundColor(.purple)
+                                .font(.title)
+                            
+                            
+                        }
                         VStack(alignment: .leading, spacing: 20){
                             Text("Ingrédients :")
                                 .font(.headline)
@@ -62,8 +76,15 @@ struct DetailFicheView: View {
                         }
                         VStack(alignment: .leading, spacing: 20){
                             Text("Étapes :")
-                                .font(.headline)
-                            Text("La liste des étapes ici")
+                              .font(.headline)
+                           /* if !self.recette.etapes.isEmpty{
+                                ForEach(1..<recette.etapes.count){ i in
+                                    let idStep = recette.etapes[i]
+                                    let step = recette.getStep(id: idStep)
+                                    Text("\(step.titleStep)")
+                                        .bold()
+                                }
+                            }*/
                         }
                         
                         

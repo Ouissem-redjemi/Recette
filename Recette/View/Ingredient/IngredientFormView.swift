@@ -106,10 +106,3 @@ struct IngredientFormView: View {
     }
 }
 
-struct IngredientFormView_Previews: PreviewProvider {
-    static var previews: some View {
-     
-        IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
-    }
-}
-

@@ -33,7 +33,7 @@ struct EtapeView: View {
         NavigationView{
             Form{
                 Section(header: Text("Intitulé")){
-                    TextField("Intitulé de l'étape", text: $recette.titleStep ?? "")
+                    TextField("Intitulée de l'étape", text: $recette.titleStep ?? "")
                 }
                 Section(header: Text("Durée")){
                     TextField("Durée de l'étape", value: $recette.duree ?? 0, formatter: formatter)

@@ -13,6 +13,8 @@ struct ListIngredient{
         self.listIngredient[i]
     }
     
+    
+    
     mutating func addIngredient(ingredient : Ingredient){
         self.listIngredient.append(ingredient)
     }

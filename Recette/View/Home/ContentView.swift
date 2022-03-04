@@ -11,12 +11,18 @@ struct ContentView: View {
     @EnvironmentObject var loginVM : LoginViewModel
     var body: some View {
         NavigationView{
+            /*
             if loginVM.logIn{
                 HomeView()
             }else{
                 LoginView()
             }
-        
+        */
+            
+            
+            
+            
+            
             
             /*NavigationLink ( destination: HomeView()){
             VStack{
@@ -24,16 +30,18 @@ struct ContentView: View {
                     .padding()
             }
             }
-            
+             */
             NavigationLink ( destination: ListIngredientView()){
             VStack{
                 Text("Liste des ingredient disponibles ")
                     .padding()
             }
-            }*/
-        }.onAppear {
-            self.loginVM.logIn = self.loginVM.isLoggedIn
+            }
+            
         }
+        /*.onAppear {
+            self.loginVM.logIn = self.loginVM.isLoggedIn
+        }*/
        
         
     }

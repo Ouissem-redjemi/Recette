@@ -18,6 +18,17 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
     private var listener : ListenerRegistration?
     let db = Firestore.firestore()
     
+    
+    //categories correspond à un dictionnaire qui permt de lié chaque cartégorie à sa liste d'ingredients
+    
+    var categories: [String: [Ingredient]] {
+            Dictionary(
+                grouping: listeIngredient,
+                by: { $0.categorie.rawValue }
+            )
+        }
+    
+    
     func receive(subscription: Subscription) {
        subscription.request(.unlimited)
     }

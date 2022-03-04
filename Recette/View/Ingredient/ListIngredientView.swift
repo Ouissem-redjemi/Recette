@@ -59,7 +59,7 @@ struct ListIngredientView : View {
                     }
                  
                     ToolbarItem(placement:.navigationBarLeading){
-                        NavigationLink ( destination: (CategorieView(listeIngredient: listIngredients))){
+                        NavigationLink ( destination: (CategorieHomeView())){
                            
                             Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
                             

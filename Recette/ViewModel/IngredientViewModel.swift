@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
 
 protocol IngredientDelegate {
     func change(allergene : Allergene)
@@ -16,7 +17,7 @@ protocol IngredientDelegate {
     func change(libelle : String)
     func change(prix_unitaire : Double)
     func change(unite : String)
-    func change(idIngredient : String)
+    func change(quantite : Double)
 }
 
 class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
@@ -25,7 +26,7 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
     
     typealias Failure = Never
     
-    
+    private var db = Firestore.firestore()
     
     func change(allergene: Allergene) {
         self.allergene = allergene
@@ -51,22 +52,25 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.unite = unite
     }
     
-    func change(idIngredient : String) {
-        self.idIngredient = idIngredient
+    func change(quantite : Double) {
+        self.quantite = quantite
     }
+    
+    
+
     
     var delegate : IngredientDelegate?
 
     
-    var ingredient : Ingredient
+    public var ingredient : Ingredient
     
     @Published var allergene : Allergene
-    @Published var categorie : CategorieIngredient?
+    @Published var categorie : CategorieIngredient
     @Published var code : String
     @Published var libelle : String
     @Published var prix_unitaire : Double
     @Published var unite : String
-    @Published var idIngredient : String?
+    @Published var quantite : Double
     
     
     
@@ -91,19 +95,17 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
            self.ingredient.allergene = allergene
        case .categorieChanging(let categorie):
            self.ingredient.categorie = categorie
-       case .prixUnitaireChanging(let prix_unitaire):
-           self.ingredient.prix_unitaire = prix_unitaire
+       case .prixUnitaireChanging(let prix):
+           self.ingredient.prix_unitaire = Double(prix)
        case .uniteChanging(let unite):
            self.ingredient.unite = unite
        case .codeChanging(let code):
            self.ingredient.code = code
+       case .quantiteChanging(let quantite):
+           self.ingredient.quantite = Double(quantite)
        case .listUpdated:
           break
        }
-        
-           
-          
-      
        return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
     
@@ -116,7 +118,41 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
         self.prix_unitaire = ingredient.prix_unitaire
         self.code = ingredient.code
         self.allergene = ingredient.allergene
-        self.idIngredient = ingredient.idIngredient!
+        self.quantite = ingredient.quantite
         self.ingredient.delegate = self
     }
+    
+    //Ajouter un ingredient
+    func addData(libelle : String, categorie : CategorieIngredient.RawValue, allergene : Allergene.RawValue, code : String , prix_unitaire : Double , unite : String, quantite : Double){
+        db.collection("ingredients").addDocument(data: ["libelle" : libelle, "categorie" : categorie, "allergene" : allergene, "code" : code, "prix_unitaire": prix_unitaire, "unite" : unite, "quantite" : quantite ])
+         
+     }
+    
+    func UpdateData(ingredient : IngredientViewModel){
+        if let docId = ingredient.ingredient.idIngredient {
+               db.collection("ingredients").document(docId).updateData([
+                       "libelle": ingredient.libelle,
+                       "categorie": ingredient.categorie.rawValue  ,
+                       "allergene": ingredient.allergene.rawValue,
+                       "code": ingredient.code,
+                       "prix_unitaire": ingredient.prix_unitaire,
+                       "unite": ingredient.unite,
+                       "quantite" : ingredient.quantite
+                    ])
+                }
+            }
+        
+        //Remove a recipe from the list of recipes
+        func removeData(){
+            if let docId = ingredient.idIngredient{
+                db.collection("ingredients").document(docId).delete{
+                    error in
+                    if let error = error {
+                        print("L'erreur est : \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+    
+    
 }

@@ -7,10 +7,19 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-class Fiche : Identifiable{
+class Fiche : Identifiable, Hashable, Equatable{
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(idFiche)
+    }
+    
+    static func ==(lhs: Fiche, rhs: Fiche) -> Bool {
+        return lhs.idFiche == rhs.idFiche
+    }
     
     var delegate : FicheDelegate?
+
     @DocumentID var idFiche : String? 
+
     public var categorie : CategorieRecette
     public var title : String {
         didSet{

@@ -18,6 +18,6 @@ enum CategorieIngredient : String , CaseIterable, Identifiable {
     case fruit_legume = "Fruit/Legume"
     case autre = "Autre"
     
-
+    static let allValues : [CategorieIngredient] = [fruit,legume,epice,viande_volaille,poisson_crustace,cremerie,fruit_legume,autre]
     var id: String { self.rawValue }
 }

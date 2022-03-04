@@ -7,7 +7,7 @@
 import Foundation
 import Combine
 
-enum StockIntentState : CustomStringConvertible{
+enum StockIntentState : CustomStringConvertible, Equatable{
     case ready
     case ingredient_stockChanging(Ingredient)
     case quantite_stockChanging(Double)

@@ -13,6 +13,9 @@ struct IngredientView: View {
     @ObservedObject var listeingredient: ListeIngredientViewModel
     var intent : IngredientIntent
     
+    @State var isModifyViewPresented = false
+    @State var isRemovePresented = false
+    
     init(ingredient : IngredientViewModel, listeingredient : ListeIngredientViewModel){
         self.ingredient = ingredient
         self.listeingredient = listeingredient
@@ -20,17 +23,16 @@ struct IngredientView: View {
         self.intent.addObserver(viewModel: ingredient)
         self.intent.addObserver(viewModel: listeingredient)
     }
-    
+    @Environment(\.presentationMode) private var mode
     @State private var isAminating : Bool = false
     
     var body: some View{
-  
         ZStack{
-            VStack(spacing: 10){
+            VStack{
                 Spacer()
                 Text("\(ingredient.libelle)")
                     .foregroundColor(Color.white)
-                    .font(.largeTitle)
+                    .font(.title3)
                     .fontWeight(.heavy)
                     .shadow(color: Color.purple, radius: 2, x: 2, y: 2)
                   
@@ -43,81 +45,120 @@ struct IngredientView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-                Text("Catégorie: \(ingredient.categorie!.rawValue)")
+                    .font(.system(size: 10))
+                Text("Catégorie: \(ingredient.categorie.rawValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
+                    .font(.system(size: 10))
                 Text("Code: \(ingredient.code)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-                Text("Prix Unitaire: \(ingredient.prix_unitaire)")
+                    .font(.system(size: 10))
+                Text("Prix Unitaire: \(ingredient.prix_unitaire.cleanValue)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
+                    .font(.system(size: 10))
                     .frame(maxWidth : 480)
+
                 Text("Unite: \(ingredient.unite)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
-                Spacer().frame( height:20)
+                    .font(.system(size: 10))
+                Text("Quantite: \(ingredient.quantite.cleanValue)")
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal,50)
+                    .frame(maxWidth : 480)
+                    .font(.system(size: 10))
                 Group {
                         Button(action: {
-                        print("Hello button tapped!")
-                    }) {
-                        Text("Modifier")
-                            .fontWeight(.bold)
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .padding()
-                            .overlay(
+                            self.isModifyViewPresented = true
+                        print("modif demandé")
+                        }) {
+                            Label(
+                                title: {
+                                    Text("Modifier")
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        
+                                },
+                                icon : {
+                                    Image(systemName: "square.and.pencil").font(.title).foregroundColor(.white)
+                                }
+                            
+                            
+                            ).overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.white, lineWidth: 2)
                             )
-                    }
-                    Spacer().frame( height:10)
-                        Button(action: {
-                            print("Hello button tapped!")
-                    }) {
-                        Text("Supprimer")
-                            .fontWeight(.bold)
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.red, lineWidth: 2)
-                            )
-                    }
+                       
                     
-                }
+                    }.sheet(isPresented: $isModifyViewPresented, content: {
+                        ModificationIngredientView(ingredient: self.ingredient, listIngredient: self.listeingredient)})
+       
+                        Button(action: {
+                            self.isRemovePresented.toggle()
+                            print("suppression demandé")
+                    }) {
+                        HStack{
+                            Image(systemName: "trash").font(.title).foregroundColor(.white)
+                            Text("Supprimer")
+                                .fontWeight(.bold)
+                                .font(.system(size: 15))
+                                .foregroundColor(.white)
+                                .padding()
+                                
+                            
+                        }.overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                      
+                    }
+                    .actionSheet(isPresented: $isRemovePresented){
+                        ActionSheet(title: Text("Are you sure ?"),buttons: [
+                                        .destructive(Text("Supprimer l'ingredient"), action: {
+                                            self.ingredient.removeData()
+                                            self.mode.wrappedValue.dismiss()
+                                            print("Suppression réussie")
+                                        }),
+                                            .cancel()
+                                    ])
+                        }
+                    Spacer().frame(height: 13)
+                    }
                 Spacer()
-                
-
-            }.onAppear {
+                }
+            
+            .onAppear {
                 withAnimation(.easeOut(duration : 1)){
                     isAminating = true
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0 , alignment: .center)
 
-        }
+            }
         .frame(alignment: .center)
-        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(gradient: Gradient(colors: [ Color.purple,Color.blue]), startPoint: .top, endPoint: .bottom))
         .cornerRadius(20)
         .padding(.horizontal,20)
         .padding(.vertical, 20)
      
+        }
     }
-}
+
 
 /*struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        IngredientView(ingredient: IngredientViewModel(from: ing), listeingredient: ListeIngredientViewModel())
+        IngredientView(ingredient: IngredientViewModel(from: Ingredient(id: "id")), listeingredient: ListeIngredientViewModel())
     }
 }*/

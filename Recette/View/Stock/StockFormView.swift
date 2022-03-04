@@ -10,16 +10,19 @@ import SwiftUI
 
 struct StockFormView: View {
     
-    @State private var libelle : String = ""
-    // @State private var allergene : Allergene
+    @Environment(\.presentationMode) private var mode
+    @ObservedObject var stock : StockViewModel
+    @ObservedObject var listStock : ListStockViewModel
 
-     var listIngredient : ListIngredient = ListIngredient(listIngredient: [])
+    
+    @State var ingredient = IngredientViewModel(from: Ingredient(id: "String", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 12, unite: "kg"))
 
-    @State private var quantite : Double = 2
 
-    @State var ingredient  : Ingredient? = nil
-
+    
+    var  listIngredient = ListeIngredientViewModel()
+    var intent : StockIntent
  
+    var tabIngredient : [Ingredient] = [Ingredient(id: "1", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 12, unite: "kg"),Ingredient(id: "2", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 12, unite: "kg"),Ingredient(id: "3", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 12, unite: "kg"),Ingredient(id: "4", allergene: Allergene.arachide, categorie: CategorieIngredient.cremerie, code: "String", libelle: "test", prix_unitaire: 12, unite: "kg")]
     
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
@@ -29,9 +32,19 @@ struct StockFormView: View {
 
 
 
-    init(listIngredient :ListIngredient ){
-        self.listIngredient = listIngredient
-       
+    init(listStock :ListStockViewModel, stock : StockViewModel, ingredient : IngredientViewModel){
+
+        listIngredient.getData()
+   
+        self.listStock = listStock
+        self.stock = stock
+        self.intent = StockIntent()
+        self.intent.addObserver(viewModel: stock)
+        self.intent.addObserver(viewModel: listStock)
+   
+
+        self.ingredient = ingredient
+     
     }
     
 
@@ -41,16 +54,19 @@ struct StockFormView: View {
             Form{
                
                 Section(header: Text("Ingredient")){
-                    Picker("Ingredient", selection: $ingredient) {
-                        ForEach(self.listIngredient.listIngredient ){ ingredient in
-                            Text(ingredient.libelle)
+                    
+                 /*   Picker("Ingredient", selection: $stock.ingredient_stock.libelle ) {
+                        ForEach(tabIngredient, id:\.self){
+                            Text($0.libelle)
+                            
+                          
                       }
-                    }.pickerStyle(.menu)
+                    }.pickerStyle(.menu)*/
                     
                 }
                 
                 Section(header : Text("Quantité")){
-                    TextField("Quantité", value: $quantite, formatter : formatter)
+                    TextField("Quantité", value: $stock.quantite, formatter : formatter)
                 }
                 
                 Section(header : Text("Prix Total")){
@@ -61,21 +77,30 @@ struct StockFormView: View {
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading){
-                    Button{
+                    Button(action : {
                         
-                    }label : {
-                        Label("Cancel", systemImage: "xmark")
-                            .labelStyle(.iconOnly)
+                        //print(listIngredient.listeIngredient)
+                        print(listIngredient.getList())
+                        print(ingredient.ingredient.libelle)
+
+                        print(tabIngredient)
+                        
+                    
+                    }){
+                        
+                        Image( systemName: "xmark").foregroundColor(.red)
                     }
                 }
                 
                 ToolbarItem{
-                    Button{
+                    Button(action : {
+                        stock.addData(ingredient_stock: self.stock.ingredient_stock, quantite: self.stock.quantite)
+                        self.mode.wrappedValue.dismiss()
+                        print("ajout du stock  réussie")
+                    }){
                         
-                    }label : {
-                        Label("Don", systemImage: "checkmark")
-                            .labelStyle(.iconOnly)
-                    }
+                        Image( systemName: "checkmark").foregroundColor(.purple)
+                    }.disabled(stock.quantite.description.isEmpty)
                 }
             })
             
@@ -87,12 +112,8 @@ struct StockFormView: View {
 
 /*struct StockFormView_Previews: PreviewProvider {
     static var previews: some View {
-        let ing = Ingredient(idIngredient: "", allergene: Allergene.soja, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        let ing2 = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        let ing3 = Ingredient(idIngredient: "", allergene: Allergene.arachide, categorie: CategorieIngredient.fruit, code: "2", libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        
-        StockFormView(listIngredient: ListIngredient(listIngredient: [ing, ing2,ing3]))
+ 
+        StockFormView(listStock : ListStockViewModel(), stock : StockViewModel(from: Stock(id: "")),  ingredient: IngredientViewModel(from: Ingredient(id: "9aUzoaXP3yZxIQfjmuCx")))
         
     }
 }*/

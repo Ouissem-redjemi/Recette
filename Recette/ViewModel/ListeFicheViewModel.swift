@@ -96,6 +96,9 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                })
            }
        }
+    func printt(variable : String){
+        print(variable)
+    }
     
     
    

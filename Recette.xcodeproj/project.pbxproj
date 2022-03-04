@@ -15,6 +15,14 @@
 		1063CE3E27CE6BD2000E6A87 /* StockFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063CE3D27CE6BD2000E6A87 /* StockFormView.swift */; };
 		1063CE4027CE6BEA000E6A87 /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063CE3F27CE6BEA000E6A87 /* StockView.swift */; };
 		1063CE4227CE7880000E6A87 /* IngredientIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063CE4127CE7880000E6A87 /* IngredientIntent.swift */; };
+
+
+		109C756227D229EE00C62F76 /* CategorieHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C756127D229EE00C62F76 /* CategorieHomeView.swift */; };
+		109C756627D2339000C62F76 /* IngredientCategorieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C756527D2339000C62F76 /* IngredientCategorieView.swift */; };
+		10D57C2627D2528A00BC39E1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D57C2527D2528A00BC39E1 /* Extension.swift */; };
+		10D57C2827D2568000BC39E1 /* VenteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D57C2727D2568000BC39E1 /* VenteView.swift */; };
+		10F5E0BC27D135C60075B87E /* ModificationIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5E0BB27D135C60075B87E /* ModificationIngredientView.swift */; };
+
 		10FE0A8E27CE64EB00E8CC3A /* ListAllergene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0A8D27CE64EB00E8CC3A /* ListAllergene.swift */; };
 		10FE0A9027CE650700E8CC3A /* ListIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0A8F27CE650700E8CC3A /* ListIngredient.swift */; };
 		10FE0A9227CE652900E8CC3A /* ListStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0A9127CE652900E8CC3A /* ListStock.swift */; };
@@ -26,7 +34,7 @@
 		10FE0AA327CE66D200E8CC3A /* ListIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0AA227CE66D200E8CC3A /* ListIngredientView.swift */; };
 		10FE0AA927CE678A00E8CC3A /* ListAllergeneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0AA827CE678A00E8CC3A /* ListAllergeneViewModel.swift */; };
 		10FE0AAB27CE67B200E8CC3A /* ListStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0AAA27CE67B200E8CC3A /* ListStockViewModel.swift */; };
-		10FE0AAD27CE67DD00E8CC3A /* ListIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0AAC27CE67DD00E8CC3A /* ListIngredientViewModel.swift */; };
+		10FE0AAD27CE67DD00E8CC3A /* ListeIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE0AAC27CE67DD00E8CC3A /* ListeIngredientViewModel.swift */; };
 		6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390527C4CCD9005C5171 /* RecetteApp.swift */; };
 		6F5E390827C4CCD9005C5171 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5E390727C4CCD9005C5171 /* ContentView.swift */; };
 		6F5E390A27C4CCDA005C5171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5E390927C4CCDA005C5171 /* Assets.xcassets */; };
@@ -82,6 +90,14 @@
 		1063CE3D27CE6BD2000E6A87 /* StockFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockFormView.swift; sourceTree = "<group>"; };
 		1063CE3F27CE6BEA000E6A87 /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
 		1063CE4127CE7880000E6A87 /* IngredientIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientIntent.swift; sourceTree = "<group>"; };
+
+
+		109C756127D229EE00C62F76 /* CategorieHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieHomeView.swift; sourceTree = "<group>"; };
+		109C756527D2339000C62F76 /* IngredientCategorieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategorieView.swift; sourceTree = "<group>"; };
+		10D57C2527D2528A00BC39E1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		10D57C2727D2568000BC39E1 /* VenteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenteView.swift; sourceTree = "<group>"; };
+		10F5E0BB27D135C60075B87E /* ModificationIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModificationIngredientView.swift; sourceTree = "<group>"; };
+
 		10FE0A8D27CE64EB00E8CC3A /* ListAllergene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergene.swift; sourceTree = "<group>"; };
 		10FE0A8F27CE650700E8CC3A /* ListIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngredient.swift; sourceTree = "<group>"; };
 		10FE0A9127CE652900E8CC3A /* ListStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStock.swift; sourceTree = "<group>"; };
@@ -93,7 +109,7 @@
 		10FE0AA227CE66D200E8CC3A /* ListIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngredientView.swift; sourceTree = "<group>"; };
 		10FE0AA827CE678A00E8CC3A /* ListAllergeneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllergeneViewModel.swift; sourceTree = "<group>"; };
 		10FE0AAA27CE67B200E8CC3A /* ListStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStockViewModel.swift; sourceTree = "<group>"; };
-		10FE0AAC27CE67DD00E8CC3A /* ListIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngredientViewModel.swift; sourceTree = "<group>"; };
+		10FE0AAC27CE67DD00E8CC3A /* ListeIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeIngredientViewModel.swift; sourceTree = "<group>"; };
 		6F5E390227C4CCD9005C5171 /* Recette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5E390527C4CCD9005C5171 /* RecetteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetteApp.swift; sourceTree = "<group>"; };
 		6F5E390727C4CCD9005C5171 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -171,8 +187,13 @@
 			isa = PBXGroup;
 			children = (
 				10FE0A9C27CE665600E8CC3A /* IngredientFormView.swift */,
-				10FE0A9E27CE667300E8CC3A /* IngredientView.swift */,
 				10FE0AA227CE66D200E8CC3A /* ListIngredientView.swift */,
+
+				10FE0A9E27CE667300E8CC3A /* IngredientView.swift */,
+				10F5E0BB27D135C60075B87E /* ModificationIngredientView.swift */,
+				109C756127D229EE00C62F76 /* CategorieHomeView.swift */,
+				109C756527D2339000C62F76 /* IngredientCategorieView.swift */,
+
 			);
 			path = Ingredient;
 			sourceTree = "<group>";
@@ -256,7 +277,7 @@
 				6F5E394F27C4E3DC005C5171 /* ListeFicheViewModel.swift */,
 				10FE0AA827CE678A00E8CC3A /* ListAllergeneViewModel.swift */,
 				10FE0AAA27CE67B200E8CC3A /* ListStockViewModel.swift */,
-				10FE0AAC27CE67DD00E8CC3A /* ListIngredientViewModel.swift */,
+				10FE0AAC27CE67DD00E8CC3A /* ListeIngredientViewModel.swift */,
 				8DE33E6627D0384800AE4C74 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
@@ -271,6 +292,7 @@
 				8D13F78327CD12DF000276F1 /* Recette */,
 				8D13F78227CD10EF000276F1 /* Composants */,
 				6F5E395427C510A0005C5171 /* Home */,
+				10D57C2727D2568000BC39E1 /* VenteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +310,7 @@
 				10FE0A8D27CE64EB00E8CC3A /* ListAllergene.swift */,
 				10FE0A8F27CE650700E8CC3A /* ListIngredient.swift */,
 				10FE0A9127CE652900E8CC3A /* ListStock.swift */,
+				10D57C2527D2528A00BC39E1 /* Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -500,9 +523,10 @@
 				6F5E393927C4CD8C005C5171 /* Stock.swift in Sources */,
 				1063CE3E27CE6BD2000E6A87 /* StockFormView.swift in Sources */,
 				1063CE4227CE7880000E6A87 /* IngredientIntent.swift in Sources */,
-				10FE0AAD27CE67DD00E8CC3A /* ListIngredientViewModel.swift in Sources */,
+				10FE0AAD27CE67DD00E8CC3A /* ListeIngredientViewModel.swift in Sources */,
 				6F5E394727C4CDFA005C5171 /* IngredientViewModel.swift in Sources */,
 				1063CE4027CE6BEA000E6A87 /* StockView.swift in Sources */,
+				10D57C2627D2528A00BC39E1 /* Extension.swift in Sources */,
 				10FE0AAB27CE67B200E8CC3A /* ListStockViewModel.swift in Sources */,
 				6F5E395727C51105005C5171 /* RecetteCarte.swift in Sources */,
 				10FE0A9D27CE665600E8CC3A /* IngredientFormView.swift in Sources */,
@@ -510,13 +534,19 @@
 				6F5E390627C4CCD9005C5171 /* RecetteApp.swift in Sources */,
 				8DE33E6727D0384800AE4C74 /* LoginViewModel.swift in Sources */,
 				6F5E394327C4CDD8005C5171 /* DetailFicheView.swift in Sources */,
+				109C756627D2339000C62F76 /* IngredientCategorieView.swift in Sources */,
 				6F5E394D27C4E33D005C5171 /* ListeFiche.swift in Sources */,
 				6F5E394B27C4E30C005C5171 /* ListFicheView.swift in Sources */,
+				10D57C2827D2568000BC39E1 /* VenteView.swift in Sources */,
 				8D91591D27CE2161006D62A6 /* FicheDTO.swift in Sources */,
+				109C756227D229EE00C62F76 /* CategorieHomeView.swift in Sources */,
 				6FABFA8127C6570200DE6F3B /* HomeView.swift in Sources */,
 				8D13F78527CD1305000276F1 /* AjoutFicheView.swift in Sources */,
 				6F5E394527C4CDE9005C5171 /* FicheViewModel.swift in Sources */,
 				6F5E395327C4E43D005C5171 /* FicheIntent.swift in Sources */,
+
+				10F5E0BC27D135C60075B87E /* ModificationIngredientView.swift in Sources */,
+
 				10FE0AA927CE678A00E8CC3A /* ListAllergeneViewModel.swift in Sources */,
 				8D562AFD27D0FEE700601DB0 /* EtapeView.swift in Sources */,
 				10FE0AA127CE66AD00E8CC3A /* ListAllergeneView.swift in Sources */,

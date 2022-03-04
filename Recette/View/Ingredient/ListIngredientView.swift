@@ -31,74 +31,69 @@ struct ListIngredientView : View {
     @State private var showingSheet = false
     
     var body: some View {
-        NavigationView{
-            VStack{
-               Text("Mes Ingredients").bold().font(.title).foregroundColor(Color.blue)
-                
+    
+            ZStack{
+                NavigationView{
+                VStack{
                     HStack{
-                        VStack(alignment : .leading){
-                            Text("Mes Allergènes").bold().font(.title2)
-                        }
-                        Button("Ajouter") { showingSheet.toggle() }.foregroundColor(Color.white).cornerRadius(100).background(Color.green).frame(width: 100,alignment: .center )
-                            .sheet(isPresented: $showingSheet) { IngredientFormView(listeAllergene: Allergene.allValues)
-                            }
-                
-                        
-                }
+                        Text("Mes Ingredients").padding(.horizontal).foregroundColor(Color.purple)
+                            .font(.largeTitle.bold())
+                            .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
+                    }
+                      
                     TabView{
-                
-                            ForEach(listIngredients.listeIngredient , id: \.idIngredient){
+                            ForEach(listIngredients.listeIngredient , id: \.id){
                                 ingredient in
                                 NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
                                     
                                     IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients)
                                 }
                             }
+                        
                     }
                     .tabViewStyle((PageTabViewStyle()))
+                    .toolbar(content: {
+                        ToolbarItem(){
+                            Button(action: {
+                                    showingSheet.toggle()
+                                }){
+                                    Image(systemName: "plus.app").font(.title) .foregroundColor(.purple)
+                                }.sheet(isPresented: $showingSheet) { IngredientFormView(ingredient: IngredientViewModel(from: Ingredient(id: "")), listIngredient: ListeIngredientViewModel())
+                                }
+                        }
+                     
+                        ToolbarItem(placement:.navigationBarLeading){
+                            NavigationLink (destination: CategorieHomeView().navigationViewStyle(.stack)
+                                                .navigationBarTitle("")){
+                                Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
+
+                            }
+                        }
+               
+                    })
+                }
+                .onAppear{
+                    self.listIngredients.fetchData()
+                    print("Liste ingredient mis a jour ")
+                }
+                    //.navigationBarHidden(true)
+                        .navigationViewStyle(.stack)
+                        .navigationBarTitle("")
+                        .navigationBarBackButtonHidden(true)
                     
-            }    .navigationBarHidden(true)
-           
+            }
+        
+          
         }
        
         
-        /* VStack (){
-            NavigationView{
-                List {
-                    ForEach(listIngredients.listeIngredient.listIngredient , id: \.idIngredient){
-                        ingredient in
-                        NavigationLink(destination: IngredientView(ingredient: IngredientViewModel(from: ingredient), listeingredient: listIngredients )){
-                            VStack(alignment: .leading){
-                                Group{
-                                    Text(ingredient.libelle).bold()
-                                }
-                            }
-                        }
-                    }
-                    .onDelete{ indexSet in
-                        listIngredients.listeIngredient.listIngredient.remove(atOffsets: indexSet)
-                    }.onMove{ indexSet, index in
-                        listIngredients.listeIngredient.listIngredient.move(fromOffsets: indexSet, toOffset: index)
-                    }.navigationTitle("Mes Ingredients")
-                        .searchable(
-                            text: $searchingFor,
-                            placement: .navigationBarDrawer(displayMode : .always),
-                            prompt : "Chercher un ingredient"
-                        
-                        )
-                }
-            }
-        EditButton()
-        }*/
     }
+    
+    
+    
 }
 
-/*struct ListIngredientView_Previews: PreviewProvider {
-    static var previews: some View {/*
-        let ing = Ingredient(idIngredient: "12", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "First Ingredient", prix_unitaire: 1, unite: "")
-        let ing2 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: "String"), categorie: CategorieIngredient.fruit, code: 2, libelle: "second Ingredient", prix_unitaire: 1, unite: "")
-        let ing3 = Ingredient(idIngredient: "", allergene: Allergene(libelle: "Premier", idAllergene: ""), categorie: CategorieIngredient.fruit, code: 2, libelle: "third Ingredient", prix_unitaire: 1, unite: "")
-        ListIngredientView(listIngredient : ListeIngredientViewModel(from: ListIngredient(listIngredient: [ing, ing2, ing3] )))*/
-        ListIngredientView()
-    }
-}*/
+
+
+
+

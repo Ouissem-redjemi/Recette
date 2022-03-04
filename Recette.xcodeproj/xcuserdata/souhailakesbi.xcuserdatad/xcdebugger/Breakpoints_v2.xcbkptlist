@@ -62,11 +62,19 @@
             symbolName = "*0x1054821b4">
             <Locations>
                <Location
+                  uuid = "4BABE9D6-C1D0-41C3-8CB2-EABC15C9D7C4 - bfe2b5c8ffc8f89b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+                  symbolName = "std::__1::__tree_node_base&lt;void*&gt;*&amp; std::__1::__tree&lt;std::__1::__value_type&lt;grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt;, grpc_core::XdsClusterLocalityStats::Snapshot&gt;, std::__1::__map_value_compare&lt;grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt;, std::__1::__value_type&lt;grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt;, grpc_core::XdsClusterLocalityStats::Snapshot&gt;, grpc_core::XdsLocalityName::Less, true&gt;, std::__1::allocator&lt;std::__1::__value_type&lt;grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt;, grpc_core::XdsClusterLocalityStats::Snapshot&gt; &gt; &gt;::__find_equal&lt;grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt; &gt;(std::__1::__tree_end_node&lt;std::__1::__tree_node_base&lt;void*&gt;*&gt;*&amp;, grpc_core::RefCountedPtr&lt;grpc_core::XdsLocalityName&gt; const&amp;)"
+                  moduleName = "Recette"
                   usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
+                  urlString = "file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator15.2.sdk/usr/include/c++/v1/__tree"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2002"
+                  endingLineNumber = "2002"
+                  offsetFromSymbolStart = "356">
                </Location>
             </Locations>
          </BreakpointContent>

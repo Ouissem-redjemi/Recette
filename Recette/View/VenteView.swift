@@ -12,7 +12,14 @@ struct VenteView: View {
     @ObservedObject var listFiches = ListeFicheViewModel ()
     var intent : FicheIntent = FicheIntent ()
   
+    @State var quantite :  Int = 0
     @State private var selection = 1
+    let formatter: NumberFormatter = {
+      let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+      return formatter
+    }()
+ 
     
     init(){
         self.listFiches.getData()
@@ -34,9 +41,19 @@ struct VenteView: View {
                             }
                       }
                     }.pickerStyle(.menu)
+                }
+                
+                Section(header: Text("Nombre de plat")){
+                    TextField("Quantité", value: $quantite, formatter : formatter)
+
+                }
+                
+                
+                    
+                    
                     //Text("\(listFiches.listeFiches[0].responsable  )")
                    // Text(Picker.label)
-                }
+       
    
             
             }

@@ -31,8 +31,9 @@ struct ListIngredientView : View {
     @State private var showingSheet = false
     
     var body: some View {
-        NavigationView{
+    
             ZStack{
+                NavigationView{
                 VStack{
                     HStack{
                         Text("Mes Ingredients").padding(.horizontal).foregroundColor(Color.purple)
@@ -63,8 +64,7 @@ struct ListIngredientView : View {
                      
                         ToolbarItem(placement:.navigationBarLeading){
                             NavigationLink (destination: CategorieHomeView().navigationViewStyle(.stack)
-                                                .navigationBarTitle("")
-                                                .navigationBarBackButtonHidden(true)){
+                                                .navigationBarTitle("")){
                                 Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
 
                             }
@@ -76,14 +76,14 @@ struct ListIngredientView : View {
                     self.listIngredients.fetchData()
                     print("Liste ingredient mis a jour ")
                 }
-           
+                    //.navigationBarHidden(true)
+                        .navigationViewStyle(.stack)
+                        .navigationBarTitle("")
+                        .navigationBarBackButtonHidden(true)
+                    
             }
         
-            // .navigationBarHidden(true)
-                .navigationViewStyle(.stack)
-                .navigationBarTitle("")
-                .navigationBarBackButtonHidden(true)
-            
+          
         }
        
         

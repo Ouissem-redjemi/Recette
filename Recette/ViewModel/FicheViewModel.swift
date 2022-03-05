@@ -173,6 +173,33 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         }
     
     
+    //Fonction disponibilité des ingredients
+
+    
+    /*
+     
+     
+     
+     
+    func DispoIngredients(fiche : Fiche, quantite) -> Bool {
+        let stop : Bool = true
+        while(stop){
+            ForEach(fiche.ingredients, id : \.id){ ingredient in
+                if(fiche.ingredient.quantite*quantite > fiche.ingredients.ingredient.quantite){
+                    stop =  false
+                }
+            }
+            return stop
+        }
+        }
+     
+    }
+    */
+    
+    
+    
+    
+    
     //Get data by ID
     /*func getStep(id : String?) -> Fiche{
         let step = db.collection("fiche").document(id!).getDocument { document, error in

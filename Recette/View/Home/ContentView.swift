@@ -14,16 +14,11 @@ struct ContentView: View {
             
             
             if loginVM.logIn{
-
-                HomeView()
-                    .navigationViewStyle(.stack)
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
-
-               
-     
                 TabView {
-                   HomeView()
+                   HomeView().navigationViewStyle(.stack)
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+
                         .tabItem {
                             Label("Fiches", systemImage: "heart.text.square")
                         }
@@ -31,6 +26,10 @@ struct ContentView: View {
                     ListIngredientView()
                         .tabItem {
                             Label("Ingredients", systemImage: "scroll")
+                        }
+                    ListAllergeneView()
+                        .tabItem {
+                            Label("Allergènes", systemImage: "a.circle")
                         }
                     
                     VenteView()

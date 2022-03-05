@@ -33,15 +33,13 @@ struct ListAllergeneView: View {
             VStack (spacing : 40){
                 HStack{
                     VStack(alignment : .leading){
-                        Text("Mes Allergènes").bold().font(.title2)
+                        Text("Mes Allergènes").bold().font(.title).padding(.horizontal).foregroundColor(Color.purple)
+                          
+                            .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
                     }
-                    
-                
-                        
                 }
-            
+                Spacer()
                 List {
-            
                     ForEach(listAllergene , id: \.id){
                         allergene  in
                             VStack(alignment: .leading){
@@ -51,16 +49,15 @@ struct ListAllergeneView: View {
                             }
                         }
                 }
-                EditButton()
+
             }.navigationBarHidden(true)
             }
         }
     }
 
-
-/*struct ListAllergeneView_Previews: PreviewProvider {
+struct ListAllergeneView_Previews: PreviewProvider {
     static var previews: some View {
  
         ListAllergeneView(listAllergene: Allergene.allValues)
     }
-}*/
+}

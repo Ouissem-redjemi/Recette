@@ -13,7 +13,8 @@ struct VenteView: View {
     var intent : FicheIntent = FicheIntent ()
   
     @State var quantite :  Int = 0
-    @State private var selection = 1
+    
+    @State private var selection : Fiche = Fiche(id: "String", categorie: CategorieRecette.accompagnement, title: "Test vente",responsable: "String", nbCouverts: 2, etapes: ["String"])
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -33,6 +34,8 @@ struct VenteView: View {
           
                 
                 Text("Selectionner une fiche pour la vente ").font(.title3)
+                
+                
                 Section(header: Text("Fiches ")){
                     Picker("Fiches : ", selection: $selection) {
                         ForEach(listFiches.listeFiches,id :\.self) {
@@ -43,10 +46,41 @@ struct VenteView: View {
                     }.pickerStyle(.menu)
                 }
                 
+                Section(header: Text("Info sur la fiche")){
+                Text("Cette recette est calculé pour : \(selection.nbCouverts)   " )
+               
+                }
+                
+                Text("Selectionner le nombre de fois de cette recette" )
                 Section(header: Text("Nombre de plat")){
                     TextField("Quantité", value: $quantite, formatter : formatter)
-
                 }
+            
+                HStack{
+                    Button(action: {
+                   //mettre la fonction pour voir la disponibilité en recuperant la fiche et la quantité
+                    print("modif demandé")
+                    }) {
+                        Label(
+                            title: {
+                                Text(" Valider ")
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 15))
+                                    .frame(alignment: .center)
+                                    .padding()
+                                    
+                            },
+                            icon : {
+                                Image(systemName: "checkmark.circle").font(.title).foregroundColor(.purple)
+                            }
+                        
+                        
+                        ).overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.purple, lineWidth: 2)
+                        )}
+                }.frame(alignment : .center)
+           
                 
                 
                     

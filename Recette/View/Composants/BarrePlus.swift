@@ -24,7 +24,7 @@ struct BarrePlus: View {
                 .sheet(isPresented: $isAddViewPresented, content: {
                     AjoutFicheView(recette: FicheViewModel(from: Fiche(id:"")), listRecette: ListeFicheViewModel())
                 })
-            
+     /*
             Button(action:{
                 
             }){
@@ -33,7 +33,7 @@ struct BarrePlus: View {
                     .foregroundColor(.purple)
                     .cornerRadius(15)
                     
-            }
+            }*/
         }.padding([.horizontal,.top])
             .cornerRadius(15)
             

@@ -14,6 +14,8 @@ struct VenteView: View {
   
     @State var fiche : FicheViewModel = FicheViewModel(from: Fiche(id: ""))
     @State var quantite :  Int = 0
+    
+    @State private var selectedValue = "Test Vente"
     @State private var selection = 1
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
@@ -35,21 +37,43 @@ struct VenteView: View {
                 
                 Text("Selectionner une fiche pour la vente ").font(.title3)
                 Section(header: Text("Fiches ")){
-                    Picker("Fiches : ", selection: $fiche.title) {
+                    Picker("Fiches : ", selection: $selectedValue) {
                         ForEach(listFiches.listeFiches,id :\.self) {
                             if($0.title != ""){
                                 Text($0.title)
                             }
-                      }
+                        }
+                        Text("selction : \(selectedValue)")
                     }.pickerStyle(.menu)
                 }
+                
                 
                 Section(header: Text("Nombre de plat")){
                     TextField("Quantité", value: $quantite, formatter : formatter)
 
                 }
                 
-                
+              
+                Section(header: Text("Possible ??")){
+                    ForEach(listFiches.listeFiches, id: \.self){
+                        if($0.title == selectedValue){
+                            
+                          /*
+                           
+                           List{
+                               ForEach($0.ingredients, id:\.self){
+                                    if($0.quantite < )
+                                    }
+                                        ingredient.quantite)
+                                if ($0.ingredient)
+                           }
+                          
+                        } */
+                        }
+                    }
+                   
+
+                }
                     
                     
                     //Text("\(listFiches.listeFiches[0].responsable  )")

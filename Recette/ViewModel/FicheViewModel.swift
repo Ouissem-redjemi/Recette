@@ -25,7 +25,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     typealias Failure = Never
     
     
-    private var fiche : Fiche
+    public var fiche : Fiche
     //Get a reference to the database
     private var db = Firestore.firestore()
     

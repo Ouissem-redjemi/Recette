@@ -43,6 +43,17 @@
                        
                    }
                }
+               .toolbar(content: {
+              
+                   ToolbarItem(placement:.navigationBarLeading){
+                       NavigationLink (destination: CategorieFiche().navigationViewStyle(.stack)
+                                           .navigationBarTitle("")){
+                           Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
+
+                       }
+                   }
+          
+               })
                .padding(.top)
                .onAppear(){
                    print("fetchData ici ------- liste des recettes ici aussi")

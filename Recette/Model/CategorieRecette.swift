@@ -11,5 +11,5 @@ enum CategorieRecette : String {
     case plat = "Plat Principal"
     case dessert = "Dessert"
     case accompagnement = "Accompagnement"
-    
+    static let allValues : [CategorieRecette] = [entree,plat,dessert,accompagnement]
 }

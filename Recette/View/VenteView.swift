@@ -12,6 +12,7 @@ struct VenteView: View {
     @ObservedObject var listFiches = ListeFicheViewModel ()
     var intent : FicheIntent = FicheIntent ()
   
+    @State var fiche : FicheViewModel = FicheViewModel(from: Fiche(id: ""))
     @State var quantite :  Int = 0
     @State private var selection = 1
     let formatter: NumberFormatter = {
@@ -34,7 +35,7 @@ struct VenteView: View {
                 
                 Text("Selectionner une fiche pour la vente ").font(.title3)
                 Section(header: Text("Fiches ")){
-                    Picker("Fiches : ", selection: $selection) {
+                    Picker("Fiches : ", selection: $fiche.title) {
                         ForEach(listFiches.listeFiches,id :\.self) {
                             if($0.title != ""){
                                 Text($0.title)

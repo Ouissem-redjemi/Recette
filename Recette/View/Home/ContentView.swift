@@ -11,17 +11,8 @@ struct ContentView: View {
     @EnvironmentObject var loginVM : LoginViewModel
     var body: some View {
         NavigationView{
-            
-            
             if loginVM.logIn{
 
-                HomeView()
-                    .navigationViewStyle(.stack)
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
-
-               
-     
                 TabView {
                    HomeView()
                         .tabItem {

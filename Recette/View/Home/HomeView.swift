@@ -11,10 +11,15 @@ struct HomeView: View {
     @EnvironmentObject var loginVM : LoginViewModel
     @State var search : String = ""
     var body: some View {
-       // NavigationView{
+        NavigationView{
         VStack{
             HStack(){
-                Button(action:{}){
+       
+                    
+        
+                Button(action:{
+                    
+                }){
                     Image(systemName: "line.horizontal.3")
                         .font(.title)
                         .foregroundColor(.black)
@@ -61,13 +66,23 @@ struct HomeView: View {
 
                
             }
+            .toolbar(content: {
+                ToolbarItem(placement:.navigationBarLeading){
+                    NavigationLink (destination: CategorieFiche().navigationViewStyle(.stack)
+                                        .navigationBarTitle("")){
+                        Image(systemName: "list.triangle").font(.title) .foregroundColor(.purple)
+
+                    }
+                }
+       
+            })
             BarrePlus()
            
     }.background(Color.black.opacity(0.05).ignoresSafeArea(.all, edges: .all))
        // }.navigationViewStyle(.stack)
 }
 }
-
+}
 /*struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()

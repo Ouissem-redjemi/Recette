@@ -11,7 +11,7 @@ struct EtiquetteView: View {
    @ObservedObject var recette : FicheViewModel
     @ObservedObject var listeRecette: ListeFicheViewModel
     @State private var checked = true
-    @State var tabLibelle : [String] = [""]
+    @State var tabLibelle = [String]()
     
     
     @ObservedObject var listIngredients = ListeIngredientViewModel ()
@@ -44,7 +44,20 @@ struct EtiquetteView: View {
                 
                 Text("Ingrédients ").underline()
                 
-                ForEach(0..<recette.etapes.count){ i in
+                Button {
+                    self.tabLibelle = self.recette.recuperationLibelleIngredient(keyIngredient: self.recette.recuperationIngredient(etapes: self.recette.recuperationEtapes(listrecette: listeRecette, fiche: recette)), listIngredient: listIngredients)
+                } label: {
+                    Text("Afficher")
+                }
+                
+                
+                ForEach(tabLibelle , id: \.self){ ingredient in
+                    Text("\(ingredient)")
+                }
+               
+                
+                
+               /* ForEach(0..<recette.etapes.count){ i in
                        ForEach(listeRecette.listeFiches){ fiche in
                            if recette.etapes[i] == fiche.idFiche{
                                if fiche.titleStep!.isEmpty{
@@ -64,7 +77,7 @@ struct EtiquetteView: View {
                                }
                         }
                    }
-            }
+            }*/
                 Toggle(isOn: $checked) {
                     Text("Vente").padding()
                 }.padding()

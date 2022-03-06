@@ -171,7 +171,52 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
     
     
-    func 
+    func recuperationEtapes(listrecette : ListeFicheViewModel, fiche : FicheViewModel) -> [Fiche]{
+        var tabEtape : [Fiche] = []
+        
+        for idE in fiche.etapes {
+               for fiche in listrecette.listeFiches{
+                   if idE == fiche.idFiche{
+                       print(idE)
+                       tabEtape.append(fiche)
+                       print(tabEtape.description)
+                    }
+                }
+        }
+        return tabEtape
+    }
+    
+    func recuperationIngredient(etapes : [Fiche]) -> [String]{
+        var libelle : [String] = [""]
+        
+        for etape in etapes{
+            for (cle) in etape.ingredients!.keys {
+                print(etape.ingredients!.keys.description)
+                libelle.append(cle)
+                
+     
+            }
+
+        }
+        return libelle
+    }
+    
+    func recuperationLibelleIngredient(keyIngredient : [String], listIngredient : ListeIngredientViewModel ) -> [String]{
+        var titleing : [String] = []
+        
+        for title in keyIngredient{
+            for ingredient in listIngredient.listeIngredient{
+                print("coucou i,grediet ")
+                if title == ingredient.idIngredient{
+                    titleing.append(ingredient.libelle)
+                }
+            }
+        }
+        return titleing
+    }
+    
+    
+    
     
     
     

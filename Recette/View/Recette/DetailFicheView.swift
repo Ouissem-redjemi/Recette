@@ -90,6 +90,8 @@ struct DetailFicheView: View {
                                                    .bold()
                                                Text("Durée : \(fiche.duree!)")
                                                    .italic()
+                                               
+                                               Text("Cout : \(recette.coutRecette(fiche : fiche, listIngredient : listIngredients, listeRecette : listeRecette).description )")
                                                Text("Ingrédients : ")
                                                    .underline()
                                                Button {
@@ -111,12 +113,11 @@ struct DetailFicheView: View {
                             Divider()
                                            
                                    }
-                                   }
-                               }
+                                }
+                            }
                             
                         }
-                        
-                        
+   
                     }
                     .frame(maxWidth: .infinity,  alignment: .leading)
                 
@@ -141,6 +142,11 @@ struct DetailFicheView: View {
                                             }),
                                                 .cancel()
                                         ])
+                        }
+                    }
+                    ToolbarItem(){
+                        NavigationLink(destination : EtiquetteView(recette: recette, listeRecette: listeRecette)){
+                            Image(systemName: "doc.text.fill")
                         }
                     }
                     ToolbarItem(){

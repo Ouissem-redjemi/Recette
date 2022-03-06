@@ -65,7 +65,7 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                 if let snapshot = snapshot{
                     //Get all documents and create list of Recipes
                     self.listeFiches = snapshot.documents.map { doc in
-                        return Fiche(id: doc.documentID, categorie: CategorieRecette(rawValue: doc["categorie"] as? String ?? "") ?? CategorieRecette.accompagnement, title: doc["title"] as? String ?? "", materielDressage: doc["materielDressage"]as? String ?? "", materielSpecifique: doc["materielSpecifique"]as? String ?? "", responsable: doc["responsable"] as? String ?? "" , nbCouverts: doc["nbCouverts"] as? Int ?? 0, etapes: doc["etapes"] as? [String] ?? [], description : doc["description"] as? String ?? "", duree: doc["duree"] as? Int ?? 0, titleStep: doc["titleStep"] as? String ?? "", ingredients: doc["ingredients"] as? [String : Double] ?? [:] )
+                        return Fiche(id: doc.documentID, categorie: CategorieRecette(rawValue: doc["categorie"] as? String ?? "") ?? CategorieRecette.accompagnement, title: doc["title"] as? String ?? "", materielDressage: doc["materielDressage"]as? String ?? "", materielSpecifique: doc["materielSpecifique"]as? String ?? "", responsable: doc["responsable"] as? String ?? "" , nbCouverts: doc["nbCouverts"] as? Int ?? 0, etapes: doc["etapes"] as? [String] ?? [], description : doc["description"] as? String ?? "", duree: doc["duree"] as? Int ?? 0, titleStep: doc["titleStep"] as? String ?? "", ingredients: doc["ingredients"] as? [String : Double] ?? [:] , cout : doc["cout"] as? Double ?? 0)
                     }
                     print("On a récupéré toutes les fiches de Firestore")
                     
@@ -89,7 +89,7 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
                        return
                    }
                    self.listeFiches = doc.map{ (document) -> Fiche in
-                       return Fiche(id: document.documentID, categorie: CategorieRecette(rawValue: document["categorie"] as? String ?? "") ?? CategorieRecette.accompagnement, title: document["title"] as? String ?? "", materielDressage: document["materielDressage"]as? String ?? "", materielSpecifique: document["materielSpecifique"]as? String ?? "", responsable: document["responsable"] as? String ?? "" , nbCouverts: document["nbCouverts"] as? Int ?? 0, etapes: document["etapes"] as? [String] ?? [], description : document["description"] as? String ?? "", duree: document["duree"] as? Int ?? 0, titleStep: document["titleStep"] as? String ?? "", ingredients: document["ingredients"] as? [String : Double] ?? [:] )
+                       return Fiche(id: document.documentID, categorie: CategorieRecette(rawValue: document["categorie"] as? String ?? "") ?? CategorieRecette.accompagnement, title: document["title"] as? String ?? "", materielDressage: document["materielDressage"]as? String ?? "", materielSpecifique: document["materielSpecifique"]as? String ?? "", responsable: document["responsable"] as? String ?? "" , nbCouverts: document["nbCouverts"] as? Int ?? 0, etapes: document["etapes"] as? [String] ?? [], description : document["description"] as? String ?? "", duree: document["duree"] as? Int ?? 0, titleStep: document["titleStep"] as? String ?? "", ingredients: document["ingredients"] as? [String : Double] ?? [:] ,  cout : document["cout"] as? Double ?? 0)
                        
                        
                    }

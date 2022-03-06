@@ -46,6 +46,9 @@ class Fiche : Identifiable, Hashable, Equatable{
             self.delegate?.change(nbCouverts: self.nbCouverts)
         }
     }
+
+    
+    public var cout : Double?
     
     public var ingredients : [String : Double ]?
     public var etapes : [String]
@@ -54,7 +57,7 @@ class Fiche : Identifiable, Hashable, Equatable{
     public var titleStep : String? = ""
  
     
-    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "", ingredients : [String : Double] = [:]){
+    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "", ingredients : [String : Double] = [:], cout : Double = 0 ){
         self.idFiche = id
         self.categorie = categorie
         self.title = title
@@ -67,6 +70,7 @@ class Fiche : Identifiable, Hashable, Equatable{
         self.duree = duree
         self.description = description
         self.ingredients = ingredients
+        self.cout = cout 
     }
 }
 

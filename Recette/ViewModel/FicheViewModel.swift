@@ -28,7 +28,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     typealias Failure = Never
     
     
-    private var fiche : Fiche
+    public var fiche : Fiche
     //Get a reference to the database
     private var db = Firestore.firestore()
     
@@ -44,6 +44,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     @Published var description : String?
     @Published var duree : Int?
     @Published var titleStep : String?
+    @Published var cout : Double?
     func change(categorie: CategorieRecette) {
         self.categorie = categorie
     }
@@ -110,8 +111,71 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     }
     
     
-   
+    func affichage_Dico( listingredients : ListeIngredientViewModel, recette : FicheViewModel, listeRecette : ListeFicheViewModel) -> [String]{
+        var libelle : [String] = [""]
+        for idE in recette.etapes {
+               for fiche in listeRecette.listeFiches{
+                   if idE == fiche.idFiche{
+                       print(idE)
+                       libelle = affichage_suite(fiche: fiche, listIngredients: listingredients)
+                       print(libelle)
+                    }
+                }
+        }
+        return libelle
+    }
+        
 
+    func affichage_suite(fiche : Fiche, listIngredients : ListeIngredientViewModel)-> [String] {
+        var libelle : [String] = [""]
+        
+  
+        print("title\(fiche.titleStep!)")
+        for (cle) in fiche.ingredients!.keys {
+            print(fiche.ingredients!.keys.description)
+            
+            for ingredient in listIngredients.listeIngredient.indices {
+                print("interieur fir ")
+                if cle == listIngredients.listeIngredient[ingredient].idIngredient{
+                    libelle.append( listIngredients.listeIngredient[ingredient].libelle)
+                    print( listIngredients.listeIngredient[ingredient].libelle)
+                }
+                else{
+                    print("else")
+                }
+            }
+ 
+        }
+
+        return libelle
+    }
+        
+
+    func coutRecette(fiche : Fiche ,listIngredient : ListeIngredientViewModel, listeRecette : ListeFicheViewModel) -> Double {
+        var somme : Double = 0
+
+        
+        for (cle,valeur) in fiche.ingredients! {
+            print("coucou cle ")
+            for ingredient in listIngredient.listeIngredient{
+                print("coucou i,grediet ")
+                if cle == ingredient.idIngredient{
+                    print("coucou if ")
+                    somme += ingredient.prix_unitaire * Double(valeur)
+                    print(somme)
+                }
+            }
+        }
+        return  somme * 1.05
+    }
+    
+    
+    
+    func 
+    
+    
+    
+    
   /*public var coutSimple : Double{
         var total : Double = 0
         for idS in etapes{
@@ -137,6 +201,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.description = fiche.description
         self.titleStep = fiche.titleStep
         self.ingredients = fiche.ingredients
+        self.cout = fiche.cout
         self.fiche.delegate = self
     }
     
@@ -181,52 +246,6 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         }
     
     
-    //Fonction disponibilité des ingredients
-
-    
-    /*
-     
-     
-     
-     
-    func DispoIngredients(fiche : Fiche, quantite) -> Bool {
-        let stop : Bool = true
-        while(stop){
-            ForEach(fiche.ingredients, id : \.id){ ingredient in
-                if(fiche.ingredient.quantite*quantite > fiche.ingredients.ingredient.quantite){
-                    stop =  false
-                }
-            }
-            return stop
-        }
-        }
-     
-    }
-    */
-    
-    
-    
-    
-    
-    //Get data by ID
-    /*func getStep(id : String?) -> Fiche{
-        let step = db.collection("fiche").document(id!).getDocument { document, error in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map{
-                    doc in
-                    return Fiche(id: id!, description: doc["description"] as? String ?? "", duree: doc["duree"] as? Int ?? 0, titleStep: doc["titleStep"] as? String ?? "")
-                        
-                }
-                
-                print("Document data: \(String(describing: dataDescription))")
-                print("On a récupéré l'étape")
-             
-                } else {
-                    print("Document does not exist")
-                }
-        }
-        return step
-    }*/
     
     //Remove a recipe from the list of recipes
     func removeData(){

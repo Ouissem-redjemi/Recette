@@ -92,7 +92,7 @@ struct VenteView: View {
             
             }
       
-        }
+        }.navigationBarHidden(true)
     }
 }
 

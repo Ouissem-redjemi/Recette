@@ -9,6 +9,15 @@ import SwiftUI
 
 struct BarrePlus: View {
     @State var isAddViewPresented = false
+    @ObservedObject var listRecette : ListeFicheViewModel
+    @ObservedObject var recette : FicheViewModel
+    var intent : FicheIntent
+    init (recette : FicheViewModel, listRecette : ListeFicheViewModel){
+        self.recette = recette
+        self.listRecette = listRecette
+        self.intent = FicheIntent()
+        self.intent.addObserver(viewModel: recette)
+        self.intent.addObserver(viewModel: listRecette)}
     var body: some View {
         HStack{
             Button(action:{
@@ -22,7 +31,7 @@ struct BarrePlus: View {
                     
             }.frame(maxWidth : .infinity )
                 .sheet(isPresented: $isAddViewPresented, content: {
-                    AjoutFicheView(recette: FicheViewModel(from: Fiche(id:"")), listRecette: ListeFicheViewModel())
+                    AjoutFicheView(recette: recette, listRecette: listRecette)
                 })
      /*
             Button(action:{

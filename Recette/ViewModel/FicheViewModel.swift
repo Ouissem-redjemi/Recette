@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 protocol FicheDelegate{
     func change(categorie : CategorieRecette)
@@ -16,6 +17,8 @@ protocol FicheDelegate{
     func change(materielSpecifique : String?)
     func change(responsable : String)
     func change(nbCouverts : Int)
+    func change(etapes : [String])
+    func change(ingredients :[String : Double])
         
 }
 
@@ -29,15 +32,15 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     //Get a reference to the database
     private var db = Firestore.firestore()
     
-    
+    @DocumentID var idFiche : String?
     @Published var categorie : CategorieRecette
     @Published var title : String
     @Published var materielDressage : String?
     @Published var materielSpecifique : String?
     @Published var responsable : String
     @Published var nbCouverts : Int
-   // @Published var quantite : [Double : Ingredient  ]
-   @Published var etapes : [String]
+    @Published var ingredients : [String : Double]?
+    @Published var etapes : [String]
     @Published var description : String?
     @Published var duree : Int?
     @Published var titleStep : String?
@@ -69,9 +72,9 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.etapes = etapes
     }
     
-    /*func change(quantite :[Double : Ingredient  ] ){
-        self.quantite = quantite
-    }*/
+    func change(ingredients : [String : Double] ){
+        self.ingredients = ingredients
+    }
     
     func receive(subscription: Subscription) {
        subscription.request(.unlimited) // unlimited : on veut recevoir toutes les valeurs
@@ -109,10 +112,10 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
    
 
-  /*  public var coutSimple : Double{
+  /*public var coutSimple : Double{
         var total : Double = 0
-        for (_, _) in etapes{
-            for (qte , ingredient) in quantite{
+        for idS in etapes{
+            for (idIng , qte ) in ingredients!{
                 total = total + ingredient.prix_unitaire * qte
             }
         }
@@ -122,6 +125,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
     init(from fiche : Fiche){
         self.fiche = fiche
+        self.idFiche = fiche.idFiche
         self.categorie = fiche.categorie
         self.title = fiche.title
         self.materielDressage = fiche.materielDressage
@@ -132,7 +136,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         self.duree = fiche.duree
         self.description = fiche.description
         self.titleStep = fiche.titleStep
-        //self.quantite = fiche.quantite
+        self.ingredients = fiche.ingredients
         self.fiche.delegate = self
     }
     
@@ -143,18 +147,22 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     }
     
     //Ajouter une étape dans la base de données
-    func addDataStep(title : String?, description : String?, duree : Int?){
-        db.collection("fiche").addDocument(data: ["titleStep" : title ?? "", "description": description ?? "", "duree" : duree ?? ""])
+    func addDataStep(title : String?, description : String?, duree : Int?, ingredients : [String:Double]?) -> String{
+        let idStep = db.collection("fiche").addDocument(data: ["titleStep" : title ?? "", "description": description ?? "", "duree" : duree ?? "", "ingredients" : ingredients ?? ["" : 0]]).documentID
+        return idStep
     }
     
     //Ajouter une étape dans la liste des étapes
-    func addStep(){
+    func addStep(id : String){
         print("AVANT")
-        self.etapes.append(fiche.idFiche!)
+       
+            self.etapes.append(id)
+        
+        print("APRES")
         for id in etapes{
             print("\(id)")
         }
-        print("APRES")
+        
     }
     
     //Modification des détails de la recette dans la base de données

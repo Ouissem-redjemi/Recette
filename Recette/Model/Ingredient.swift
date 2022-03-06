@@ -57,6 +57,8 @@ class Ingredient : Identifiable, Hashable, Equatable{
         }
     }
     
+   
+    
     init(id : String, allergene : Allergene = Allergene.soja, categorie : CategorieIngredient = CategorieIngredient.autre, code : String = "" , libelle : String = "" , prix_unitaire : Double = 0 , unite : String = "kg", quantite: Double = 0){
         self.idIngredient = id
         self.allergene = allergene

@@ -18,7 +18,7 @@ class Fiche : Identifiable, Hashable, Equatable{
     
     var delegate : FicheDelegate?
 
-    @DocumentID var idFiche : String? 
+    @DocumentID var idFiche : String?
 
     public var categorie : CategorieRecette
     public var title : String {
@@ -47,14 +47,14 @@ class Fiche : Identifiable, Hashable, Equatable{
         }
     }
     
-   //public var quantite : [Double : Ingredient ]
+    public var ingredients : [String : Double ]?
     public var etapes : [String]
     public var description : String? = ""
     public var duree : Int? = 5
     public var titleStep : String? = ""
  
     
-    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "" ){
+    init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "", ingredients : [String : Double] = [:]){
         self.idFiche = id
         self.categorie = categorie
         self.title = title
@@ -63,6 +63,10 @@ class Fiche : Identifiable, Hashable, Equatable{
         self.responsable = responsable
         self.nbCouverts = nbCouverts
         self.etapes = etapes
+        self.titleStep = titleStep
+        self.duree = duree
+        self.description = description
+        self.ingredients = ingredients
     }
 }
 

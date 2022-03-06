@@ -10,6 +10,12 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var loginVM : LoginViewModel
     @State var search : String = ""
+    @ObservedObject var listFiches = ListeFicheViewModel ()
+    var intent : FicheIntent = FicheIntent()
+    init(){
+        self.listFiches.getData()
+        self.intent.addObserver(viewModel: listFiches)
+    }
     var body: some View {
     NavigationView{
         ScrollView (.vertical, showsIndicators: true){
@@ -24,7 +30,7 @@ struct HomeView: View {
                         }
                         Spacer()
                         //ajout d'une fiche
-                        BarrePlus()
+                        BarrePlus(recette: FicheViewModel(from: Fiche(id: "")), listRecette: self.listFiches)
                         Spacer()
                         
                         //bouton de deconnexion
@@ -71,15 +77,15 @@ struct HomeView: View {
                 }
      
     
-            }
-         }//.navigationViewStyle(.stack)
+            }.navigationBarHidden(true)
+         }
         
         
     }
 }
 
-/*struct HomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
-}*/
+}

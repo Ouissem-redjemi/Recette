@@ -55,14 +55,15 @@ struct AjoutFicheView: View {
                         Button(action : {
                             self.isStepViewPresented = true
                         }, label: {
-                            Text("New step")
+                            Text("Ajouter")
                                 .foregroundColor(.white)
                                 .bold()
                                 .frame(width: 100, height: 50)
                                 .background(.purple)
                         }).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .sheet(isPresented: $isStepViewPresented, content: {
-                                EtapeView(recette: recette, listRecette: listRecette)
+                                ListStepView(listRecette: self.listRecette, recette : self.recette)
+                                
                             })
 
                             
@@ -111,7 +112,7 @@ struct AjoutFicheView: View {
                         .disabled(recette.categorie.rawValue.isEmpty)
                 }
             })
-            .navigationTitle("Nouvelle recette")
+            .navigationTitle("Nouvelle recette 📝 ")
                 .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
     }

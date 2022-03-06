@@ -16,14 +16,16 @@ struct DetailFicheView: View {
     @State var isRemovePresented = false
     @ObservedObject var recette : FicheViewModel
     @ObservedObject var listeRecette: ListeFicheViewModel
+    @ObservedObject var listIngredients = ListeIngredientViewModel ()
     var intent : FicheIntent
-    
+    @State var tabLibelle : [String : Double] = [:]
     init(recette : FicheViewModel, listeRecette : ListeFicheViewModel){
         self.recette = recette
         self.listeRecette = listeRecette
         self.intent = FicheIntent()
         self.intent.addObserver(viewModel: recette)
         self.intent.addObserver(viewModel: listeRecette)
+        self.listIngredients.getData()
         
     }
     
@@ -72,19 +74,46 @@ struct DetailFicheView: View {
                         VStack(alignment: .leading, spacing: 20){
                             Text("Ingrédients :")
                                 .font(.headline)
-                            Text("La liste des ingrédients ici")
+                            
                         }
                         VStack(alignment: .leading, spacing: 20){
                             Text("Étapes :")
                               .font(.headline)
-                           /* if !self.recette.etapes.isEmpty{
-                                ForEach(1..<recette.etapes.count){ i in
-                                    let idStep = recette.etapes[i]
-                                    let step = recette.getStep(id: idStep)
-                                    Text("\(step.titleStep)")
-                                        .bold()
-                                }
-                            }*/
+                            ForEach(0..<recette.etapes.count){ i in
+                                   ForEach(listeRecette.listeFiches){ fiche in
+                                       if recette.etapes[i] == fiche.idFiche{
+                                           if fiche.titleStep!.isEmpty{
+                                               Text("\(fiche.title)")
+                                               
+                                           }else{
+                                               Text("\(fiche.titleStep!)")
+                                                   .bold()
+                                               Text("Durée : \(fiche.duree!)")
+                                                   .italic()
+                                               Text("Ingrédients : ")
+                                                   .underline()
+                                               Button {
+                                                   self.tabLibelle = affichage_Dico(dico: fiche.ingredients!)
+                                               } label: {
+                                                   Text("Afficher")
+                                               }
+                                               Text(self.tabLibelle.description)
+                                                   /*.onTapGesture {
+                                                       print("tapped")
+                                                       let libelle = affichage_Dico(dico: fiche.ingredients!)
+                                                       print(libelle)
+                                                       print("tapped")
+                                                   }*/
+                                               
+                                               
+                                               Text("Description : ")
+                                                   Text("- \(fiche.description!)")}
+                            Divider()
+                                           
+                                   }
+                                   }
+                               }
+                            
                         }
                         
                         
@@ -129,16 +158,33 @@ struct DetailFicheView: View {
                 
         }.navigationViewStyle(.stack)
             
+            
         }
-  
+    func affichage_Dico(dico : [String:Double]) -> [String : Double]{
+        var libelle : [String:Double] = [:]
+        //var quantite : Double
+        for (cle, valeur) in dico {
+            listIngredients.listeIngredient.forEach { Ingredient in
+                if cle == Ingredient.idIngredient{
+                    libelle[Ingredient.libelle] = valeur
+                }
+                
+            }
+        }
+        return libelle
+    }
+        
 }
+
 
 
 struct DetailFiche_Previews: PreviewProvider {
     static var previews: some View {
-        DetailFicheView(recette: FicheViewModel(from: Fiche(id: "FObL0vgRlp2NDdKzmVsp" )) , listeRecette: ListeFicheViewModel())
+        DetailFicheView(recette: FicheViewModel(from: Fiche(id: "" )) , listeRecette: ListeFicheViewModel())
     }
 }
+
+
 
 
 

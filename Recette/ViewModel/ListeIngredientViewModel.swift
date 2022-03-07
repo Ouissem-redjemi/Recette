@@ -73,8 +73,8 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
     }
     func getData (){
             //Get a reference to the database
-           
-            
+
+        
             //Get the document of the table fiche
             db.collection("ingredients").getDocuments { snapshot, error in
                 //Verify errors
@@ -90,12 +90,11 @@ class ListeIngredientViewModel: ObservableObject, Subscriber{
                     }
                 }else{
                 //Handle errors
-                    
             }
         }
     
     }
-    
+    //----------------------- MAJ des listes ingredients   ------------------------------
     func fetchData(){
         print("entree dans la fonction")
 

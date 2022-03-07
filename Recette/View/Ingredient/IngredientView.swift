@@ -60,7 +60,6 @@ struct IngredientView: View {
                     .padding(.horizontal,50)
                     .font(.system(size: 20))
                     .frame(maxWidth : 480)
-
                 Text("Unite: \(ingredient.unite)")
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
@@ -73,6 +72,7 @@ struct IngredientView: View {
                     .padding(.horizontal,50)
                     .frame(maxWidth : 480)
                     .font(.system(size: 20))
+                
                 Group {
                         Button(action: {
                             self.isModifyViewPresented = true

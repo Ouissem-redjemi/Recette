@@ -7,15 +7,24 @@
 import Foundation
 import FirebaseFirestoreSwift
 class Ingredient : Identifiable, Hashable, Equatable{
+    
+    //-----------------------  fonction Hashable   ------------------------------
     func hash(into hasher: inout Hasher) {
         hasher.combine(idIngredient)
     }
+    
+    //-----------------------  fonction Equatable   ------------------------------
     static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool {
         return lhs.idIngredient == rhs.idIngredient
     }
     
+    
     public var delegate : IngredientDelegate?
     
+    
+    
+    
+    //-----------------------  Déclaration des prop  ------------------------------
     @DocumentID var idIngredient : String!
     public var allergene : Allergene{
         didSet{
@@ -57,7 +66,7 @@ class Ingredient : Identifiable, Hashable, Equatable{
         }
     }
     
-   
+    //----------------------- Init  ------------------------------
     
     init(id : String, allergene : Allergene = Allergene.soja, categorie : CategorieIngredient = CategorieIngredient.autre, code : String = "" , libelle : String = "" , prix_unitaire : Double = 0 , unite : String = "kg", quantite: Double = 0){
         self.idIngredient = id

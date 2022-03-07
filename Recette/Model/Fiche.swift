@@ -8,10 +8,13 @@
 import Foundation
 import FirebaseFirestoreSwift
 class Fiche : Identifiable, Hashable, Equatable{
+    
+    //-----------------------  fonction Hashable   ------------------------------
     func hash(into hasher: inout Hasher) {
         hasher.combine(idFiche)
     }
     
+    //-----------------------  fonction Equatable   ------------------------------
     static func ==(lhs: Fiche, rhs: Fiche) -> Bool {
         return lhs.idFiche == rhs.idFiche
     }
@@ -19,6 +22,10 @@ class Fiche : Identifiable, Hashable, Equatable{
     var delegate : FicheDelegate?
 
     @DocumentID var idFiche : String?
+    
+    
+    
+    //-----------------------  Déclaration des prop  ------------------------------
 
     public var categorie : CategorieRecette
     public var title : String {
@@ -57,6 +64,8 @@ class Fiche : Identifiable, Hashable, Equatable{
     public var titleStep : String? = ""
  
     
+    
+    //----------------------- Init  ------------------------------
     init(id: String, categorie : CategorieRecette = CategorieRecette.dessert, title : String = "" ,materielDressage : String? = "" , materielSpecifique : String? = "" , responsable : String = "" , nbCouverts : Int = 0, etapes : [String] = [], description : String? = "", duree : Int? = 5 , titleStep : String? = "", ingredients : [String : Double] = [:], cout : Double = 0 ){
         self.idFiche = id
         self.categorie = categorie

@@ -36,7 +36,7 @@ struct FicheIntent{
    private var state = PassthroughSubject<FicheIntentState,Never>()
    
   
-   
+    //----------------add Observer  ------------------------------
    func addObserver(viewModel: FicheViewModel){
       self.state.subscribe(viewModel)
    }
@@ -44,6 +44,8 @@ struct FicheIntent{
        self.state.subscribe(viewModel)
     }
    
+    
+    //----------------Intent to change ------------------------------
    func intentToChange(title: String){
       self.state.send(.titleChanging(title))
        self.state.send(.listUpdated)

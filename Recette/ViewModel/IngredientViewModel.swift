@@ -128,6 +128,8 @@ class IngredientViewModel : IngredientDelegate, ObservableObject, Subscriber{
          
      }
     
+    //MAJ de l'ingredient
+    
     func UpdateData(ingredient : IngredientViewModel){
         if let docId = ingredient.ingredient.idIngredient {
                db.collection("ingredients").document(docId).updateData([

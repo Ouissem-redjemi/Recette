@@ -41,6 +41,8 @@ struct ListIngredientView : View {
                             .shadow(color: Color.purple, radius: 10, x: 10, y: 10)
                     }
                       
+                    
+                    //----------------------- Liste des cartes des ingredients   ------------------------------
                     TabView{
                             ForEach(listIngredients.listeIngredient , id: \.id){
                                 ingredient in
@@ -72,6 +74,7 @@ struct ListIngredientView : View {
                
                     })
                 }
+                    //------------- MAJ des ingredient -----------
                 .onAppear{
                     self.listIngredients.fetchData()
                     print("Liste ingredient mis a jour ")

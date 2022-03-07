@@ -41,7 +41,8 @@ struct IngredientIntent{
    private var state = PassthroughSubject<IngredientIntentState,Never>()
    
   
-   
+    //----------------add Observer  ------------------------------
+    
    func addObserver(viewModel: IngredientViewModel){
       self.state.subscribe(viewModel)
    }
@@ -49,6 +50,9 @@ struct IngredientIntent{
        self.state.subscribe(viewModel)
     }
    
+    
+    //----------------Intent to change ------------------------------
+    
    func intentToChange(libelle: String){
       self.state.send(.libelleChanging(libelle))
        self.state.send(.listUpdated)

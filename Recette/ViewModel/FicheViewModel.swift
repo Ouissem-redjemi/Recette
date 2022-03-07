@@ -230,6 +230,8 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     }
         return libelle
     }
+    
+    //voir la disponibilité d'un ingredient
         func ingredientDispo(ingredients : [String], quantités :[Double] , listIngredient : ListeIngredientViewModel , quantite : Double  ) -> Bool{
             var dispo : Bool = true
             for i in  0..<ingredients.count{
@@ -253,15 +255,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
             return dispo
         }
     
-  /*public var coutSimple : Double{
-        var total : Double = 0
-        for idS in etapes{
-            for (idIng , qte ) in ingredients!{
-                total = total + ingredient.prix_unitaire * qte
-            }
-        }
-        return total
-    }*/
+
 
     // ------------------------------ PARTIE DETAIL  --------------------------
     func affichage_Dico(dico : [String:Double], listIngredients : ListeIngredientViewModel) -> [String : Double]{

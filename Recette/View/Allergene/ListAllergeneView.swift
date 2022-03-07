@@ -11,7 +11,7 @@ struct ListAllergeneView: View {
     var listAllergene : [Allergene] = Allergene.allValues
     
  
-    @State var newAllergene = Allergene.arachide
+
     @State var searchingFor = ""
     var results : [Allergene]{
         if searchingFor.isEmpty{

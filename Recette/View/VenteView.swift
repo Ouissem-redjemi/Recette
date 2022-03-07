@@ -97,6 +97,7 @@ struct VenteView: View {
             
             }.onAppear{
                 self.listingredients.fetchData()
+                self.listFiches.fetchData()
                 print("Liste ingredient mis a jour ")
             }
       

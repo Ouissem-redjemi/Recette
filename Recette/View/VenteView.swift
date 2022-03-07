@@ -11,10 +11,12 @@ struct VenteView: View {
     
     @ObservedObject var listFiches = ListeFicheViewModel ()
     var intent : FicheIntent = FicheIntent ()
-  
-    @State var quantite :  Int = 0
-    
     @State private var selection : Fiche = Fiche(id: "String", categorie: CategorieRecette.accompagnement, title: "Test vente",responsable: "String", nbCouverts: 2, etapes: ["String"])
+    @ObservedObject var fiche : FicheViewModel = FicheViewModel(from: Fiche(id: "String", categorie: CategorieRecette.accompagnement, title: "Test vente",responsable: "String", nbCouverts: 2, etapes: ["String"]))
+    @State var quantite :  Int = 0
+    @State var dispo : Bool = true
+    @ObservedObject var listingredients = ListeIngredientViewModel()
+    
     let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -25,6 +27,7 @@ struct VenteView: View {
     init(){
         self.listFiches.getData()
         self.intent.addObserver(viewModel: listFiches)
+        self.listingredients.getData()
     }
     
     var body: some View {
@@ -58,8 +61,8 @@ struct VenteView: View {
             
                 HStack{
                     Button(action: {
-                   //mettre la fonction pour voir la disponibilité en recuperant la fiche et la quantité
-                    print("modif demandé")
+                        dispo = self.fiche.ingredientDispo(ingredients: self.fiche.recuperationIngredient(etapes: self.fiche.recuperationEtapes(listrecette: listFiches, fiche: FicheViewModel(from: selection))), quantités: self.fiche.recuperationIngredientQuantite(etapes:  self.fiche.recuperationEtapes(listrecette: listFiches, fiche: FicheViewModel(from: selection))), listIngredient: listingredients, quantite: Double(quantite))
+                    print("\(dispo)")
                     }) {
                         Label(
                             title: {
@@ -79,6 +82,8 @@ struct VenteView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.purple, lineWidth: 2)
                         )}
+                    
+                    Text(" Possibilite de vente :  \(dispo.description )")
                 }.frame(alignment : .center)
            
                 
@@ -90,6 +95,9 @@ struct VenteView: View {
        
    
             
+            }.onAppear{
+                self.listingredients.fetchData()
+                print("Liste ingredient mis a jour ")
             }
       
         }.navigationBarHidden(true)

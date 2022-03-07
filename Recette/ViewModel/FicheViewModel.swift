@@ -169,7 +169,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         return  somme * 1.05
     }
     
-    
+    // ------------------------------ PARTIE ETIQUETTE --------------------------
     
     func recuperationEtapes(listrecette : ListeFicheViewModel, fiche : FicheViewModel) -> [Fiche]{
         var tabEtape : [Fiche] = []
@@ -216,10 +216,42 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     }
     
     
+    // ------------------------------ PARTIE VENTE  --------------------------
     
-    
-    
-    
+    func recuperationIngredientQuantite(etapes : [Fiche]) -> [Double]{
+        var libelle : [Double] = []
+        
+        
+        for etape in etapes{
+            for (cle) in etape.ingredients!.values {
+                libelle.append(cle)
+        }
+
+    }
+        return libelle
+    }
+        func ingredientDispo(ingredients : [String], quantités :[Double] , listIngredient : ListeIngredientViewModel , quantite : Double  ) -> Bool{
+            var dispo : Bool = true
+            for i in  0..<ingredients.count{
+                if dispo{
+                    
+                
+                for ingredient in listIngredient.listeIngredient{
+                    if ingredients[i] == ingredient.idIngredient{
+                        if ingredient.quantite < quantite * quantités[i]{
+                            dispo = false
+                            break
+                        }
+                    }
+                }
+                }
+                else{
+                    break
+                }
+            }
+            
+            return dispo
+        }
     
   /*public var coutSimple : Double{
         var total : Double = 0

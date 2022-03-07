@@ -62,11 +62,9 @@
             symbolName = "*0x1054821b4">
             <Locations>
                <Location
-                  uuid = "4BABE9D6-C1D0-41C3-8CB2-EABC15C9D7C4 - 38dc69cbf5681953"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  moduleName = "Recette"
                   usesParentBreakpointCondition = "Yes"
                   offsetFromSymbolStart = "0">
                </Location>

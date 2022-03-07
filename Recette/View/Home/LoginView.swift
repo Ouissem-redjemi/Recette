@@ -33,28 +33,28 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-
-                    Button(action : {
-                        if !email.isEmpty, !self.pwd.isEmpty{
-                            self.loginVM.logIn(email: self.email, mdp: self.pwd)
-                           
-                        }else{
-                            return
-                        }
+                
+                Button(action : {
+                    if !email.isEmpty, !self.pwd.isEmpty{
+                        self.loginVM.logIn(email: self.email, mdp: self.pwd)
                         
-                    }, label: {
-                        Text("Se connecter")
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: 200, height: 50)
-                            .background(.green)
-                    }).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        
-
-           
+                    }else{
+                        return
+                    }
+                    
+                }, label: {
+                    Text("Se connecter")
+                        .foregroundColor(.white)
+                        .bold()
+                        .frame(width: 200, height: 50)
+                        .background(.green)
+                }).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                
+                
+                
                 
             }.padding()
         }.background(Image("fond"))
-}
+    }
 }
 

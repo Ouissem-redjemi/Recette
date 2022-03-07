@@ -112,7 +112,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
     
     
     func affichage_Dico( listingredients : ListeIngredientViewModel, recette : FicheViewModel, listeRecette : ListeFicheViewModel) -> [String]{
-        var libelle : [String] = [""]
+        var libelle : [String] = []
         for idE in recette.etapes {
                for fiche in listeRecette.listeFiches{
                    if idE == fiche.idFiche{
@@ -127,7 +127,7 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         
 
     func affichage_suite(fiche : Fiche, listIngredients : ListeIngredientViewModel)-> [String] {
-        var libelle : [String] = [""]
+        var libelle : [String] = []
         
   
         print("title\(fiche.titleStep!)")
@@ -263,6 +263,19 @@ class FicheViewModel : FicheDelegate , ObservableObject, Subscriber{
         return total
     }*/
 
+    // ------------------------------ PARTIE DETAIL  --------------------------
+    func affichage_Dico(dico : [String:Double], listIngredients : ListeIngredientViewModel) -> [String : Double]{
+        var libelle : [String:Double] = [:]
+        for (cle, valeur) in dico {
+            listIngredients.listeIngredient.forEach { Ingredient in
+                if cle == Ingredient.idIngredient{
+                    libelle[Ingredient.libelle] = valeur
+                }
+                
+            }
+        }
+        return libelle
+    }
     
     init(from fiche : Fiche){
         self.fiche = fiche

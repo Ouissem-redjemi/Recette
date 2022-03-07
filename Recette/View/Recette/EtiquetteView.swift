@@ -95,12 +95,12 @@ struct EtiquetteView: View {
                    }
         
         )
-            }
+        }.navigationBarBackButtonHidden(true)
       
 
     }
     
-    func affichage_Dico(dico : [String:Double]) -> [String]{
+    /*func affichage_Dico(dico : [String:Double]) -> [String]{
         var libelle : [String] = [""]
         //var quantite : Double
         print(" coucou : \(dico.description)")
@@ -116,7 +116,7 @@ struct EtiquetteView: View {
         }
         print(libelle)
         return libelle
-    }
+    }*/
     
 
     func exportToPDF() {
@@ -139,18 +139,7 @@ struct EtiquetteView: View {
         }
     }
     
-    /*
-    func actionSheet() {
-           guard let urlShare = URL(string: "https://developer.apple.com/xcode/swiftui/") else { return }
-           let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
-           UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-    }
-    func shareButton() {
-            let url = URL(string: "https://designcode.io")
-            let activityController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-
-            UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
-    }*/
+   
     
 }
 

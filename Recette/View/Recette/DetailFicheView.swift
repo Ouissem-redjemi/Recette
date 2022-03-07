@@ -18,7 +18,8 @@ struct DetailFicheView: View {
     @ObservedObject var listeRecette: ListeFicheViewModel
     @ObservedObject var listIngredients = ListeIngredientViewModel ()
     var intent : FicheIntent
-    @State var tabLibelle : [String : Double] = [:]
+    @State var tabLibelle : [String:Double] = [:]
+    @State var tabQuantite : [Double] = []
     init(recette : FicheViewModel, listeRecette : ListeFicheViewModel){
         self.recette = recette
         self.listeRecette = listeRecette
@@ -65,107 +66,110 @@ struct DetailFicheView: View {
                                 .foregroundColor(.purple)
                                 .font(.title)
                             Text("\(recette.nbCouverts)")
-                            Image(systemName: "timer")
+                            Image(systemName: "tray.full.fill")
                                 .foregroundColor(.purple)
                                 .font(.title)
+                            Text("\(recette.categorie.rawValue)")
                             
                             
                         }
-                        VStack(alignment: .leading, spacing: 20){
-                            Text("Ingrédients :")
-                                .font(.headline)
-                            
-                        }
+                        
                         VStack(alignment: .leading, spacing: 20){
                             Text("Étapes :")
-                              .font(.headline)
+                                .font(.headline)
+                                .underline()
                             ForEach(0..<recette.etapes.count){ i in
-                                   ForEach(listeRecette.listeFiches){ fiche in
-                                       if recette.etapes[i] == fiche.idFiche{
-                                           if fiche.titleStep!.isEmpty{
-                                               Text("\(fiche.title)")
-                                               
-                                           }else{
-                                               Text("\(fiche.titleStep!)")
-                                                   .bold()
-                                               Text("Durée : \(fiche.duree!)")
-                                                   .italic()
-                                               
-                                               Text("Cout : \(recette.coutRecette(fiche : fiche, listIngredient : listIngredients, listeRecette : listeRecette).description )")
-                                               Text("Ingrédients : ")
-                                                   .underline()
-                                               Button {
-                                                   self.tabLibelle = affichage_Dico(dico: fiche.ingredients!)
-                                               } label: {
-                                                   Text("Afficher")
-                                               }
-                                               Text(self.tabLibelle.description)
-                                                   /*.onTapGesture {
-                                                       print("tapped")
-                                                       let libelle = affichage_Dico(dico: fiche.ingredients!)
-                                                       print(libelle)
-                                                       print("tapped")
-                                                   }*/
-                                               
-                                               
-                                               Text("Description : ")
-                                                   Text("- \(fiche.description!)")}
-                            Divider()
-                                           
-                                   }
+                                ForEach(listeRecette.listeFiches){ fiche in
+                                    if recette.etapes[i] == fiche.idFiche{
+                                        if fiche.titleStep!.isEmpty{
+                                            NavigationLink(destination: DetailFicheView(recette: FicheViewModel(from: fiche), listeRecette: listeRecette)){
+                                                Text("\(fiche.title)")
+                                            }
+                                            
+                                            
+                                        }else{
+                                            Text("\(fiche.titleStep!)")
+                                                .bold()
+                                            Text("Durée : \(fiche.duree!) min")
+                                                .italic()
+                                            
+                                            Text("Cout : \(recette.coutRecette(fiche : fiche, listIngredient : listIngredients, listeRecette : listeRecette).description )")
+                                            Text("Ingrédients : ")
+                                                .underline()
+                                            Button {
+                                                self.tabLibelle = self.recette.affichage_Dico(dico: fiche.ingredients!, listIngredients: listIngredients)
+                                            } label: {
+                                                Text("Afficher")
+                                            }
+                                            /*HStack{
+                                                ForEach(tabLibelle , id: \.self){ lib, qtite in
+                                                    Text("- \(lib) ->  \(qtite.description) \(fiche.unite)")
+                                                }
+                                            }*/
+                                            
+                                            Text(self.tabLibelle.description)
+                                            
+                                            
+                                            
+                                            Text("Description : ")
+                                            Text("- \(fiche.description!)")}
+                                        Divider()
+                                        
+                                    }
                                 }
                             }
                             
                         }
-   
+                        
                     }
                     .frame(maxWidth: .infinity,  alignment: .leading)
-                
+                    
                 }
                 .padding(.horizontal)}
-                .ignoresSafeArea(.container, edges: .top)
-                .toolbar(content: {
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action :{
-                            self.isRemovePresented.toggle()
-                        }){
-                            Image(systemName: "clear")
-                                .foregroundColor(.purple)
-                                .font(.title)
-                        }.actionSheet(isPresented: $isRemovePresented){
-                            ActionSheet(title: Text("Are you sure ?"),
-                                        buttons: [
-                                            .destructive(Text("Supprimer la recette"), action: {
-                                                self.recette.removeData()
-                                                self.mode.wrappedValue.dismiss()
-                                                print("Suppression réussie")
-                                            }),
-                                                .cancel()
-                                        ])
-                        }
+            .ignoresSafeArea(.container, edges: .top)
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button(action :{
+                        self.isRemovePresented.toggle()
+                    }){
+                        Image(systemName: "clear")
+                            .foregroundColor(.purple)
+                            .font(.title)
+                    }.actionSheet(isPresented: $isRemovePresented){
+                        ActionSheet(title: Text("Are you sure ?"),
+                                    buttons: [
+                                        .destructive(Text("Supprimer la recette"), action: {
+                                            self.recette.removeData()
+                                            self.mode.wrappedValue.dismiss()
+                                            print("Suppression réussie")
+                                        }),
+                                        .cancel()
+                                    ])
                     }
-                    ToolbarItem(){
-                        NavigationLink(destination : EtiquetteView(recette: recette, listeRecette: listeRecette)){
-                            Image(systemName: "doc.text.fill")
-                        }
+                }
+                ToolbarItem(placement: .bottomBar){
+                    NavigationLink(destination : EtiquetteView(recette: recette, listeRecette: listeRecette)){
+                        Image(systemName: "doc.text.fill")
+                            .font(.title)
                     }
-                    ToolbarItem(){
-                        Button(action :{
-                            self.isModifyViewPresented = true
-                            print("Modification réussie")
-                        }){
-                            Image(systemName: "pencil.circle")
-                                .foregroundColor(.purple)
-                                .font(.title)
-                        }.sheet(isPresented: $isModifyViewPresented, content: {
-                            ModificationFicheView(recette: self.recette, listRecette: self.listeRecette)})
-                    }
-                }).navigationBarTitleDisplayMode(.inline)
-                
+                }
+                ToolbarItem(){
+                    Button(action :{
+                        self.isModifyViewPresented = true
+                        print("Modification réussie")
+                    }){
+                        Image(systemName: "pencil.circle")
+                            .foregroundColor(.purple)
+                            .font(.title)
+                    }.sheet(isPresented: $isModifyViewPresented, content: {
+                        ModificationFicheView(recette: self.recette, listRecette: self.listeRecette)})
+                }
+            }).navigationBarTitleDisplayMode(.inline)
+            
         }.navigationViewStyle(.stack)
-            
-            
-        }
+        
+        
+    }
     func affichage_Dico(dico : [String:Double]) -> [String : Double]{
         var libelle : [String:Double] = [:]
         //var quantite : Double
@@ -179,16 +183,16 @@ struct DetailFicheView: View {
         }
         return libelle
     }
-        
+    
 }
 
 
 
-struct DetailFiche_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailFicheView(recette: FicheViewModel(from: Fiche(id: "" )) , listeRecette: ListeFicheViewModel())
-    }
-}
+/*struct DetailFiche_Previews: PreviewProvider {
+ static var previews: some View {
+ DetailFicheView(recette: FicheViewModel(from: Fiche(id: "" )) , listeRecette: ListeFicheViewModel())
+ }
+ }*/
 
 
 

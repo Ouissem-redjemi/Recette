@@ -24,26 +24,29 @@ struct StepView: View {
     var body: some View {
         HStack{
             HStack{
-            Button(action : {
-                self.isChecked.toggle()
-                self.recette.addStep(id: etape.idFiche!)
+                Button(action : {
+                    self.recette.addStep(id: etape.idFiche!)
+                    self.isChecked.toggle()
+                    
+                }, label: {
+                    Image(systemName: isChecked ? "checkmark.circle" : "circle")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.purple)
+                }).padding()
                 
-            }, label: {
-                Image(systemName: isChecked ? "checkmark.circle" : "circle")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.purple)
-            }).padding()
-            
                 if etape.titleStep!.isEmpty {
+                    
                     Text("\(etape.title)")
                         .foregroundColor(.black)
                 }else{
                     Text("\(etape.titleStep!)")
-                    .foregroundColor(.black)
+                        .foregroundColor(.black)
                 }
             }
-            /*HStack{
+            
+        }
+        HStack{
             Button(action :{
                 self.isRemovePresented.toggle()
             }){
@@ -57,17 +60,16 @@ struct StepView: View {
                                     self.etape.removeData()
                                     print("Suppression réussie")
                                 }),
-                                    .cancel()
+                                .cancel()
                             ])
             }
-            }*/
         }
         
     }
 }
 
 /*struct StepView_Previews: PreviewProvider {
-    static var previews: some View {
-        StepView(recette: FicheViewModel(from: Fiche(id: "")))
-    }
-}*/
+ static var previews: some View {
+ StepView(recette: FicheViewModel(from: Fiche(id: "")))
+ }
+ }*/

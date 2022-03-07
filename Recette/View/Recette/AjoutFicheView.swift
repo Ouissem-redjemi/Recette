@@ -65,22 +65,22 @@ struct AjoutFicheView: View {
                                 ListStepView(listRecette: self.listRecette, recette : self.recette)
                                 
                             })
-
-                            
+                        
+                        
                         
                         
                         /*Button(action : {
-                            print("hello")
-                            
-                        }, label: {
-                            Text("Add step")
-                                .foregroundColor(.white)
-                                .bold()
-                                .frame(width: 100, height: 50)
-                                .background(.purple)
-                        }).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))*/
+                         print("hello")
+                         
+                         }, label: {
+                         Text("Add step")
+                         .foregroundColor(.white)
+                         .bold()
+                         .frame(width: 100, height: 50)
+                         .background(.purple)
+                         }).clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))*/
                     }
-                   
+                    
                 }
                 
             }.toolbar(content: {
@@ -112,17 +112,17 @@ struct AjoutFicheView: View {
                         .disabled(recette.categorie.rawValue.isEmpty)
                 }
             })
-            .navigationTitle("Nouvelle recette 📝 ")
+                .navigationTitle("Nouvelle recette 📝 ")
                 .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
     }
 }
 
 /*struct AjoutFicheView_Previews: PreviewProvider {
-    static var previews: some View {
-        AjoutFicheView(recette: FicheViewModel(from: Fiche (id: "")), listRecette: ListeFicheViewModel())
-    }
-}*/
+ static var previews: some View {
+ AjoutFicheView(recette: FicheViewModel(from: Fiche (id: "")), listRecette: ListeFicheViewModel())
+ }
+ }*/
 
 func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
     Binding(

@@ -102,7 +102,15 @@ class ListeFicheViewModel: ObservableObject, Subscriber {
     }
     
     
-   
+    func SearchFicheByName(title : String) -> [Fiche]{
+        var tabFiche : [Fiche] = []
+        for i in 0..<self.listeFiches.count{
+            if self.listeFiches[i].title.contains(title){
+                tabFiche.append(self.listeFiches[i])
+            }
+        }
+        return tabFiche
+    }
     
  
     

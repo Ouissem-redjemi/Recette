@@ -33,6 +33,7 @@ struct BarrePlus: View {
                 .sheet(isPresented: $isAddViewPresented, content: {
                     AjoutFicheView(recette: recette, listRecette: listRecette)
                 })
+                
      /*
             Button(action:{
                 

@@ -15,14 +15,14 @@ struct ContentView: View {
             
             if loginVM.logIn{
                 TabView {
-                   HomeView().navigationViewStyle(.stack)
+                    HomeView().navigationViewStyle(.stack)
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
-
+                    
                         .tabItem {
                             Label("Fiches", systemImage: "heart.text.square")
                         }
-
+                    
                     ListIngredientView()
                         .tabItem {
                             Label("Ingredients", systemImage: "scroll")
@@ -38,16 +38,16 @@ struct ContentView: View {
                         }
                 }.accentColor(.purple)
                 
-
+                
             }else{
                 LoginView()
             }
-                
-
+            
+            
             
         }
     }
-
-       
-        
-    }
+    
+    
+    
+}

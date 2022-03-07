@@ -17,9 +17,9 @@ struct EtapeView: View {
     @State var quantite : Double = 0
     @State var id : String = ""
     let formatter: NumberFormatter = {
-      let formatter = NumberFormatter()
+        let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-      return formatter
+        return formatter
     }()
     
     var intent : FicheIntent
@@ -45,40 +45,40 @@ struct EtapeView: View {
                 Section(header: Text("Description")){
                     TextEditor(text: $recette.description ?? "")
                 }
-        
+                
                 Section(header: Text("Ingrédients")){
-                List{
-                    ForEach(listIngredients.listeIngredient, id:\.id){ ingredient in
-                        HStack{
-                            Text(ingredient.libelle)
-                            Text("Qtité : ")
-                            TextField("Quantité", value: $quantite, formatter: formatter)
-                            Button {
-                                self.recette.ingredients![ingredient.idIngredient] = Double(quantite)
-                            } label: {
-                                Text("Valider")
+                    List{
+                        ForEach(listIngredients.listeIngredient, id:\.id){ ingredient in
+                            HStack{
+                                Text(ingredient.libelle)
+                                Text("Qtité : ")
+                                TextField("Quantité", value: $quantite, formatter: formatter)
+                                Button {
+                                    self.recette.ingredients![ingredient.idIngredient] = Double(quantite)
+                                } label: {
+                                    Text("Valider")
+                                }
+                                
                             }
+                            
+                            
                             
                         }
                         
-                        
-                        
                     }
-                    
-                }
                 }
                 
                 /*
-                Section(header: Text("Ingrédients")){
-                    Picker("Ingrédients", selection: $ingredient){
-                        ForEach(listIngredients.listeIngredient, id:\.id){ ingredient in
-                            Text(ingredient.libelle)
-                        }
-                    }.pickerStyle(.menu)
-                    
-                    
-                }
-                */
+                 Section(header: Text("Ingrédients")){
+                 Picker("Ingrédients", selection: $ingredient){
+                 ForEach(listIngredients.listeIngredient, id:\.id){ ingredient in
+                 Text(ingredient.libelle)
+                 }
+                 }.pickerStyle(.menu)
+                 
+                 
+                 }
+                 */
                 
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -92,10 +92,10 @@ struct EtapeView: View {
                 }
                 ToolbarItem{
                     Button(action :{
-
+                        
                         //Add step to the database and push into liste step of the recipe
                         self.id = self.recette.addDataStep(title: self.recette.titleStep, description: self.recette.description, duree: self.recette.duree, ingredients: self.recette.ingredients)
-                            // self.recette.addStep(id: self.recette.addDataStep(title: self.recette.titleStep, description: self.recette.description, duree: self.recette.duree))
+                        // self.recette.addStep(id: self.recette.addDataStep(title: self.recette.titleStep, description: self.recette.description, duree: self.recette.duree))
                         //print(self.recette.etapes.description)
                         print("\(recette.idFiche!)")
                         //Close the view after adding data
@@ -110,19 +110,19 @@ struct EtapeView: View {
                         .disabled(recette.description!.isEmpty)
                 }
             })
-            .navigationTitle("Nouvelle Etape")
+                .navigationTitle("Nouvelle Etape")
                 .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
     }
     
-
+    
 }
 
-struct EtapeView_Previews: PreviewProvider {
+/*struct EtapeView_Previews: PreviewProvider {
     static var previews: some View {
         EtapeView(recette: FicheViewModel(from: Fiche (id: "")), listRecette: ListeFicheViewModel())
     }
-}
+}*/
 
 
 /* etapes [id1, .....] */

@@ -8,4 +8,4 @@ Ajouter les packages liés à firebase :
 - FirebaseAuth
 
 // lien git : https://github.com/Ouissem-redjemi/Recette.git
-
+// authentification : admin@gmail.com password : admin1234.
